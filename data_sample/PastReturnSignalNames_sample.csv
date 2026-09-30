@@ -1,0 +1,7 @@
+signalid,signalname,root
+0,ret_1,ret
+1,ret_2,ret
+2,ret_3,ret
+3,ret_4,ret
+1000,skew_1_3_11_12,skew
+19401,kurt_17_18_19_20,kurt

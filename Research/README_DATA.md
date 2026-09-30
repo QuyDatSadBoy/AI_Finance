@@ -1,6 +1,6 @@
 # Hướng dẫn đọc toàn bộ dữ liệu của High-Throughput Asset Pricing
 
-Tài liệu dành cho người mới, đối chiếu với [paper chính](paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data_raw/` ngày 29/09/2026. File mẫu nằm riêng trong `data_sample/`, còn ZIP gốc `Strategy Returns.zip` nằm ở thư mục chính. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
+Tài liệu dành cho người mới, đối chiếu với [paper chính](paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data_raw/` ngày 29/09/2026. [Bảy file mẫu nhỏ tương ứng với từng CSV gốc](../data_sample/README.md) nằm trong `data_sample/`, còn ZIP gốc `Strategy Returns.zip` nằm ở thư mục chính. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
 
 **Đọc nhanh trong 30 giây:** Input chính của EB là **lợi suất tháng của từng chiến lược** trong `data_raw/`. Mỗi cuối năm, code lấy tối đa 20 năm đã qua để tính thành tích và t-stat, nhìn cả nhóm chiến lược để điều chỉnh dự báo, rồi chọn top 1%/5%/10%. **Lợi suất năm sau là đáp án để kiểm tra, tuyệt đối không đưa vào bước chọn.** Output cuối là dự báo theo chiến lược–năm, danh sách được chọn và bảng lợi suất thực tế của các danh mục. Nếu cần hiểu từng script, đọc thêm [hướng dẫn code với một signal thật](CODE_PAPER_GOC_VA_VI_DU_DATA_THAT.md).
 
