@@ -163,9 +163,9 @@ Paper so một số cách đặt ngưỡng. Theo kết quả của tác giả, v
 - **Lợi suất ngoài mẫu không chứng minh nguyên nhân:** kết quả phù hợp với câu chuyện thông tin được phản ánh chậm vào giá, nhưng chưa chứng minh cơ chế đó là nguyên nhân duy nhất.
 - **EB không xóa mọi loại bias:** dự báo của nó vẫn phụ thuộc mô hình phân phối, cách tạo dữ liệu và sự ổn định của thị trường.
 
-## 9. Các CSV trong folder `data/` liên quan thế nào?
+## 9. Các CSV trong folder `data_raw/` liên quan thế nào?
 
-Thư mục `data/` hiện có đủ ba nhóm dữ liệu lợi suất chiến lược của paper: **kế toán, past-return và ticker**, mỗi nhóm gồm cả cách tính EW/VW. Riêng file mẫu `DataMinedLongShortReturnsSample.csv` đã được chuyển sang `data_sample/`; nó chỉ dùng để xem cấu trúc và thử code, không dùng thay toàn bộ dữ liệu gốc.
+Thư mục `data_raw/` hiện có đủ ba nhóm dữ liệu lợi suất chiến lược của paper: **kế toán, past-return và ticker**, mỗi nhóm gồm cả cách tính EW/VW. Riêng file mẫu `DataMinedLongShortReturnsSample.csv` nằm trong `data_sample/`; nó chỉ dùng để xem cấu trúc và thử code, không dùng thay toàn bộ dữ liệu gốc.
 
 Ví dụ một dòng trong file lợi suất có các cột:
 

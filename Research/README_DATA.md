@@ -1,12 +1,12 @@
 # Hướng dẫn đọc toàn bộ dữ liệu của High-Throughput Asset Pricing
 
-Tài liệu dành cho người mới, đối chiếu với [paper chính](paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data/` ngày 29/09/2026. File mẫu nằm riêng trong `data_sample/`. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
+Tài liệu dành cho người mới, đối chiếu với [paper chính](paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data_raw/` ngày 29/09/2026. File mẫu nằm riêng trong `data_sample/`, còn ZIP gốc `Strategy Returns.zip` nằm ở thư mục chính. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
 
 ## 1. Đọc nhanh trước khi xem bảng
 
 **Một signal** là công thức dùng để xếp hạng cổ phiếu. Từ signal đó, tác giả xây chiến lược **long–short**: mua một nhóm cổ phiếu và bán khống nhóm còn lại. Mỗi tháng chiến lược tạo ra một lợi suất.
 
-Thư mục `data/` chứa:
+Thư mục `data_raw/` chứa:
 
 1. **Bảng định nghĩa signal:** ID nào có nghĩa là công thức nào.
 2. **Bảng lợi suất tháng:** signal đó lãi/lỗ bao nhiêu ở từng tháng.
@@ -16,7 +16,7 @@ Thư mục `data/` chứa:
 
 Paper dùng khoảng **136.000 chiến lược**, chính xác là **136.192** trong Bảng 1. Các bảng lợi suất trong folder hiện chứa đủ ba *họ signal* mà Bảng 1 mô tả: kế toán, lợi suất quá khứ và ký tự ticker. Điều này **chưa có nghĩa** chỉ cần mở CSV là tự tái lập được các kết quả EB: còn phải làm đúng quy tắc cửa sổ 20 năm, ước lượng mô hình, xếp hạng, đảo dấu và đánh giá OOS.
 
-## 2. Các file dữ liệu gốc trong `data/`
+## 2. Các file dữ liệu gốc trong `data_raw/`
 
 | File | Vai trò | Số dòng dữ liệu, không tính header | Số signal có lợi suất | Khoảng tháng quan sát |
 |---|---|---:|---:|---|
@@ -27,11 +27,10 @@ Paper dùng khoảng **136.000 chiến lược**, chính xác là **136.192** tr
 | `PastReturnSignalsLongShort.csv` | Lợi suất past-return, **cả EW và VW** | 14.202.264 | 19.402 | 01/1962–12/2022 |
 | `TickerSignalNames.csv` | Tên signal dựa vào ký tự ticker | 19.380 | Không áp dụng | Không có ngày |
 | `TickerSignalsLongShort.csv` | Lợi suất ticker, **cả EW và VW** | 13.372.200 | 19.380 | 01/1963–12/2022 |
-| `Strategy Returns.zip` | ZIP gốc vừa tải, giữ để đối chiếu | Chứa bốn file ticker/past-return | — | — |
 
 Đừng cộng số **dòng tháng** để ra số chiến lược. Một signal xuất hiện ở nhiều tháng. Với mỗi signal, EW và VW là **hai phiên bản chiến lược**. Theo Bảng 1: $29.314\times2+19.402\times2+19.380\times2=136.192$ chiến lược.
 
-### Ghi chú về ZIP mới
+### Ghi chú về ZIP gốc ở thư mục chính
 
 ZIP gốc gọi bốn file bên trong là `*.csv.gzip`, nhưng mình đã kiểm tra byte đầu: chúng là **CSV văn bản thường**, không có cấu trúc GZIP. Vì vậy các bản đã giải nén được đặt đúng đuôi `.csv` trong folder này. Không cần chạy lệnh `gunzip` với chúng. ZIP còn có một mục thư mục tên `/`; mục này được bỏ qua khi giải nén, bốn bảng CSV đã qua kiểm tra CRC.
 
@@ -172,7 +171,7 @@ Giả sử muốn kiểm tra một signal kế toán ở cuối năm 1993:
 
 ## 9. Trạng thái kiểm tra file
 
-- ZIP `Strategy Returns.zip` đã qua kiểm tra CRC; bốn CSV mới được giải nén đầy đủ và giữ kích thước byte như các thành viên trong ZIP.
+- ZIP gốc `Strategy Returns.zip` ở thư mục chính đã qua kiểm tra CRC; bốn CSV mới được giải nén đầy đủ và giữ kích thước byte như các thành viên trong ZIP.
 - Bốn bảng lợi suất đã được quét để đếm dòng, ID, khoảng ngày và ô trống; không thấy ô trống trong các cột của bốn bảng này.
 - Phạm vi `ret` có những giá trị cực đoan. Đây là dấu hiệu **cần kiểm tra định nghĩa và cách xử lý dữ liệu khi phân tích**, không đủ để kết luận file hỏng.
 - Bảng này là **dữ liệu đầu vào**, không phải code hoặc kết quả EB đã chạy lại. Các con số trong paper chỉ được coi là tái lập khi có cùng lựa chọn mẫu, mô hình và quy trình đánh giá.

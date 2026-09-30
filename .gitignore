@@ -1,9 +1,8 @@
 # Raw datasets and downloaded archives exceed GitHub's regular Git file limit.
-/data/DataMinedLongShortReturnsEW.csv
-/data/DataMinedLongShortReturnsVW.csv
-/data/PastReturnSignalsLongShort.csv
-/data/TickerSignalsLongShort.csv
-/data/Strategy Returns.zip
+/data_raw/DataMinedLongShortReturnsEW.csv
+/data_raw/DataMinedLongShortReturnsVW.csv
+/data_raw/PastReturnSignalsLongShort.csv
+/data_raw/TickerSignalsLongShort.csv
 /*.zip
 
 # Local notebook/runtime artifacts.

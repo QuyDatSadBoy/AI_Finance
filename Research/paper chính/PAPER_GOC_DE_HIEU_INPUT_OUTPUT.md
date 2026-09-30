@@ -24,7 +24,7 @@ Với cùng một quy tắc, tác giả tính hai bản danh mục: **EW** cho c
 
 **Đầu vào chính của bước đánh giá là lịch sử lợi suất hằng tháng của rất nhiều chiến lược**, kèm nhãn cho biết mỗi chiến lược thuộc nhóm nào. Với các file đang có trong repo, ba nhóm là:
 
-| Nhóm | Quy tắc dựa trên gì? | File lợi suất trong `data/` |
+| Nhóm | Quy tắc dựa trên gì? | File lợi suất trong `data_raw/` |
 |---|---|---|
 | Kế toán | Các công thức từ dữ liệu kế toán doanh nghiệp | `DataMinedLongShortReturnsEW.csv`, `DataMinedLongShortReturnsVW.csv` |
 | Lợi suất quá khứ | Mẫu hình lợi suất/biến động ở các quý trước | `PastReturnSignalsLongShort.csv` |
