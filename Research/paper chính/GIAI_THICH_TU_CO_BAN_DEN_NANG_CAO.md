@@ -165,7 +165,7 @@ Paper so một số cách đặt ngưỡng. Theo kết quả của tác giả, v
 
 ## 9. Các CSV trong folder `data/` liên quan thế nào?
 
-Bốn CSV hiện có trước link mới gồm `DataMinedSignalList.csv`, `DataMinedLongShortReturnsEW.csv`, `DataMinedLongShortReturnsVW.csv` và bản `Sample`. Chúng chứa **signal kế toán và chuỗi lợi suất EW/VW**; chưa đủ để tái lập toàn bộ sáu nhóm gồm past-return và ticker trong paper.
+Thư mục `data/` hiện có đủ ba nhóm dữ liệu lợi suất chiến lược của paper: **kế toán, past-return và ticker**, mỗi nhóm gồm cả cách tính EW/VW. Riêng file mẫu `DataMinedLongShortReturnsSample.csv` đã được chuyển sang `data_sample/`; nó chỉ dùng để xem cấu trúc và thử code, không dùng thay toàn bộ dữ liệu gốc.
 
 Ví dụ một dòng trong file lợi suất có các cột:
 

@@ -1,12 +1,12 @@
 # Hướng dẫn đọc toàn bộ dữ liệu của High-Throughput Asset Pricing
 
-Tài liệu dành cho người mới, đối chiếu với [paper chính](../Research/paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data/` ngày 29/09/2026. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
+Tài liệu dành cho người mới, đối chiếu với [paper chính](paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data/` ngày 29/09/2026. File mẫu nằm riêng trong `data_sample/`. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
 
 ## 1. Đọc nhanh trước khi xem bảng
 
 **Một signal** là công thức dùng để xếp hạng cổ phiếu. Từ signal đó, tác giả xây chiến lược **long–short**: mua một nhóm cổ phiếu và bán khống nhóm còn lại. Mỗi tháng chiến lược tạo ra một lợi suất.
 
-Folder này chứa:
+Thư mục `data/` chứa:
 
 1. **Bảng định nghĩa signal:** ID nào có nghĩa là công thức nào.
 2. **Bảng lợi suất tháng:** signal đó lãi/lỗ bao nhiêu ở từng tháng.
@@ -16,14 +16,13 @@ Folder này chứa:
 
 Paper dùng khoảng **136.000 chiến lược**, chính xác là **136.192** trong Bảng 1. Các bảng lợi suất trong folder hiện chứa đủ ba *họ signal* mà Bảng 1 mô tả: kế toán, lợi suất quá khứ và ký tự ticker. Điều này **chưa có nghĩa** chỉ cần mở CSV là tự tái lập được các kết quả EB: còn phải làm đúng quy tắc cửa sổ 20 năm, ước lượng mô hình, xếp hạng, đảo dấu và đánh giá OOS.
 
-## 2. Tất cả file trong `data/`
+## 2. Các file dữ liệu gốc trong `data/`
 
 | File | Vai trò | Số dòng dữ liệu, không tính header | Số signal có lợi suất | Khoảng tháng quan sát |
 |---|---|---:|---:|---|
 | `DataMinedSignalList.csv` | Định nghĩa signal **kế toán** | 29.315 | Không áp dụng | Không có ngày |
 | `DataMinedLongShortReturnsEW.csv` | Lợi suất kế toán, danh mục EW | 16.941.504 | 29.314 | 07/1951–12/2022 |
 | `DataMinedLongShortReturnsVW.csv` | Lợi suất kế toán, danh mục VW | 16.941.358 | 29.314 | 07/1951–12/2022 |
-| `DataMinedLongShortReturnsSample.csv` | Mẫu nhỏ từ nhóm kế toán để xem cấu trúc | 2.580 | 10 | 07/1990–06/2012 |
 | `PastReturnSignalNames.csv` | Tên signal từ lợi suất quá khứ | 19.402 | Không áp dụng | Không có ngày |
 | `PastReturnSignalsLongShort.csv` | Lợi suất past-return, **cả EW và VW** | 14.202.264 | 19.402 | 01/1962–12/2022 |
 | `TickerSignalNames.csv` | Tên signal dựa vào ký tự ticker | 19.380 | Không áp dụng | Không có ngày |
@@ -92,7 +91,7 @@ Hai file lợi suất đều có **29.314 ID**. Bảng tên lại có **29.315 I
 
 Các signal kế toán có độ dài chuỗi khác nhau. Khoảng 07/1951–12/2022 là phạm vi **toàn bộ file**, không có nghĩa signal nào cũng có dữ liệu xuyên suốt. Hai file EW/VW cũng chênh 146 dòng, nên phải kiểm tra dữ liệu thiếu theo khóa khi so sánh chúng.
 
-`DataMinedLongShortReturnsSample.csv` chỉ có 10 signal đầu tiên và 2.580 dòng. Hãy dùng nó để học cách đọc cột hoặc thử code nhỏ; đừng dùng như toàn bộ tập thực nghiệm.
+[`data_sample/DataMinedLongShortReturnsSample.csv`](../data_sample/DataMinedLongShortReturnsSample.csv) chỉ có 10 signal đầu tiên và 2.580 dòng. Hãy dùng nó để học cách đọc cột hoặc thử code nhỏ; đừng dùng như toàn bộ tập thực nghiệm.
 
 ## 5. Nhóm 2: signal dựa trên lợi suất quá khứ
 
