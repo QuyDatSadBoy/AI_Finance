@@ -2,6 +2,22 @@
 
 Tài liệu dành cho người mới, đối chiếu với [paper chính](paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data_raw/` ngày 29/09/2026. File mẫu nằm riêng trong `data_sample/`, còn ZIP gốc `Strategy Returns.zip` nằm ở thư mục chính. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
 
+**Đọc nhanh trong 30 giây:** Input chính của EB là **lợi suất tháng của từng chiến lược** trong `data_raw/`. Mỗi cuối năm, code lấy tối đa 20 năm đã qua để tính thành tích và t-stat, nhìn cả nhóm chiến lược để điều chỉnh dự báo, rồi chọn top 1%/5%/10%. **Lợi suất năm sau là đáp án để kiểm tra, tuyệt đối không đưa vào bước chọn.** Output cuối là dự báo theo chiến lược–năm, danh sách được chọn và bảng lợi suất thực tế của các danh mục. Nếu cần hiểu từng script, đọc thêm [hướng dẫn code với một signal thật](CODE_PAPER_GOC_VA_VI_DU_DATA_THAT.md).
+
+```mermaid
+flowchart LR
+    A[Dữ liệu cổ phiếu và kế toán gốc] --> B[136.192 chiến lược EW/VW]
+    B --> C[CSV lợi suất tháng trong data_raw]
+    C --> D[Thống kê quá khứ theo signal và năm]
+    D --> E[EB dự báo trước năm kiểm tra]
+    E --> F[Chọn top chiến lược]
+    C --> G[Lợi suất năm sau: đáp án thực tế]
+    F --> H[Danh mục được kiểm tra]
+    G --> H
+```
+
+Ở máy này **bắt đầu từ C**: các CSV lưu kết quả chiến lược đã dựng. A là dữ liệu cấp cổ phiếu/biến kế toán dùng ở công đoạn tạo chiến lược, **không có trong `data_raw/`**. File thống kê và dự báo ở D/E cũng **chưa được lưu sẵn ở local**.
+
 ## 1. Đọc nhanh trước khi xem bảng
 
 **Một signal** là công thức dùng để xếp hạng cổ phiếu. Từ signal đó, tác giả xây chiến lược **long–short**: mua một nhóm cổ phiếu và bán khống nhóm còn lại. Mỗi tháng chiến lược tạo ra một lợi suất.
@@ -84,7 +100,7 @@ Cả `DataMinedLongShortReturnsEW.csv` và `DataMinedLongShortReturnsVW.csv` đ�
 | `ret` | Lợi suất danh mục long–short trong tháng, theo EW hoặc VW tùy file |
 | `nstock` | Số cổ phiếu được dữ liệu ghi nhận cho signal-tháng; **không phải** hai cột đếm chân mua/bán riêng |
 
-Ví dụ `1,1990,7,1.542175...,3160` trong file EW có nghĩa: signal kế toán 1, tháng 07/1990, giá trị lợi suất EW được lưu là khoảng `1.542`, `nstock=3160`. **Đơn vị của `ret` không có metadata đi kèm trong CSV**. Độ lớn các giá trị gợi ý cách ghi theo điểm phần trăm, nhưng phải xác nhận với mã nguồn/tài liệu dữ liệu trước khi diễn giải `1.542` là `1,542%` hay đưa vào công thức lợi suất.
+Ví dụ `1,1990,7,1.542175...,3160` trong file EW có nghĩa: signal kế toán 1, tháng 07/1990, giá trị lợi suất EW được lưu là khoảng `1.542`, `nstock=3160`. **CSV không ghi rõ đơn vị trong metadata**, nhưng code tác giả nhân lợi suất tháng trung bình với 12 và ghi bảng là `% ann`; vì vậy khi theo đúng code paper, nên đọc các giá trị `ret` như **điểm phần trăm mỗi tháng**. Nếu đem dữ liệu dùng cho một code khác, vẫn phải kiểm tra quy ước đơn vị trước.
 
 Hai file lợi suất đều có **29.314 ID**. Bảng tên lại có **29.315 ID**: riêng `signalid=25144` (`v1/v2,pstkn,pstk`) **không có dòng lợi suất** trong file EW lẫn VW. Điều này giải thích chênh lệch 1 ID với Bảng 1 của paper; không nên coi bảng tên 29.315 dòng là 29.315 chiến lược có dữ liệu.
 
@@ -169,7 +185,71 @@ Giả sử muốn kiểm tra một signal kế toán ở cuối năm 1993:
 
 Đường đi này cho thấy vì sao bảng tên và bảng lợi suất đều cần thiết: bảng tên giải thích **quy tắc**, bảng lợi suất cho **lịch sử và tương lai để kiểm tra**. Chỉ có CSV không tự tạo ra dự báo EB; cần tái hiện đúng mô hình và mốc thời gian trong paper.
 
-## 9. Trạng thái kiểm tra file
+## 9. Paper lấy dữ liệu từ đâu và đã biến nó thành gì?
+
+Paper có **hai tầng dữ liệu**. Tầng đầu là dữ liệu của **từng cổ phiếu** để thiết kế và tính lợi suất của các quy tắc. Tầng thứ hai là dữ liệu **lợi suất của từng quy tắc theo tháng** để chạy EB. Folder hiện có **tầng thứ hai**; điều này đủ để bắt đầu tái hiện bước thống kê/EB, nhưng không đủ để tự dựng lại từng danh mục từ giao dịch của từng cổ phiếu.
+
+| Nguồn ban đầu tác giả dùng | Cách tạo quy tắc | File trong `data_raw/` biểu diễn kết quả |
+|---|---|---|
+| Các biến kế toán doanh nghiệp, cùng dữ liệu thị trường cần thiết | Kết hợp biến thành tỷ số `X/Y` hoặc thay đổi `ΔX/lag(Y)`, xếp cổ phiếu theo kết quả rồi mua/bán hai nhóm cực trị | `DataMinedSignalList.csv` mô tả công thức; hai file `DataMinedLongShortReturnsEW/VW.csv` chứa lợi suất chiến lược |
+| Lợi suất lịch sử **của từng cổ phiếu** | Chọn các quý trong 20 quý trước, tính mức sinh lời, độ biến động, độ lệch/độ nhọn rồi xếp cổ phiếu; thêm một số biến dựa trên 1–3 quý gần nhất | `PastReturnSignalNames.csv` và `PastReturnSignalsLongShort.csv` |
+| Ký tự trong mã giao dịch và lợi suất từng cổ phiếu | Chia cổ phiếu thành 20 nhóm theo ký tự ticker, mua hai nhóm và bán hai nhóm khác; lặp cho vị trí ký tự 1–4 | `TickerSignalNames.csv` và `TickerSignalsLongShort.csv` |
+
+**Lưu ý về nguồn:** trong paper, chiến lược kế toán được lấy từ bộ đã tạo bởi Chen, Lopez-Lira và Zimmermann; code công khai của Chen–Dim có script tự tạo chiến lược past-return/ticker từ dữ liệu cổ phiếu của tác giả. Các file đó dùng dữ liệu cấp cổ phiếu như CRSP, **không nằm trong repo này**. Bảng tên signal cho biết *quy tắc*, còn CSV lợi suất cho biết *quy tắc đã lãi/lỗ thế nào*. `nstock`, `nlong`, `nshort` là thông tin số cổ phiếu; riêng code xử lý past-return/ticker loại tháng có dưới hai cổ phiếu ở một chân danh mục. Các cột đếm **không phải dự báo EB**.
+
+Ba nguồn nhân hai cách trọng số tạo **sáu họ chiến lược**:
+
+| Họ trong code | Số chiến lược theo Bảng 1 | Lấy cột nào? |
+|---|---:|---|
+| `DataMinedLongShortReturnsEW` | 29.314 | `ret` của file accounting EW |
+| `DataMinedLongShortReturnsVW` | 29.314 | `ret` của file accounting VW |
+| `PastReturnSignalsLongShort_ew` | 19.402 | `ret_ew` của file past-return |
+| `PastReturnSignalsLongShort_vw` | 19.402 | `ret_vw` của file past-return |
+| `TickerSignalsLongShort_ew` | 19.380 | `ret_ew` của file ticker |
+| `TickerSignalsLongShort_vw` | 19.380 | `ret_vw` của file ticker |
+
+**Một dòng past-return hoặc ticker có hai lợi suất EW/VW**, nên tác giả tách thành hai họ trong code. Các `signalid` có thể trùng số giữa ba nguồn; luôn ghép với `signal_family`. Dữ liệu ticker giống nhóm đối chứng trực giác: thử đủ nhiều tổ hợp chữ cái cũng có thể sinh ra thành tích quá khứ đẹp, nhưng paper thấy nhóm này gần như không có khả năng dự báo tương lai.
+
+## 10. Chính xác code đưa dữ liệu nào vào EB, tạo output nào?
+
+Hãy giả sử ta **đứng ở cuối năm 2019** để chọn chiến lược cho **2020**. Các năm 2000–2019 là cửa sổ lịch sử tối đa 20 năm; năm 2020 được giữ riêng để chấm kết quả.
+
+| Bước | Input | Việc xử lý | Output |
+|---|---|---|---|
+| 1. Chuẩn hóa | Bốn CSV lợi suất tháng | Đưa ngày về cùng tháng; tách EW/VW thành sáu họ; giữ `(signal_family, signalid, year, month, ret)` | Sáu bảng lợi suất tháng có khóa rõ ràng |
+| 2. Thống kê cuốn chiếu | Lợi suất của từng signal trong tối đa 20 năm trước năm dự báo, **và** năm kế tiếp chỉ để đánh giá | Tính `mean_ret`, `tstat`, `nobs` riêng cho quá khứ (`s_flag=IS`) và năm kiểm tra (`s_flag=OOS`) | `OOS_signal_tstat_OosNyears1.csv.gzip` |
+| 3. Ước lượng EB | **Chỉ các dòng IS** của một họ và một năm dự báo | Nhìn phân phối t-stat của cả họ; ước lượng hỗn hợp hai phân phối chuẩn; điều chỉnh t-stat từng chiến lược | `*_QML_FamilyYear.csv.gzip` chứa tham số họ–năm; `*_Predict_SignalYear.csv.gzip` chứa `thetahat`, `pred_ret` theo chiến lược–năm |
+| 4. Chọn chiến lược | Dự báo EB hoặc t-stat quá khứ của cách naive | Đảo chiều nếu dự báo âm; xếp hạng theo Sharpe dự báo; lấy top 1%, 5%, 10% và cho các chiến lược được chọn trọng số bằng nhau | Danh sách và lợi suất **dự báo** của các danh mục |
+| 5. Kiểm tra OOS | Danh sách đã chọn + lợi suất tháng **thực tế** năm 2020 | Tính lợi suất danh mục theo tháng, trung bình năm, t-stat, Sharpe, hình tích lũy | Bảng/hình của paper, gồm Bảng 2 |
+
+`get_rolling_signal_stats.py` của tác giả chọn cửa sổ **tối đa 20 năm**, nhưng cho phép signal chỉ có **ít nhất 36 tháng** trong cửa sổ; năm OOS một năm cần **12 tháng**. Vì vậy không phải signal nào cũng có đủ 240 tháng IS. `MAX_LAGS=0` là cấu hình sai số chuẩn/t-stat của script này. Phần R `estimate_EB_distr.r` **không lấy `mean_ret` OOS để học mô hình**; OOS chỉ được dùng về sau để kiểm tra dự báo.
+
+EB được ước lượng **riêng trong từng họ–năm**, rồi tác giả **so điểm dự báo của các chiến lược để chọn danh mục**. Đây là hai cấp khác nhau: “học từ các chiến lược tương tự” và “chọn chiến lược tốt nhất trong tập ứng viên”. Code `create_plots_from_est.py` nối dự báo với lợi suất năm sau theo `(signal_family, signalid, oos_begin_year)`; sau đó lấy lợi suất thực tế của từng tháng trong năm OOS.
+
+Các từ dễ nhầm trong file trung gian:
+
+| Cột | Có biết ở cuối 2019 không? | Nghĩa |
+|---|---|---|
+| `mean_ret` ở dòng `IS` | Có | Lợi suất trung bình *đã xảy ra* trong cửa sổ quá khứ |
+| `tstat` ở dòng `IS` | Có | Mức thành tích quá khứ so với độ nhiễu ước lượng |
+| `thetahat`, `pred_ret` | Có, sau khi ước lượng EB bằng IS | Thành tích/dự báo đã điều chỉnh; **không phải lợi suất thật** |
+| `mean_ret` ở dòng `OOS` hoặc `ret_oos` | **Chưa** | Lợi suất *thực sự xảy ra* trong 2020 để chấm dự báo |
+
+### Một trường hợp thật từ CSV
+
+Signal kế toán `66` có công thức `diff(aco)/lag(aco)`. Ở bản **EW**, 240 tháng 2000–2019 cho trung bình `ret = −0,5492` điểm %/tháng và t-stat khoảng `−3,7610`. Năm 2020 có đủ 12 tháng; trung bình thực tế là `−1,1700` điểm %/tháng. Riêng bản **VW** của cùng signal có trung bình quá khứ `−0,2982` và trung bình thực tế 2020 `−0,9429` điểm %/tháng. Cùng một công thức nhưng hai cách cho trọng số tạo **hai chiến lược khác nhau**.
+
+Đây là cách đọc: tại cuối 2019, code **được dùng** trung bình/t-stat quá khứ của signal 66 và của hàng chục nghìn signal kế toán EW khác. Code **chưa được dùng** `−1,1700` của năm 2020. Sau khi có dự báo EB và chọn danh mục, `−1,1700` mới xuất hiện ở bước kiểm tra. Không thể suy ra dự báo EB của signal 66 chỉ từ bốn con số trong ví dụ; cần ước lượng trên **toàn bộ họ kế toán EW** của năm đó.
+
+## 11. Output cuối cùng và những dữ liệu không nằm trong `data_raw/`
+
+Bảng 2 của PDF báo cáo giai đoạn 1983–2020: **EB top 1% đạt trung bình 5,70%/năm, Sharpe 1,46**; cách chọn naive top 1% là **5,72%/năm, Sharpe 1,45**. Đây là kết quả của **danh mục gồm nhiều chiến lược được chọn lại mỗi năm**, không phải lợi suất của một signal hay giá cổ phiếu. Nó cho thấy EB không thắng rõ rệt ở cách chọn top 1%; paper còn dùng EB để ước lượng *mức* hiệu quả tương lai và phân biệt họ nào chứa thông tin đáng tin.
+
+Để tạo hàng so sánh **chiến lược đã công bố** trong Bảng 2, code còn đọc `PredictorLSretWide.csv` và `PredictorSummary.xlsx` từ bộ Chen–Zimmermann. **Hai file này không nằm trong `data_raw/`**, nên chỉ với bảy CSV hiện tại chưa tái tạo được hàng so sánh đó. Cũng chưa có các file trung gian `OOS_signal_tstat...`, `*_QML_FamilyYear...`, `*_Predict_SignalYear...` ở local; phải tạo chúng bằng code. Một số nhánh code công khai nhắc đến RavenPack/news và các file ngưỡng FDR/RW; chúng là **phân tích mở rộng/so sánh**, không phải ba nguồn chính tạo 136.192 chiến lược trong Bảng 1. FinCast embedding và file `data_sample/` **không phải input của paper gốc**.
+
+Folder `data_raw/` có CSV kéo đến **2022**, nhưng bảng kết quả chính paper báo cáo **1983–2020**. Các tháng sau 2020 trong file **không được tự động tính vào Bảng 2**. ZIP gốc ở thư mục chính là bản lưu để đối chiếu, không phải một đầu vào thứ bảy cho EB.
+
+## 12. Trạng thái kiểm tra file
 
 - ZIP gốc `Strategy Returns.zip` ở thư mục chính đã qua kiểm tra CRC; bốn CSV mới được giải nén đầy đủ và giữ kích thước byte như các thành viên trong ZIP.
 - Bốn bảng lợi suất đã được quét để đếm dòng, ID, khoảng ngày và ô trống; không thấy ô trống trong các cột của bốn bảng này.
