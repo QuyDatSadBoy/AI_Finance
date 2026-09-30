@@ -1,0 +1,179 @@
+# Hướng dẫn đọc toàn bộ dữ liệu của High-Throughput Asset Pricing
+
+Tài liệu dành cho người mới, đối chiếu với [paper chính](../Research/paper%20chính/High-Throughput%20Asset%20Pricing%20-%20Chen%20%26%20Dim.pdf). Kiểm tra các file trong `data/` ngày 29/09/2026. Các số đếm, khoảng thời gian và cột trống dưới đây được tính từ **file thực tế**, không suy ra từ tên file.
+
+## 1. Đọc nhanh trước khi xem bảng
+
+**Một signal** là công thức dùng để xếp hạng cổ phiếu. Từ signal đó, tác giả xây chiến lược **long–short**: mua một nhóm cổ phiếu và bán khống nhóm còn lại. Mỗi tháng chiến lược tạo ra một lợi suất.
+
+Folder này chứa:
+
+1. **Bảng định nghĩa signal:** ID nào có nghĩa là công thức nào.
+2. **Bảng lợi suất tháng:** signal đó lãi/lỗ bao nhiêu ở từng tháng.
+3. **Hai cách tính danh mục:** `EW` cho trọng số cổ phiếu bằng nhau; `VW` cho trọng số theo vốn hóa.
+
+**Một dòng lợi suất = một signal × một tháng × một cách tính EW/VW** ở nhóm kế toán. Ở nhóm ticker và past-return, cùng một dòng chứa cả hai cột `ret_ew` và `ret_vw`. Đây **không phải** bảng giá của từng cổ phiếu. Bạn sẽ không thấy giá cổ phiếu, khoản mục kế toán gốc của từng công ty hoặc lệnh giao dịch chi tiết trong các file này.
+
+Paper dùng khoảng **136.000 chiến lược**, chính xác là **136.192** trong Bảng 1. Các bảng lợi suất trong folder hiện chứa đủ ba *họ signal* mà Bảng 1 mô tả: kế toán, lợi suất quá khứ và ký tự ticker. Điều này **chưa có nghĩa** chỉ cần mở CSV là tự tái lập được các kết quả EB: còn phải làm đúng quy tắc cửa sổ 20 năm, ước lượng mô hình, xếp hạng, đảo dấu và đánh giá OOS.
+
+## 2. Tất cả file trong `data/`
+
+| File | Vai trò | Số dòng dữ liệu, không tính header | Số signal có lợi suất | Khoảng tháng quan sát |
+|---|---|---:|---:|---|
+| `DataMinedSignalList.csv` | Định nghĩa signal **kế toán** | 29.315 | Không áp dụng | Không có ngày |
+| `DataMinedLongShortReturnsEW.csv` | Lợi suất kế toán, danh mục EW | 16.941.504 | 29.314 | 07/1951–12/2022 |
+| `DataMinedLongShortReturnsVW.csv` | Lợi suất kế toán, danh mục VW | 16.941.358 | 29.314 | 07/1951–12/2022 |
+| `DataMinedLongShortReturnsSample.csv` | Mẫu nhỏ từ nhóm kế toán để xem cấu trúc | 2.580 | 10 | 07/1990–06/2012 |
+| `PastReturnSignalNames.csv` | Tên signal từ lợi suất quá khứ | 19.402 | Không áp dụng | Không có ngày |
+| `PastReturnSignalsLongShort.csv` | Lợi suất past-return, **cả EW và VW** | 14.202.264 | 19.402 | 01/1962–12/2022 |
+| `TickerSignalNames.csv` | Tên signal dựa vào ký tự ticker | 19.380 | Không áp dụng | Không có ngày |
+| `TickerSignalsLongShort.csv` | Lợi suất ticker, **cả EW và VW** | 13.372.200 | 19.380 | 01/1963–12/2022 |
+| `Strategy Returns.zip` | ZIP gốc vừa tải, giữ để đối chiếu | Chứa bốn file ticker/past-return | — | — |
+
+Đừng cộng số **dòng tháng** để ra số chiến lược. Một signal xuất hiện ở nhiều tháng. Với mỗi signal, EW và VW là **hai phiên bản chiến lược**. Theo Bảng 1: $29.314\times2+19.402\times2+19.380\times2=136.192$ chiến lược.
+
+### Ghi chú về ZIP mới
+
+ZIP gốc gọi bốn file bên trong là `*.csv.gzip`, nhưng mình đã kiểm tra byte đầu: chúng là **CSV văn bản thường**, không có cấu trúc GZIP. Vì vậy các bản đã giải nén được đặt đúng đuôi `.csv` trong folder này. Không cần chạy lệnh `gunzip` với chúng. ZIP còn có một mục thư mục tên `/`; mục này được bỏ qua khi giải nén, bốn bảng CSV đã qua kiểm tra CRC.
+
+## 3. Khóa nối bảng: điều quan trọng nhất khi dùng dữ liệu
+
+`signalid` là ID **chỉ có ý nghĩa trong họ signal tương ứng**. ID `1` của kế toán, ID `1` của past-return và ID `1` của ticker là **ba công thức khác nhau**. Nếu gom dữ liệu lại, hãy tạo khóa ghép **`(family, signalid)`**, trong đó `family` là `accounting`, `past_return` hoặc `ticker`.
+
+| Muốn biết một dòng là signal nào | Nối theo |
+|---|---|
+| Lợi suất kế toán EW/VW ↔ tên kế toán | `signalid` trong họ `accounting` |
+| Lợi suất past-return ↔ tên past-return | `signalid` trong họ `past_return` |
+| Lợi suất ticker ↔ tên ticker | `signalid` trong họ `ticker` |
+
+Muốn so EW với VW của nhóm **kế toán**, nối hai file theo `(signalid, year, month)`. Hai file không có số dòng bằng nhau, vì vậy **không nối theo số thứ tự dòng** và đừng giả định mọi khóa xuất hiện ở cả hai file.
+
+Muốn ghép **ba họ** theo thời gian, chuẩn hóa về `(year, month)`:
+
+- Kế toán đã có `year`, `month`.
+- Ticker có `date` là **ngày đầu tháng**, ví dụ `1963-01-01`.
+- Past-return có `date` thường là **ngày cuối tháng hoặc ngày giao dịch cuối gần đó**, ví dụ `1962-01-31` hay `2022-12-30`.
+
+Vì vậy `2022-12-01` và `2022-12-30` là **cùng tháng 12/2022** trong bảng tháng. Không nối trực tiếp bằng chuỗi `date` đầy đủ.
+
+## 4. Nhóm 1: dữ liệu kế toán
+
+### Bảng định nghĩa `DataMinedSignalList.csv`
+
+| Cột | Nghĩa |
+|---|---|
+| `signalid` | ID của công thức, từ 1 đến 29.315 trong bảng tên |
+| `signal_form` | Cách kết hợp hai biến kế toán |
+| `v1`, `v2` | Tên viết tắt hai biến đầu vào |
+
+Có hai mẫu công thức:
+
+- `v1/v2`: tỷ số giữa hai biến.
+- `diff(v1)/lag(v2)`: thay đổi của `v1` chia cho giá trị trễ của `v2`.
+
+Ví dụ dòng `1,diff(v1)/lag(v2),acchg,aco` nghĩa là signal 1 được mô tả bằng công thức **thay đổi `acchg` / giá trị trễ `aco`**. Bảng không chứa giá trị `acchg`, `aco` của từng công ty; nó chỉ cho biết công thức đã dùng để tạo signal. Muốn hiểu ý nghĩa kinh tế của những mã biến này cần từ điển biến của nguồn Compustat/nguồn xây signal tương ứng.
+
+Trong bảng tên có 15.730 công thức `diff(v1)/lag(v2)` và 13.585 công thức `v1/v2`.
+
+### Bảng lợi suất EW và VW
+
+Cả `DataMinedLongShortReturnsEW.csv` và `DataMinedLongShortReturnsVW.csv` đều có:
+
+| Cột | Nghĩa |
+|---|---|
+| `signalid` | Nối tới công thức kế toán |
+| `year`, `month` | Tháng của quan sát |
+| `ret` | Lợi suất danh mục long–short trong tháng, theo EW hoặc VW tùy file |
+| `nstock` | Số cổ phiếu được dữ liệu ghi nhận cho signal-tháng; **không phải** hai cột đếm chân mua/bán riêng |
+
+Ví dụ `1,1990,7,1.542175...,3160` trong file EW có nghĩa: signal kế toán 1, tháng 07/1990, giá trị lợi suất EW được lưu là khoảng `1.542`, `nstock=3160`. **Đơn vị của `ret` không có metadata đi kèm trong CSV**. Độ lớn các giá trị gợi ý cách ghi theo điểm phần trăm, nhưng phải xác nhận với mã nguồn/tài liệu dữ liệu trước khi diễn giải `1.542` là `1,542%` hay đưa vào công thức lợi suất.
+
+Hai file lợi suất đều có **29.314 ID**. Bảng tên lại có **29.315 ID**: riêng `signalid=25144` (`v1/v2,pstkn,pstk`) **không có dòng lợi suất** trong file EW lẫn VW. Điều này giải thích chênh lệch 1 ID với Bảng 1 của paper; không nên coi bảng tên 29.315 dòng là 29.315 chiến lược có dữ liệu.
+
+Các signal kế toán có độ dài chuỗi khác nhau. Khoảng 07/1951–12/2022 là phạm vi **toàn bộ file**, không có nghĩa signal nào cũng có dữ liệu xuyên suốt. Hai file EW/VW cũng chênh 146 dòng, nên phải kiểm tra dữ liệu thiếu theo khóa khi so sánh chúng.
+
+`DataMinedLongShortReturnsSample.csv` chỉ có 10 signal đầu tiên và 2.580 dòng. Hãy dùng nó để học cách đọc cột hoặc thử code nhỏ; đừng dùng như toàn bộ tập thực nghiệm.
+
+## 5. Nhóm 2: signal dựa trên lợi suất quá khứ
+
+### `PastReturnSignalNames.csv`
+
+| Cột | Nghĩa |
+|---|---|
+| `signalid` | ID từ 0 đến 19.401 |
+| `signalname` | Tên công thức, ví dụ `ret_1`, `skew_17_18_19_20` |
+| `root` | Loại thống kê nền: `ret`, `std`, `skew`, `kurt` |
+
+Tên `ret` chỉ lợi suất quá khứ; `std` độ biến động; `skew` độ lệch phân phối; `kurt` độ nhọn/đuôi của phân phối. Paper xây nhiều cách chọn các quý trong **20 quý quá khứ**, rồi tính các thống kê này để xếp hạng cổ phiếu. Có 19.402 signal: 4.867 thuộc `ret`, và mỗi loại `std`, `skew`, `kurt` có 4.845.
+
+### `PastReturnSignalsLongShort.csv`
+
+Header chính xác là:
+
+`signalid,date,ret_ew,ret_vw,nshort,nlong`
+
+Mỗi dòng chứa **cả** lợi suất EW và VW của một signal-tháng. `nshort`, `nlong` là số cổ phiếu của chân bán khống và chân mua. File có **19.402 signal × 732 tháng = 14.202.264 dòng**, phủ đủ các tháng từ 01/1962 đến 12/2022 cho mỗi signal. Không có giá trị trống ở các cột lợi suất hoặc số lượng chân danh mục trong lần quét toàn file.
+
+Đừng nhầm `ret_ew`/`ret_vw` là hai tháng khác nhau: chúng là hai cách cho trọng số **của cùng signal trong cùng tháng**.
+
+## 6. Nhóm 3: signal dựa trên ký tự ticker
+
+### `TickerSignalNames.csv`
+
+| Cột | Nghĩa |
+|---|---|
+| `signalid` | ID từ 0 đến 19.379 |
+| `signalname` | Quy tắc dùng vị trí và nhóm ký tự trong ticker |
+
+Ví dụ `L1_lng_1_2_sht_3_4` nói rằng quy tắc dùng **ký tự thứ nhất** (`L1`) của mã cổ phiếu, mua (`lng`) hai nhóm ký tự số 1 và 2, bán khống (`sht`) hai nhóm số 3 và 4. `L4` dùng ký tự thứ tư. Các số nhóm là nhóm được tạo khi sắp xếp ký tự, không phải số cổ phiếu.
+
+Đây là nhóm hữu ích để thấy *data mining bias*: nếu thử rất nhiều tổ hợp chữ cái, sẽ có tổ hợp trông tốt trong quá khứ dù chữ cái thường không phải nguồn thông tin kinh tế đáng tin về lợi suất.
+
+### `TickerSignalsLongShort.csv`
+
+Header chính xác là:
+
+`signalid,date,ret_ew,ret_vw,nlong,nshort`
+
+**Chú ý:** hai cột cuối có **thứ tự ngược** so với file past-return (`nlong,nshort` thay vì `nshort,nlong`). Dùng **tên cột**, không lấy cột thứ năm rồi mặc định luôn là chân mua.
+
+File có 13.372.200 dòng và 19.380 signal. Không phải mọi signal có cùng số tháng:
+
+| Nhóm tên | Số signal | Khoảng thời gian | Tháng mỗi signal |
+|---|---:|---|---:|
+| `L1`, `L2`, `L3` | 14.535 | 01/1963–12/2022 | 720 |
+| `L4` | 4.845 | 01/1973–12/2022 | 600 |
+
+Vì vậy sự vắng mặt của nhóm `L4` trước 1973 là đặc điểm phạm vi dữ liệu, không phải ô `ret` bị để trống. Lần quét toàn file không thấy giá trị trống ở các cột lợi suất hoặc số lượng chân danh mục.
+
+## 7. Các bẫy dữ liệu cần tránh
+
+1. **Trùng ID giữa các họ:** luôn giữ `family` cùng với `signalid`.
+2. **Khác ngày trong cùng tháng:** chuyển `date` về `(year, month)` trước khi ghép.
+3. **Khác cấu trúc EW/VW:** kế toán tách hai file; past-return và ticker gộp hai cột trong một file.
+4. **Khác thứ tự `nlong`, `nshort`:** chọn theo tên cột.
+5. **Bảng tên có một ID kế toán không có lợi suất:** `25144` phải được xử lý khi nối.
+6. **Các họ có giai đoạn phủ khác nhau:** chọn giai đoạn chung hoặc chấp nhận mẫu không cân bằng; đừng mặc nhiên xem ô không tồn tại là lợi suất 0.
+7. **Đơn vị `ret` chưa được ghi rõ trong CSV:** xác nhận trước khi tính lợi suất năm, Sharpe hay vẽ biểu đồ.
+8. **Có giá trị rất cực đoan:** trong dữ liệu kế toán, giá trị `ret` quan sát được có thể thấp hơn `-300` hoặc cao hơn `240`. Chúng cần được kiểm tra theo định nghĩa lợi suất, đơn vị và xử lý outlier của nghiên cứu; không tự động xóa hoặc coi là lỗi.
+9. **Không dùng dữ liệu tương lai:** tại ngày dự báo, chỉ tính mean, t-stat hoặc EB từ các tháng trước ngày đó. Paper đánh giá OOS theo năm trong 1983–2020, dù các CSV hiện kéo dài đến 2022.
+10. **File rất lớn:** bốn bảng lợi suất có tổng hơn **61 triệu dòng**. Không nên mở toàn bộ bằng Excel rồi lưu lại; nên đọc theo luồng hoặc theo phần khi phân tích.
+
+## 8. Từ CSV tới nghiên cứu: một đường đi dễ hiểu
+
+Giả sử muốn kiểm tra một signal kế toán ở cuối năm 1993:
+
+1. Tra `signalid` trong `DataMinedSignalList.csv` để biết công thức.
+2. Lấy chuỗi `ret` từ file EW hoặc VW cho **các tháng đã có đến 12/1993**.
+3. Tính lợi suất trung bình, độ bất định và t-stat từ chuỗi quá khứ.
+4. Làm tương tự với các signal khác trong cùng họ; EB dùng toàn bộ phân phối này để điều chỉnh những giá trị quá khứ có thể bị may mắn làm phồng lên.
+5. Xếp hạng theo dự báo, chọn chiến lược, rồi **chỉ sau đó** mới nhìn lợi suất năm 1994 để đánh giá OOS.
+
+Đường đi này cho thấy vì sao bảng tên và bảng lợi suất đều cần thiết: bảng tên giải thích **quy tắc**, bảng lợi suất cho **lịch sử và tương lai để kiểm tra**. Chỉ có CSV không tự tạo ra dự báo EB; cần tái hiện đúng mô hình và mốc thời gian trong paper.
+
+## 9. Trạng thái kiểm tra file
+
+- ZIP `Strategy Returns.zip` đã qua kiểm tra CRC; bốn CSV mới được giải nén đầy đủ và giữ kích thước byte như các thành viên trong ZIP.
+- Bốn bảng lợi suất đã được quét để đếm dòng, ID, khoảng ngày và ô trống; không thấy ô trống trong các cột của bốn bảng này.
+- Phạm vi `ret` có những giá trị cực đoan. Đây là dấu hiệu **cần kiểm tra định nghĩa và cách xử lý dữ liệu khi phân tích**, không đủ để kết luận file hỏng.
+- Bảng này là **dữ liệu đầu vào**, không phải code hoặc kết quả EB đã chạy lại. Các con số trong paper chỉ được coi là tái lập khi có cùng lựa chọn mẫu, mô hình và quy trình đánh giá.

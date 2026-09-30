@@ -1,0 +1,12 @@
+# Raw datasets and downloaded archives exceed GitHub's regular Git file limit.
+/data/DataMinedLongShortReturnsEW.csv
+/data/DataMinedLongShortReturnsVW.csv
+/data/PastReturnSignalsLongShort.csv
+/data/TickerSignalsLongShort.csv
+/data/Strategy Returns.zip
+/*.zip
+
+# Local notebook/runtime artifacts.
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
