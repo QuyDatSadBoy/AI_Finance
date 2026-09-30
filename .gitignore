@@ -9,3 +9,6 @@
 .ipynb_checkpoints/
 __pycache__/
 .DS_Store
+
+# Independent full clone of the authors' public repository (keeps its own .git history).
+/Research/code_goc_paper/high-throughput-ap/

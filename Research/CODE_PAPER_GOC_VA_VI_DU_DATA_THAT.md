@@ -4,7 +4,7 @@ Tài liệu này giải thích **paper Chen–Dim và notebook `rep_original_R_L
 
 ## 1. Có public code không?
 
-**Có.** Tác giả công bố [repo `chenandrewy/high-throughput-ap`](https://github.com/chenandrewy/high-throughput-ap) trên GitHub. Bản paper cũng chỉ tới repo này. Đây là **code gốc công khai của tác giả**; notebook trong `NoteBook_Refer/` là bản tham chiếu đã chép/chỉnh một phần code để chạy trên Colab/Drive của nhóm. Vì vậy không nên coi notebook là toàn bộ pipeline chính thức.
+**Có.** Tác giả công bố [repo `chenandrewy/high-throughput-ap`](https://github.com/chenandrewy/high-throughput-ap) trên GitHub. Toàn bộ repo đã được clone về [`code_goc_paper/high-throughput-ap/`](code_goc_paper/high-throughput-ap/) với lịch sử Git riêng. Bản paper cũng chỉ tới repo này. Đây là **code gốc công khai của tác giả**; notebook trong `NoteBook_Refer/` là bản tham chiếu đã chép/chỉnh một phần code để chạy trên Colab/Drive của nhóm. Vì vậy không nên coi notebook là toàn bộ pipeline chính thức.
 
 Đường đi của dữ liệu có thể hình dung như sau:
 
