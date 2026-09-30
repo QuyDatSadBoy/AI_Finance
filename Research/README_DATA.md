@@ -4,19 +4,15 @@ Tài liệu dành cho người mới, đối chiếu với [paper chính](paper%
 
 **Đọc nhanh trong 30 giây:** Input chính của EB là **lợi suất tháng của từng chiến lược** trong `data_raw/`. Mỗi cuối năm, code lấy tối đa 20 năm đã qua để tính thành tích và t-stat, nhìn cả nhóm chiến lược để điều chỉnh dự báo, rồi chọn top 1%/5%/10%. **Lợi suất năm sau là đáp án để kiểm tra, tuyệt đối không đưa vào bước chọn.** Output cuối là dự báo theo chiến lược–năm, danh sách được chọn và bảng lợi suất thực tế của các danh mục. Nếu cần hiểu từng script, đọc thêm [hướng dẫn code với một signal thật](CODE_PAPER_GOC_VA_VI_DU_DATA_THAT.md).
 
-```mermaid
-flowchart LR
-    A[Dữ liệu cổ phiếu và kế toán gốc] --> B[136.192 chiến lược EW/VW]
-    B --> C[CSV lợi suất tháng trong data_raw]
-    C --> D[Thống kê quá khứ theo signal và năm]
-    D --> E[EB dự báo trước năm kiểm tra]
-    E --> F[Chọn top chiến lược]
-    C --> G[Lợi suất năm sau: đáp án thực tế]
-    F --> H[Danh mục được kiểm tra]
-    G --> H
-```
+**Luồng dữ liệu — đọc từ trên xuống:**
 
-Ở máy này **bắt đầu từ C**: các CSV lưu kết quả chiến lược đã dựng. A là dữ liệu cấp cổ phiếu/biến kế toán dùng ở công đoạn tạo chiến lược, **không có trong `data_raw/`**. File thống kê và dự báo ở D/E cũng **chưa được lưu sẵn ở local**.
+1. **Dữ liệu của từng cổ phiếu và biến kế toán** → tác giả tạo **136.192 chiến lược**. Dữ liệu cấp cổ phiếu này **không có trong folder hiện tại**.
+2. **Lợi suất tháng của các chiến lược** → nằm trong các CSV ở `data_raw/`. **Đây là điểm bắt đầu từ dữ liệu bạn đang có.**
+3. **Các tháng quá khứ** → code tính trung bình và t-stat của từng chiến lược, rồi EB tạo **dự báo trước năm kiểm tra**.
+4. **Các dự báo** → code chọn top 1%, 5% hoặc 10% chiến lược để lập danh mục.
+5. **Các tháng của năm sau** → code mới đọc từ chính CSV lợi suất để xem **danh mục được chọn đã lãi/lỗ thật bao nhiêu**. Những tháng này **không được dùng ở bước 3–4**.
+
+File thống kê và dự báo tạo ở bước 3 **chưa được lưu sẵn ở local**; cần chạy code để sinh ra.
 
 ## 1. Đọc nhanh trước khi xem bảng
 

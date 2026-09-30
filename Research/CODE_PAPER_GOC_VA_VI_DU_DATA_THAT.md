@@ -6,20 +6,14 @@ Tài liệu này giải thích **paper Chen–Dim và notebook `rep_original_R_L
 
 **Có.** Tác giả công bố [repo `chenandrewy/high-throughput-ap`](https://github.com/chenandrewy/high-throughput-ap) trên GitHub. Toàn bộ repo đã được clone về [`code_goc_paper/high-throughput-ap/`](code_goc_paper/high-throughput-ap/) với lịch sử Git riêng. Bản paper cũng chỉ tới repo này. Đây là **code gốc công khai của tác giả**; notebook trong `NoteBook_Refer/` là bản tham chiếu đã chép/chỉnh một phần code để chạy trên Colab/Drive của nhóm. Vì vậy không nên coi notebook là toàn bộ pipeline chính thức.
 
-Đường đi của dữ liệu có thể hình dung như sau:
+**Đường đi của dữ liệu — đọc từ trên xuống:**
 
-```mermaid
-flowchart LR
-    A[CSV lợi suất tháng trong data_raw] --> B[get_rolling_signal_stats.py]
-    B --> C[Thống kê từng signal theo năm]
-    C --> D[estimate_EB_distr.r]
-    D --> E[Dự báo EB từng signal theo năm]
-    E --> F[create_plots_from_est.py / notebook rep]
-    A --> F
-    F --> G[Bảng top 1/5/10%, biểu đồ, kết quả OOS]
-```
+1. **CSV lợi suất tháng trong `data_raw/`** → dữ liệu đầu vào đã có trên máy.
+2. **`get_rolling_signal_stats.py`** → tính trung bình và t-stat của mỗi signal theo năm; xuất file thống kê IS/OOS.
+3. **`estimate_EB_distr.r`** → dùng **chỉ phần IS** để tạo dự báo EB cho từng signal–năm.
+4. **`create_plots_from_est.py` hoặc notebook `rep`** → đọc dự báo, chọn top chiến lược; sau đó mới ghép **lợi suất thực tế của năm sau** từ CSV ở bước 1 để làm bảng và hình.
 
-**Ý nghĩa:** notebook `rep` chủ yếu ở **bước cuối F**. Nó đọc dự báo EB đã được tính ở bước D/E. Nếu chỉ có CSV trong `data_raw/`, mở notebook lên **chưa thể tự có ngay** bảng kết quả EB.
+Notebook `rep` chủ yếu làm **bước 4**. Nó đọc dự báo EB đã được tính ở bước 3. Nếu chỉ có CSV trong `data_raw/`, mở notebook lên **chưa thể tự có ngay** bảng kết quả EB.
 
 ## 2. Input thực sự là gì?
 
