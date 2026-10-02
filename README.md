@@ -2,6 +2,8 @@
 
 Repo tìm hiểu **High-Throughput Asset Pricing — Chen & Dim** và thử nghiệm dự báo lợi suất chiến lược bằng FinCast/LSTM.
 
+Hướng nghiên cứu: đọc [idea paper gốc và hướng dùng AI](docs/IDEA_NGHIEN_CUU.md).
+
 Bắt đầu với [luồng dữ liệu và ví dụ từng bước](Research/huong_dan/7_CSV_PAPER_DUNG_NHU_THE_NAO.md). File này giải thích input, tstat, EB, lựa chọn chiến lược và output. Số thật và số minh họa được ghi rõ.
 
 | Thư mục | Nội dung |
