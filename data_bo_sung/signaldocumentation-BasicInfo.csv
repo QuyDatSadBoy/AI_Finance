@@ -1,0 +1,325 @@
+Acronym,Authors,Year,LongDescription,Journal,Cat.Signal,Note on Cat.Signal,Cat.Form,Cat.Data,Cat.Economic,SampleStartYear,SampleEndYear,Acronym2
+ChInvIA,Abarbanell and Bushee,1998,Change in capital inv (ind adj),AR,Predictor,t=2.9 in mv reg,continuous,Accounting,investment growth,1974,1988,InvestGr
+ETR,Abarbanell and Bushee,1998,Effective Tax Rate,AR,Placebo,t=1.5 in mv reg,continuous,Accounting,other,1974,1988,TaxRate
+GrGMToGrSales,Abarbanell and Bushee,1998,Gross margin growth to sales growth,AR,Placebo,t=1.9 in mv reg,continuous,Accounting,earnings growth,1974,1988,GM2SaleGr
+GrSaleToGrInv,Abarbanell and Bushee,1998,Sales growth over inventory growth,AR,Predictor,t=2.4 in mv reg,continuous,Accounting,sales growth,1974,1988,RevG2InvG
+GrSaleToGrOverhead,Abarbanell and Bushee,1998,Sales growth over overhead growth,AR,Predictor,t=2.1 in mv reg,continuous,Accounting,sales growth,1974,1988,RevG2OHG
+GrSaleToGrReceivables,Abarbanell and Bushee,1998,Change in sales vs change in receiv,AR,Placebo,t=1.6 in mv reg,continuous,Accounting,profitability alt,1974,1988,RevG2ARG
+LaborforceEfficiency,Abarbanell and Bushee,1998,Laborforce efficiency,AR,Placebo,t=0.6 in mv reg,continuous,Accounting,profitability alt,1974,1988,RevG2EmpG
+pchgm_pchsale,Abarbanell and Bushee,1998,Change in gross margin vs sales,AR,Placebo,GHZ variant of GrGMToGrSale,continuous,Accounting,profitability alt,1974,1988,ChAssetTurnover
+betaCC,Acharya and Pedersen,2005,Illiquidity-illiquidity beta (beta2i),JFE,Placebo,in-sample only,continuous,Trading,liquidity,1964,1999,betaCC
+betaCR,Acharya and Pedersen,2005,Illiquidity-market return beta (beta4i),JFE,Placebo,in-sample only,continuous,Trading,liquidity,1964,1999,betaCR
+betaNet,Acharya and Pedersen,2005,"Net liquidity beta (betanet,p)",JFE,Placebo,in-sample only,continuous,Trading,liquidity,1964,1999,betaNet
+betaRC,Acharya and Pedersen,2005,Return-market illiquidity beta,JFE,Placebo,in-sample only,continuous,Trading,liquidity,1964,1999,betaRC
+betaRR,Acharya and Pedersen,2005,Return-market return illiquidity beta ,JFE,Placebo,in-sample only,continuous,Trading,liquidity,1964,1999,betaRR
+BetaBDLeverage,"Adrian, Etula and Muir",2014,Broker-Dealer Leverage Beta,JF,Placebo,t=1 in conservative port sort,continuous,Trading,liquidity,1973,2009,BetaBDLeverage
+IdioVolAHT,"Ali, Hwang, and Trombley",2003,Idiosyncratic risk (AHT),JFE,Predictor,t = 2.7 in mv reg,continuous,Price,volatility,1976,1997,IdioVolAHT
+EarningsConsistency,Alwathainani,2009,Earnings consistency,BAR,Predictor,t=2.7 in complicated LS port,continuous,Accounting,earnings growth,1971,2002,EarnCons
+Illiquidity,Amihud  ,2002,Amihud's illiquidity,JFM,Predictor,t=6.6 in univariate reg,continuous,Trading,liquidity,1964,1997,Illiquid
+BidAskSpread,Amihud and Mendelsohn,1986,Bid-ask spread,JFE,Predictor,strong port sorts but no LS special data,continuous,Trading,liquidity,1961,1980,BidAskSpread
+grcapx,Anderson and Garcia-Feijoo,2006,Change in capex (two years),JF,Predictor,t=5 in port sort,continuous,Accounting,investment growth,1976,1999,CAPXgr
+grcapx1y,Anderson and Garcia-Feijoo,2006,Investment growth (1 year),AR,Placebo,HXZ variant,continuous,Accounting,investment,1964,2003,CAPXgr1y
+grcapx3y,Anderson and Garcia-Feijoo,2006,Change in capex (three years),JF,Predictor,t=4.7 in port sort,continuous,Accounting,investment growth,1976,1999,CAPXgr3y
+ForecastDispersionLT,"Anderson, Ghysels, and Juergens",2005,Long-term forecast dispersion,RFS,Placebo,t=1.0 in conservative long-short,continuous,Analyst,volatility,1991,1997,EPSDispLT
+betaVIX,Ang et al.,2006,Systematic volatility,JF,Predictor,t=3.9 in port sort,continuous,Price,volatility,1986,2000,betaVIX
+IdioRisk,Ang et al.,2006,Idiosyncratic risk,JF,Predictor,t=2.9 in port sort,continuous,Price,volatility,1963,2000,IdioVol
+IdioVol3F,Ang et al.,2006,Idiosyncratic risk (3 factor),JF,Predictor,t=3.1 in port sort,continuous,Price,volatility,1963,2000,IdioVol3F
+IdioVolCAPM,Ang et al.,2006,Idiosyncratic risk (CAPM),JF,Placebo,HXZ variant,continuous,Price,volatility,1963,2000,IdioVolCAPM
+IdioVolQF,Ang et al.,2006,Idiosyncratic risk (q factor),JF,Placebo,HXZ variant,continuous,Price,volatility,1967,2000,IdioVolQF
+CoskewACX,"Ang, Chen and Xing",2006,Coskewness using daily returns,RFS,Predictor,t=2.8 in port sort ,continuous,Price,risk,1963,2001,CoskewACX
+DownsideBeta,"Ang, Chen and Xing",2006,Downside beta,RFS,Placebo,t=0.6 in port sort,continuous,Price,risk,1963,2001,betaDown
+IO_ShortInterest,Asquith Pathak and Ritter,2005,Inst own among high short interest,JFE,Predictor,strong port sort but no long-short,continuous,13F,ownership,1980,2002,InstOwnSI
+Mom6mJunk,Avramov et al,2007,Junk Stock Momentum,JF,Predictor,t=4.3 in port sort,continuous,Price,momentum,1985,2003,Mom6Jnk
+OrderBacklogChg,Baik and Ahn,2007,Change in order backlog,Other,Predictor,p<0.01 in port sort,continuous,Accounting,accruals,1971,1999,OrderBacklogChg
+ChangeRoA,"Balakrishnan, Bartov and Faurel",2010,Change in Return on assets,NA,Placebo,HXZ variant,continuous,Accounting,composite accounting,1976,2005,ChangeRoA
+ChangeRoE,"Balakrishnan, Bartov and Faurel",2010,Change in Return on equity,NA,Placebo,HXZ variant,continuous,Accounting,composite accounting,1976,2005,ChangeRoE
+roaq,"Balakrishnan, Bartov and Faurel",2010,Return on assets (qtrly),JAE,Predictor,"t=6.5 in port sort, nontraditional",continuous,Accounting,profitability,1976,2005,RoAq
+MaxRet,"Bali, Cakici, and Whitelaw",2010,Maximum return over month,JF,Predictor,t=2.8 in port sort ,continuous,Price,volatility,1962,2005,MaxRet
+ReturnSkew,"Bali, Engle and Murray",2015,Return skewness,Book,Predictor,t=4 in port sort,continuous,Price,risk,1963,2012,RetSkew
+ReturnSkew3F,"Bali, Engle and Murray",2015,Idiosyncratic skewness (3F model),Book,Predictor,t=4.4 in port sort,continuous,Price,risk,1963,2012,RetSkew3F
+ReturnSkewCAPM,"Bali, Engle and Murray",2015,Idiosyncratic skewness (CAPM),Book,Placebo,HXZ variant,continuous,Price,risk,1963,2012,RetskewCAPM
+ReturnSkewQF,"Bali, Engle and Murray",2015,Idiosyncratic skewness (Q model),Book,Placebo,HXZ variant,continuous,Price,risk,1967,2012,RetSkewQF
+CBOperProf,Ball et al.,2016,Cash-based operating profitability,JFE,Predictor,t=3.2 in port sort,continuous,Accounting,profitability,1963,2014,ProfCash
+CBOperProfLagAT,Ball et al.,2016,Cash-based oper prof lagged assets ,JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1963,2014,ProfCashLag
+CBOperProfLagAT_q,Ball et al.,2016,Cash-based oper prof lagged assets qtrly,JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1963,2014,ProfCashLagq
+OperProfRD,Ball et al.,2016,Operating profitability R&D adjusted,JFE,Predictor,t=1.8 in port sort,continuous,Accounting,profitability,1963,2014,OperProfRD
+OperProfRDLagAT,Ball et al.,2016,Oper prof R&D adj lagged assets,JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1963,2014,OperProfRDLag
+OperProfRDLagAT_q,Ball et al.,2016,Oper prof R&D adj lagged assets (qtrly),JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1963,2014,OperProfRDLagAT_q
+Size,Banz,1981,Size,JFE,Predictor,t=3.1 in long-short,continuous,Price,size,1926,1975,Size
+SP,"Barbee, Mukherji and Raines",1996,Sales-to-price,FAJ,Predictor,t=2.5 in mv reg,continuous,Accounting,valuation,1979,1991,Rev2Price
+SP_q,"Barbee, Mukherji and Raines",1996,Sales-to-price quarterly,FAJ,Placebo,HXZ variant,continuous,Accounting,valuation,1979,1991,Rev2Priceq
+ConsRecomm,Barber et al.,2002,Consensus Recommendation,JF,Predictor,t=3.2 in port sort nonstandard data,discrete,Analyst,recommendation,1985,1997,ConsRecomm
+DownRecomm,Barber et al.,2002,Down forecast EPS,JF,Predictor,t>8 in 3-day event study,discrete,Analyst,earnings forecast,1985,1997,DownRecomm
+UpRecomm,Barber et al.,2002,Up Forecast,JF,Predictor,t>8 in 3-day event study,discrete,Analyst,earnings forecast,1985,1997,UpRecomm
+FirmAge,Barry and Brown,1984,Firm age based on CRSP,JFE,Predictor,t=2.5 in reg nonstandard data,continuous,Other,info proxy,1931,1980,FirmAge
+ChForecastAccrual,Barth and Hutton,2004,Change in Forecast and Accrual,RAS,Predictor,p-val < 0.001 in port sort,discrete,Analyst,earnings forecast,1981,1996,ChFAccrual
+AccrualsBM,Bartov and Kim,2004,Book-to-market and accruals,RFQA,Predictor,t=5.5 in long-short,discrete,Accounting,valuation,1980,1998,AccrualsBM
+EP,Basu,1977,Earnings-to-Price Ratio,JF,Predictor,monotonic port sort but no LS,continuous,Price,valuation,1957,1971,EP
+EPq,Basu,1977,Earnings-to-Price Ratio,JF,Placebo,HXZ variant,continuous,Price,valuation,1963,1971,EPq
+hire,"Bazdresch, Belo and Lin",2014,Employment growth,JPE,Predictor,t=5.8 in port sort,continuous,Other,investment alt,1965,2010,LaborGr
+InvGrowth,Belo and Lin ,2012,Inventory Growth,RFS,Predictor,t=6.6 in port sort,continuous,Accounting,profitability,1965,2009,InvenGr
+BrandCapital,"Belo, Lin and Vitorino",2014,Brand capital to assets,RED,Placebo,not studied for predictability,continuous,Accounting,investment alt,1975,2010,BrandCapital
+BrandInvest,"Belo, Lin and Vitorino",2014,Brand capital investment,RED,Predictor,t=2.0 in port sort,continuous,Accounting,investment alt,1975,2010,BrandInvest
+Leverage,Bhandari,1988,Market leverage,JFE,Predictor,t=3.9 in regression,continuous,Price,leverage,1952,1981,Leverage
+Leverage_q,Bhandari,1988,Market leverage quarterly,JFE,Placebo,HXZ variant,continuous,Price,leverage,1952,1981,Leverageq
+ResidualMomentum,"Blitz, Huij and Martens",2011,Momentum based on FF3 residuals,JEmpFin,Predictor,t=8 in long-short ff3+ alpha,continuous,Price,momentum,1930,2009,MomResid
+ResidualMomentum6m,"Blitz, Huij and Martens",2011,6 month residual momentum,JEmpFin,Placebo,HXZ variant,continuous,Price,momentum,1930,2009,MomRes6m
+Price,Blume and Husic,1972,Price,JF,Predictor,t=3 in regressions,continuous,Price,other,1932,1971,Price
+NetPayoutYield,Boudoukh et al.,2007,Net Payout Yield,JF,Predictor,"t=2.8 in conservative LS,  strong port sort",continuous,Price,valuation,1984,2003,NPayYield
+NetPayoutYield_q,Boudoukh et al.,2007,Net Payout Yield quarterly,JF,Placebo,HXZ variant,continuous,Price,valuation,1984,2003,NPayYieldq
+PayoutYield,Boudoukh et al.,2007,Payout Yield,JF,Predictor,"t=3.9 in conservative LS,  strong port sort",continuous,Price,valuation,1984,2003,PayYield
+PayoutYield_q,Boudoukh et al.,2007,Payout Yield quarterly,JF,Placebo,HXZ variant,continuous,Price,valuation,1984,2003,PayYieldq
+NetDebtFinance,"Bradshaw, Richardson, Sloan",2006,Net debt financing,JAE,Predictor,t=6.9 in port sort ,continuous,Accounting,external financing,1971,2000,NDebtFin
+NetEquityFinance,"Bradshaw, Richardson, Sloan",2006,Net equity financing,JAE,Predictor,t=3.8 in port sort ,continuous,Accounting,external financing,1971,2000,NEqFin
+XFIN,"Bradshaw, Richardson, Sloan",2006,Net external financing,JAE,Predictor,t=5.7 in port sort,continuous,Accounting,external financing,1971,2000,ExtFinNet
+DolVol,"Brennan, Chordia, Subra",1998,Past trading volume,JFE,Predictor,t=2.9 in regression,continuous,Trading,volume,1966,1995,VolumeDol
+roic,Brown and Rowe,2007,Return on invested capital,WP,Placebo,t=0.9 in port sort,continuous,Accounting,profitability,1970,2005,ROIC
+DelayAcct,"Callen, Khan and Lu",2013,Accounting component of price delay,CAR,Placebo,t=1 in long-short,continuous,Accounting,lead lag,1981,2006,DelayAcct
+DelayNonAcct,"Callen, Khan and Lu",2013,Non-accounting component of price delay,CAR,Placebo,t=1 in long-short,continuous,Accounting,lead lag,1981,2006,DelayNonAcct
+FailureProbability,"Campbell, Hilscher and Szilagyi",2008,Failure probability,JF,Placebo,t=1.5 in conservative port sort,continuous,Accounting,default risk,1981,2003,FailurePr
+FailureProbabilityJune,"Campbell, Hilscher and Szilagyi",2008,Failure probability,JF,Placebo,HXZ variant,continuous,Accounting,default risk,1981,2003,FailurePrJune
+FEPS,"Cen, Wei, and Zhang",2006,Analyst earnings per share,WP,Predictor,t=2.7 in port sort,continuous,Analyst,profitability,1983,2002,FEPS
+MomRev,Chan and Ko,2006,Momentum and LT Reversal,JOIM,Predictor,t=4.3 in long-short,discrete,Price,momentum,1965,2001,MomRev
+AnnouncementReturn,"Chan, Jegadeesh and Lakonishok",1996,Earnings announcement return,JF,Predictor,t=9.3 in regression,continuous,Price,earnings event,1977,1992,AnnounRet
+REV6,"Chan, Jegadeesh and Lakonishok",1996,Earnings forecast revisions,JF,Predictor,t=4.1 in regression,continuous,Analyst,earnings forecast,1977,1992,EPSrevise
+AdExp,"Chan, Lakonishok and Sougiannis",2001,Advertising Expense,JF,Predictor,53 bps spread but no t-stat ,continuous,Accounting,R&D,1975,1996,AdExp
+RD,"Chan, Lakonishok and Sougiannis",2001,R&D over market cap,JF,Predictor,strong port sort,continuous,Accounting,R&D,1975,1995,RD
+RD_q,"Chan, Lakonishok and Sougiannis",2001,R&D over market cap quarterly,JF,Placebo,HXZ variant,continuous,Accounting,R&D,1975,1995,RDq
+rd_sale,"Chan, Lakonishok and Sougiannis",2001,R&D to sales,JF,Placebo,8 bps spread in port sort,continuous,Accounting,investment alt,1975,1995,rd_sale
+rd_sale_q,"Chan, Lakonishok and Sougiannis",2001,R&D to sales,JF,Placebo,HXZ variant,continuous,Accounting,R&D,1975,1995,rd_sale_q
+CashProd,Chandrashekar and Rao,2009,Cash Productivity,WP,Predictor,t=3.6 in regression,continuous,Accounting,profitability alt,1963,2003,CashProd
+invest,Chen and Zhang,2010,Capex and Inventory Change,"JF, but retracted",Drop,drop,continuous,Accounting,investment,1972,2006,invest
+DelBreadth,"Chen, Hong and Stein",2002,Breadth of ownership,JFE,Predictor,t=4.0 in port sort,continuous,13F,ownership,1979,1998,DelBreadth
+std_turn,"Chordia, Subra, Anshuman",2001,Share turnover volatility,JFE,Predictor,t=3.7 in regression,continuous,Trading,liquidity,1966,1995,TurnovVol
+VolSD,"Chordia, Subra, Anshuman",2001,Volume Variance,JFE,Predictor,t=3.6 in regression,continuous,Trading,liquidity,1966,1995,VolumeSD
+CustomerMomentum,Cohen and Frazzini,2008,Customer momentum,JF,Predictor,t=3.8 in port sort ,continuous,Other,lead lag,1980,2004,MomCust
+retConglomerate,Cohen and Lou,2012,Conglomerate return,JFE,Predictor,t=5.5 in port sort,continuous,Price,lead lag,1977,2009,RetConglomerate
+RDAbility,"Cohen, Diether and Malloy",2013,R&D ability,RFS,Predictor,t=2.6 in double sort,continuous,Accounting,other,1980,2009,RDAbility
+AssetGrowth,"Cooper, Gulen and Schill",2008,Asset growth,JF,Predictor,t=8.5 in port sort,continuous,Accounting,investment,1968,2003,InvestAG
+AssetGrowth_q,"Cooper, Gulen and Schill",2008,Asset growth quarterly,JF,Placebo,HXZ variant,continuous,Accounting,investment,1968,2003,InvestAGq
+Activism1,Cremers and Nair,2005,Takeover vulnerability,JF,Predictor,t=3.1 in port sort,continuous,13F,other,1990,2001,Activism1
+Activism2,Cremers and Nair,2005,Active shareholders,JF,Predictor,t=2.0 in port sort,continuous,13F,ownership,1990,2001,Activism2
+Spinoff,"Cusatis, Miles and Woolridge",1993,Spinoffs,JFE,Predictor,t=2.3 in event study,discrete,Event,other,1965,1988,Spinoff
+EarningsForecastDisparity,Da and Warachka,2011,Long-vs-short EPS forecasts,JFE,Predictor,t=5.1 in LS port,continuous,Analyst,earnings forecast,1983,2006,LT_ST_EPS
+CompEquIss,Daniel and Titman,2006,Composite equity issuance,JF,Predictor,t=4.4 in mv reg,continuous,Accounting,external financing,1968,2003,CompEquIss
+IntanBM,Daniel and Titman,2006,Intangible return using BM,JF,Predictor,t=4.0 in mv reg,continuous,Accounting,long term reversal,1968,2003,IntanBM
+IntanCFP,Daniel and Titman,2006,Intangible return using CFtoP,JF,Predictor,t=4.9 in mv reg,continuous,Accounting,long term reversal,1968,2003,IntanCFP
+IntanEP,Daniel and Titman,2006,Intangible return using EP,JF,Predictor,t=4.6 in mv reg,continuous,Accounting,long term reversal,1968,2003,IntanEP
+IntanSP,Daniel and Titman,2006,Intangible return using Sale2P,JF,Predictor,t=4.3 in mv reg,continuous,Accounting,long term reversal,1968,2003,IntanSP
+ShareIss5Y,Daniel and Titman,2006,Share issuance (5 year),JF,Predictor,t=4.4 in univar reg,continuous,Accounting,external financing,1968,2003,ShareIs1
+ShareVol,"Datar, Naik and Radcliffe",1998,Share Volume,JFM,Predictor,t=8.9 in univariate reg,discrete,Trading,volume,1962,1991,VolumeShare
+LRreversal,De Bondt and Thaler,1985,Long-run reversal,JF,Predictor,t=3.3 in long-short,continuous,Price,long term reversal,1929,1982,Mom36m
+MRreversal,De Bondt and Thaler,1985,Medium-run reversal,JF,Predictor,large ret in similar long-short ,continuous,Price,long term reversal,1933,1980,Mom1813
+ShortInterest,Dechow et al.,2001,Short Interest,JFE,Predictor,35 bps spread in port sort,continuous,Other,short sale constraints,1976,1993,ShortInterest
+EquityDuration,"Dechow, Sloan and Soliman",2004,Equity Duration,RAS,Predictor,t=4.4 in conservative long-short,continuous,Price,valuation,1962,1998,Duration
+cfp,"Desai, Rajgopal, Venkatachalam",2004,Operating Cash flows to price,AR,Predictor,t=2.77 in port sort,continuous,Accounting,valuation,1973,1997,CFOper2Price
+cfpq,"Desai, Rajgopal, Venkatachalam",2004,Operating Cash flows to price quarterly,AR,Placebo,HXZ variant,continuous,Accounting,valuation,1973,1997,CFOper2Priceq
+ExchSwitch,Dharan and Ikenberry,1995,Exchange Switch,JF,Predictor,t = 3.6 in event study ,discrete,Event,other,1962,1990,ExchSwitch
+OScore,Dichev,1998,O Score,JFE,Predictor,t=3.36 in LS port,discrete,Accounting,default risk,1981,1995,OScore
+OScore_q,Dichev,1998,O Score quarterly,JFE,Placebo,HXZ variant,discrete,Accounting,default risk,1981,1995,OScoreq
+ZScore,Dichev,1998,Altman Z-Score,JFE,Placebo,t=1.59 in univar reg,continuous,Accounting,default risk,1981,1995,ZScore
+ZScore_q,Dichev,1998,Altman Z-Score quarterly,JFE,Placebo,HXZ variant,continuous,Accounting,default risk,1981,1995,ZScoreq
+CredRatDG,Dichev and Piotroski,2001,Credit Rating Downgrade,JF,Predictor,t=11 in event study w/ special data,discrete,Event,other,1986,1998,CredRatDG
+ForecastDispersion,"Diether, Malloy and Scherbina",2002,EPS Forecast Dispersion,JF,Predictor,t=2.9 in port sort,continuous,Analyst,volatility,1976,2000,EPSDisp
+BetaDimson,Dimson,1979,Dimson Beta,JFE,Placebo,only shown to forecast beta,continuous,Price,market risk,1955,1974,BetaDimson
+ExclExp,"Doyle, Lundholm and Soliman",2003,Excluded Expenses,RAS,Predictor,t=5.7 in mv reg,continuous,Analyst,composite accounting,1988,1999,ExcludExp
+ProbInformedTrading,"Easley, Hvidkjaer and O'Hara",2002,Probability of Informed Trading,JF,Predictor,t=2.5 in mv reg,continuous,Trading,liquidity,1984,1998,PIN
+SurpriseRD,"Eberhart, Maxwell and Siddique",2004,Unexpected R&D increase,JF,Predictor,t=3.5 in long-short,discrete,Event,R&D,1974,2001,SurpriseRD
+OrgCap,Eisfeldt and Papanikolaou,2013,Organizational capital ,JF,Predictor,t=2.9 in port sort,continuous,Accounting,R&D,1970,2008,OrgCap
+OrgCapNoAdj,Eisfeldt and Papanikolaou,2013,Org cap w/o industry adjustment,JF,Placebo,HXZ variant,continuous,Accounting,R&D,1970,2008,OrgCapNoAdj
+nanalyst,"Elgers, Lo and Pfeiffer",2001,Number of analysts,AR,Placebo,spread in median ret each leg size adj,continuous,Analyst,info proxy,1982,1998,nanalyst
+sfe,"Elgers, Lo and Pfeiffer",2001,Earnings Forecast to price,AR,Predictor,t=5 in long-short size adjusted,continuous,Analyst,valuation,1982,1998,EPforecast
+GrLTNOA,"Fairfield, Whisenant and Yohn",2003,Growth in long term operating assets,AR,Predictor,61 bps spread in long-short,continuous,Accounting,investment,1964,1993,LTNOAgr
+AM,Fama and French,1992,Total assets to market,JF,Predictor,t=5.7 in univar reg,continuous,Accounting,valuation,1963,1990,AM
+AMq,Fama and French,1992,Total assets to market (quarterly),JF,Placebo,HXZ variant,continuous,Accounting,valuation,1975,1990,AMq
+BMdec,Fama and French,1992,Book to market using December ME,JPM,Predictor,t=5.71 in univariate reg,continuous,Accounting,valuation,1963,1990,BMdec
+BookLeverage,Fama and French,1992,Book leverage (annual),JF,Predictor,t=5.3 in mv reg,continuous,Accounting,leverage,1963,1990,BookLev
+BookLeverageQuarterly,Fama and French,1992,Book leverage (quarterly),JF,Placebo,HXZ variant,continuous,Accounting,leverage,1973,1990,BookLevq
+OperProf,Fama and French,2006,operating profits / book equity,JFE,Predictor,t=2.6 in mv reg,continuous,Accounting,profitability,1977,2003,ProfOper
+OperProfLag,Fama and French,2006,operating profits / book equity,JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1977,2003,ProfOperLag
+OperProfLag_q,Fama and French,2006,operating profits / book equity,JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1977,2003,ProfOperLagq
+Beta,Fama and MacBeth,1973,CAPM beta,JPE,Predictor,t=2.6 univar reg ,continuous,Price,risk,1929,1968,Beta
+BetaSquared,Fama and MacBeth,1973,CAPM beta squred,JPE,Placebo,t=0.3 in mv reg,continuous,Price,other,1929,1968,BetaSquared
+EarningsSurprise,"Foster, Olsen and Shevlin",1984,Earnings Surprise,AR,Predictor,huge spread in event study,continuous,Analyst,earnings growth,1974,1981,EarnSurp
+AccrualQuality,"Francis, LaFond, Olsson, Schipper",2005,Accrual Quality,JAE,Placebo,correlated with E/P and factor structure,continuous,Accounting,accruals,1971,2002,AccrualQuality
+AccrualQualityJune,"Francis, LaFond, Olsson, Schipper",2005,Accrual Quality in June,JAE,Placebo,HXZ variant,continuous,Accounting,accruals,1971,2002,AccrualQualityJune
+EarningsConservatism,"Francis, LaFond, Olsson, Schipper",2004,Earnings conservatism,AR,Placebo,correlated with BM and other predictors,continuous,Accounting,other,1975,2001,EarningsConservatism
+EarningsPersistence,"Francis, LaFond, Olsson, Schipper",2004,Earnings persistence,AR,Placebo,correlated with BM and other predictors,continuous,Accounting,other,1975,2001,EarningsPersistence
+EarningsPredictability,"Francis, LaFond, Olsson, Schipper",2004,Earnings Predictability,AR,Placebo,correlated with BM and other predictors,continuous,Accounting,other,1975,2001,EarningsPredictability
+EarningsSmoothness,"Francis, LaFond, Olsson, Schipper",2004,Earnings Smoothness,AR,Placebo,correlated with BM and other predictors,continuous,Accounting,other,1975,2001,EarningsSmoothness
+EarningsTimeliness,"Francis, LaFond, Olsson, Schipper",2004,Earnings timeliness,AR,Placebo,correlated with BM and other predictors,continuous,Accounting,other,1975,2001,EarningsTimeliness
+EarningsValueRelevance,"Francis, LaFond, Olsson, Schipper",2004,Value relevance of earnings,AR,Placebo,correlated with BM and other predictors,continuous,Accounting,other,1975,2001,EarningsValueRelevance
+roavol,"Francis, LaFond, Olsson, Schipper",2004,RoA volatility,AR,Placebo,correlated with BM and other predictors,continuous,Accounting,cash flow risk,1975,2001,roavol
+AnalystValue,Frankel and Lee,1998,Analyst Value,JAE,Predictor,p<0.01 in port sort but nonstandard stats,continuous,Analyst,valuation,1975,1993,AnalystValue
+AOP,Frankel and Lee,1998,Analyst Optimism,JAE,Predictor,p<0.01 in port sort but nonstandard stats,continuous,Analyst,other,1975,1993,AOP
+IntrinsicValue,Frankel and Lee,1998,Intrinsic or historical value,JAE,Placebo,not studied.  Ingredient variable.,continuous,Price,valuation,1975,1993,IntrinsicValue
+PredictedFE,Frankel and Lee,1998,Predicted Analyst forecast error,JAE,Predictor,p<0.01 in reg but nonstandard stats,continuous,Accounting,earnings forecast,1979,1993,EPSforeErr
+FR,Franzoni and Marin,2006,Pension Funding Status,JF,Predictor,49 bps long-short,continuous,Accounting,composite accounting,1980,2002,PensionFunding
+FRbook,Franzoni and Marin,2006,Pension Funding Status,JF,Placebo,HXZ variant,continuous,Accounting,composite accounting,1980,2002,PensionFundBook
+BetaFP,Frazzini and Pedersen,2014,Frazzini-Pedersen Beta,JFE,Predictor,t=7 in nonstandard port sort,continuous,Price,other,1929,2012,BetaFP
+High52,George and Hwang,2004,52 week high,JF,Predictor,t=2.0 in long-short,continuous,Price,momentum,1963,2001,High52
+Governance,"Gompers, Ishii and Metrick",2003,Governance Index,QJE,Predictor,t=2.7 in long short FF3 alpha,discrete,Other,other,1990,1999,Governance
+RDIPO,"Gou, Lev and Shi",2006,IPO and no R&D spending,JBFA,Predictor,t=2.68 in port sort FF3+Mom alpha,discrete,Event,R&D,1980,1995,RDIPO
+IndMom,Grinblatt and Moskowitz,1999,Industry Momentum,JFE,Predictor,t=4.6 in long-short ,continuous,Price,momentum,1963,1995,IndMom
+AbnormalAccrualsPercent,"Hafzalla, Lundholm, Van Winkle",2011,Percent Abnormal Accruals,AR,Placebo,HXZ variant,continuous,Accounting,accruals,1989,2008,AbnAccrPct
+PctAcc,"Hafzalla, Lundholm, Van Winkle",2011,Percent Operating Accruals,AR,Predictor,t>2.6 in size-adjusted long-short,continuous,Accounting,accruals,1989,2008,AccrOper
+PctTotAcc,"Hafzalla, Lundholm, Van Winkle",2011,Percent Total Accruals,AR,Predictor,t>2.6 in size-adjusted long-short,continuous,Accounting,accruals,1989,2008,AccrPct
+tang,Hahn and Lee,2009,Tangibility,JF,Predictor,t=3.37 in univariate FMB,continuous,Accounting,asset composition,1973,2001,Tangibility
+tang_q,Hahn and Lee,2009,Tangibility quarterly,JF,Placebo,HXZ variant,continuous,Accounting,asset composition,1973,2001,Tangibilityq
+DivSeason,Hartzmark and Salomon,2013,Dividend seasonality,JFE,Predictor,t=16 in long-short,discrete,Event,payout indicator,1927,2011,DivSeason
+Coskewness,Harvey and Siddique,2000,Coskewness,JF,Predictor,p-val<0.05 in long-short,continuous,Price,risk,1964,1993,Coskew
+CapTurnover,Haugen and Baker,1996,Capital turnover,JFE,Placebo,t<2 in mv reg nonstandard,continuous,Accounting,turnover,1979,1993,CapTurn
+CapTurnover_q,Haugen and Baker,1996,Capital turnover (quarterly),JFE,Placebo,HXZ variant,continuous,Accounting,turnover,1979,1993,CapTurnq
+RoE,Haugen and Baker,1996,net income / book equity,JFE,Predictor,t=4.5 in mv reg nonstandard,continuous,Accounting,profitability,1979,1993,RoE
+VarCF,Haugen and Baker,1996,Cash-flow  to price variance,JFE,Predictor,t=2.5 in mv reg nonstandard,continuous,Accounting,cash flow risk,1979,1993,CF2Pvar
+VolMkt,Haugen and Baker,1996,Volume to market equity,JFE,Predictor,t=4 in mv reg nonstandard,continuous,Trading,volume,1979,1993,Volume2Mkt
+VolumeTrend,Haugen and Baker,1996,Volume Trend,JFE,Predictor,t=3 in mv reg nonstandard,continuous,Trading,volume,1979,1993,VolumeTrend
+AnalystRevision,"Hawkins, Chamberlin, Daniel",1984,EPS forecast revision,FAJ,Predictor,t=3.2 in long only CAPM alpha,continuous,Analyst,earnings forecast,1975,1980,AnalystRevision
+Mom12mOffSeason,Heston and Sadka,2008,Momentum without the seasonal part,JFE,Predictor,t=4 in port sort,continuous,Price,other,1965,2002,Mom12mOffSeason
+MomOffSeason,Heston and Sadka,2008,Off season long-term reversal,JFE,Predictor,t=5.6 in port sort,continuous,Price,other,1965,2002,MomOffSeason
+MomOffSeason06YrPlus,Heston and Sadka,2008,Off season reversal years 6 to 10,JFE,Predictor,t=4.6 in port sort,continuous,Price,other,1965,2002,MomOffSeason6YrPlus
+MomOffSeason11YrPlus,Heston and Sadka,2008,Off season reversal years 11 to 15,JFE,Predictor,"t=1.8 in port sort, but similar strats do better",continuous,Price,other,1965,2002,MomOffSeason11YrPlus
+MomOffSeason16YrPlus,Heston and Sadka,2008,Off season reversal years 16 to 20,JFE,Predictor,t=3.4 in port sort,continuous,Price,other,1965,2002,MomOffSeason16YrPlus
+MomSeason,Heston and Sadka,2008,Return seasonality years 2 to 5,JFE,Predictor,t=5 in port sort,continuous,Price,other,1965,2002,MomSeason
+MomSeason06YrPlus,Heston and Sadka,2008,Return seasonality years 6 to 10,JFE,Predictor,t=6.1 in port sort,continuous,Price,other,1965,2002,MomSeason06YrPlus
+MomSeason11YrPlus,Heston and Sadka,2008,Return seasonality years 11 to 15,JFE,Predictor,t=6.4 in port sort,continuous,Price,other,1965,2002,MomSeason11YrPlus
+MomSeason16YrPlus,Heston and Sadka,2008,Return seasonality years 16 to 20,JFE,Predictor,t=4.5 in port sort,continuous,Price,other,1965,2002,MomSeason16YrPlus
+MomSeasonShort,Heston and Sadka,2008,Return seasonality last year,JFE,Predictor,t=7.6 in port sort,continuous,Price,other,1965,2002,MomSeasonShort
+CitationsRD,"Hirschleifer, Hsu and Li",2013,Citations to RD expenses,JFE,Predictor,t=2.6 in FF3 style long-short,discrete,Other,profitability alt,1982,2008,CitationsRD
+PatentsRD,"Hirschleifer, Hsu and Li",2013,Patents to RD expenses,JFE,Predictor,t=4.1 in FF3 style long-short,discrete,Other,profitability alt,1982,2008,PatentsRD
+NOA,Hirshleifer et al.,2004,Net Operating Assets,JAE,Predictor,t=8.5 in long-short,continuous,Accounting,asset composition,1964,2002,NOA
+dNoa,"Hirshleifer, Hou, Teoh, Zhang",2004,change in net operating assets,JAE,Predictor,t=8.9 in mv reg,continuous,Accounting,investment,1964,2002,dNoa
+depr,Holthausen and Larcker,1992,Depreciation to PPE,JAE,Placebo,ingredient in complicated model,continuous,Accounting,other,1978,1988,depr
+pchdepr,Holthausen and Larcker,1992,Change in depreciation to PPE,JAE,Placebo,ingredient in complicated model,continuous,Accounting,investment alt,1978,1988,DepGr
+sinAlgo,Hong and Kacperczyk,2009,Sin Stock (selection criteria),JFE,Predictor,t-stat = 1.8 in LS nontraditional,discrete,Other,other,1926,2006,SinStock
+sinOrig,Hong and Kacperczyk,2009,Sin Stock (original list),JFE,Drop,9_drop,NA,Other,other,1926,2006,sinOrig
+EarnSupBig,Hou,2007,Earnings surprise of big firms,RFS,Predictor,t=9 in mv reg weekly,continuous,Accounting,lead lag,1972,2001,EarnSupBig
+IndRetBig,Hou,2007,Industry return of big firms,RFS,Predictor,t=11 in mv reg,continuous,Price,lead lag,1972,2001,IndRetBig
+BidAskTAQ,Hou and Loh ,2016,Bid-ask spread (TAQ),JFE,Placebo,t=1.3 in mv reg,continuous,Trading,liquidity,1984,2012,BidAskTAQ
+PriceDelayRsq,Hou and Moskowitz,2005,Price delay r square,RFS,Predictor,t =3.4 in port sort char adj,continuous,Price,lead lag,1964,2001,PriceDelayRsq
+PriceDelaySlope,Hou and Moskowitz,2005,Price delay coeff,RFS,Predictor,t =7.7 in port sort w/ complicated signal,continuous,Price,lead lag,1964,2001,PriceDelay
+PriceDelayTstat,Hou and Moskowitz,2005,Price delay SE adjusted,RFS,Predictor,t =7.39 in port sort w/ complicated signal,continuous,Price,lead lag,1964,2001,PriceDelayAdj
+Herf,Hou and Robinson,2006,Industry concentration (sales),JF,Predictor,t = 2.14 in port sort,continuous,Other,other,1963,2001,Herf
+HerfAsset,Hou and Robinson,2006,Industry concentration (assets),JF,Predictor,t = 2.12 in characteristics-adjusted port sort,continuous,Other,other,1963,2001,HerfAsset
+HerfBE,Hou and Robinson,2006,Industry concentration (equity),JF,Predictor,t = 2.52 in characteristics-adjusted port sort,continuous,Other,other,1963,2001,HerfBE
+ShareRepurchase,"Ikenberry, Lakonishok, Vermaelen",1995,Share repurchases,JFE,Predictor,t=1.85 in long - benchmark port,discrete,Event,payout indicator,1980,1990,ShareRepurchase
+STreversal,Jegadeesh,1989,Short term reversal,JF,Predictor,t=12 in port sort,continuous,Price,short-term reversal,1934,1987,Mom1m
+RevenueSurprise,Jegadeesh and Livnat,2006,Revenue Surprise,JFE,Predictor,t>2.6 in many event studies,continuous,Accounting,sales growth,1987,2003,RevSurprise
+Mom12m,Jegadeesh and Titman,1993,Momentum (12 month),JF,Predictor,t=3.7 long-short,continuous,Price,momentum,1964,1989,Mom12m
+Mom6m,Jegadeesh and Titman,1993,Momentum (6 month),JF,Predictor,t=2.4 long-short,continuous,Price,momentum,1964,1989,Mom6m
+ChangeInRecommendation,Jegadeesh et al.,2004,Change in recommendation,JF,Predictor,"p<0.01 in LS port, but we lack the data",continuous,Analyst,recommendation,1985,1998,ChRecomm
+OptionVolume1,Johnson and So,2012,Option to stock volume,JFE,Predictor,t = 3.45 in port sort CAPM alpha weekly,continuous,Trading,volume,1996,2010,OptVol
+OptionVolume2,Johnson and So,2012,Option volume to average,JFE,Predictor,t = 2.5 in port sort CAPM alpha weekly data,continuous,Trading,volume,1996,2010,OptVolGr
+BetaTailRisk,Kelly and Jiang,2014,Tail risk beta,RFS,Predictor,Tab4A t-stat 2.48,continuous,Price,risk,1963,2010,BetaTailRisk
+fgr5yrLag,La Porta,1996,Long-term EPS forecast,JF,Predictor,t=4.9 in regression,continuous,Analyst,earnings forecast,1983,1990,EPSForeLTlag
+fgr5yrNoLag,La Porta,1996,Long-term EPS forecast (Monthly),JF,Placebo,HXZ variant,continuous,Analyst,earnings forecast,1983,1990,EPSForeLT
+CF,"Lakonishok, Shleifer, Vishny",1994,Cash flow to market,JF,Predictor,t=3.4 in port sort,continuous,Accounting,valuation,1968,1990,CF2Price
+CFq,"Lakonishok, Shleifer, Vishny",1994,Cash flow to market quarterly,JF,Placebo,HXZ variant,continuous,Accounting,valuation,1968,1990,CFq
+MeanRankRevGrowth,"Lakonishok, Shleifer, Vishny",1994,Revenue Growth Rank,JF,Predictor,t=4.5 in double sort,continuous,Accounting,sales growth,1968,1990,RevGrowth
+sgr,"Lakonishok, Shleifer, Vishny",1994,Annual sales growth,JF,Placebo,HXZ variant,continuous,Accounting,sales growth,1968,1990,sgr
+sgr_q,"Lakonishok, Shleifer, Vishny",1994,Annual sales growth quarterly,JF,Placebo,HXZ variant,continuous,Accounting,sales growth,1968,1990,sgr_q
+KZ,"Lamont, Polk and Saa-Requejo",2001,Kaplan Zingales index,RFS,Placebo,t=1.1 in conservative port sort,continuous,Accounting,composite accounting,1968,1997,KZ
+KZ_q,"Lamont, Polk and Saa-Requejo",2001,Kaplan Zingales index quarterly,RFS,Placebo,HXZ variant,continuous,Accounting,composite accounting,1968,1997,KZ_q
+RDS,Landsman et al.,2011,Real dirty surplus,AR,Predictor,t=5.8 in port sort,continuous,Accounting,composite accounting,1976,2003,RDirtSurp
+MomVol,Lee and Swaminathan,2000,Momentum in high volume stocks,JF,Predictor,"t=6 in long-short, lots of robustness",discrete,Price,momentum,1965,1995,MomVol
+Tax,Lev and Nissim,2004,Taxable income to income,AR,Predictor,t=3.9 in regression,continuous,Accounting,other,1973,2000,Tax2E
+Tax_q,Lev and Nissim,2004,Taxable income to income (qtrly),AR,Placebo,HXZ variant,continuous,Accounting,other,1973,2000,Tax_q
+RDcap,Li,2011,R&D capital-to-assets,RFS,Predictor,t=2.6 in long-short,continuous,Accounting,asset composition,1980,2007,RDcap
+DivYieldST,Litzenberger and Ramaswamy,1979,Predicted div yield next month,JF,Predictor,t=6 in mv reg,discrete,Accounting,valuation,1936,1977,DivYieldST
+zerotrade,Liu ,2006,Days with zero trades,JFE,Predictor,t=4.1 in port sort,continuous,Trading,liquidity,1960,2003,ZeroTrade
+zerotradeAlt1,Liu ,2006,Days with zero trades,JFE,Predictor,t = 3.46 in port sort (12m holding),continuous,Trading,liquidity,1960,2003,zerotradeAlt1
+zerotradeAlt12,Liu ,2006,Days with zero trades,JFE,Predictor,t > 4 in port sort (diff holding periods),continuous,Trading,liquidity,1960,2003,zerotradeAlt12
+ChEQ,Lockwood and Prombutr,2010,Growth in book equity,JFR,Predictor,t=5.38 in EW port sort,continuous,Accounting,investment,1964,2007,BEgrowth
+EarningsStreak,Loh and Warachka,2012,Earnings surprise streak ,MS,Predictor,t=9.5 in port sort ff3 alpha,continuous,Accounting,earnings growth,1987,2009,EarnStreak
+NumEarnIncrease,Loh and Warachka,2012,Earnings streak length,MS,Predictor,similar results in port sorts but not exact,continuous,Accounting,earnings growth,1987,2009,NumEarnIncrease
+GrAdExp,Lou,2014,Growth in advertising expenses,RFS,Predictor,t=3.5 in long-short,continuous,Accounting,investment alt,1974,2010,AdExpGr
+EntMult,Loughran and Wellman,2011,Enterprise Multiple,JFQA,Predictor,t=6.54 in decile sort CAPM alpha,continuous,Accounting,valuation,1963,2009,EntMult
+EntMult_q,Loughran and Wellman,2011,Enterprise Multiple quarterly,JFQA,Placebo,HXZ variant,continuous,Accounting,valuation,1963,2009,EntMult_q
+CompositeDebtIssuance,"Lyandres, Sun and Zhang",2008,Composite debt issuance,RFS,Predictor,t=8.59 in port sort CAPM alpha,continuous,Accounting,external financing,1970,2005,DebtFinC
+InvestPPEInv,"Lyandres, Sun and Zhang",2008,change in ppe and inv/assets,RFS,Predictor,t=7 in long-short port,continuous,Accounting,investment,1970,2005,InvestPPEInv
+iomom_cust,Menzly and Ozbas,2010,Customers momentum,JF,Predictor,t=2.6 in industry port sort,discrete,Other,lead lag,1986,2005,iomom_cust
+iomom_supp,Menzly and Ozbas,2010,Suppliers momentum,JF,Predictor,t=3.4 in industry port sort,discrete,Other,lead lag,1986,2005,iomom_supp
+DivInit,"Michaely, Thaler and Womack",1995,Dividend Initiation,JF,Predictor,t=3.4 in event study,discrete,Event,payout indicator,1964,1988,DivInit
+DivOmit,"Michaely, Thaler and Womack",1995,Dividend Omission,JF,Predictor,t=6 in event study,discrete,Event,payout indicator,1964,1988,DivOmit
+MS,Mohanram,2005,Mohanram G-score,RAS,Predictor,t=9 in port sort nonstandard data lag,discrete,Accounting,composite accounting,1978,2001,Mscore
+RIO_Disp,Nagel,2005,Inst Own and Forecast Dispersion,JF,Predictor,t = 2.47 in conditional sort,discrete,13F,short sale constraints,1980,2003,RIO_Disp
+RIO_MB,Nagel,2005,Inst Own and Market to Book,JF,Predictor,t = 4.91 in conditional sort,discrete,13F,short sale constraints,1980,2003,RIO_MB
+RIO_Turnover,Nagel,2005,Inst Own and Turnover,JF,Predictor,t = 2.71 in conditional sort,discrete,13F,short sale constraints,1980,2003,RIO_Turnover
+RIO_Volatility,Nagel,2005,Inst Own and Idio Vol,JF,Predictor,t = 4.38 in conditional sort,discrete,13F,short sale constraints,1980,2003,RIO_IdioRisk
+DivYield,"Naranjo, Nimalendran, Ryngaert",1998,Dividend yield for small stocks,JF,Placebo,"mixed results, small spread",continuous,Accounting,valuation,1963,1994,DivYield
+DivYieldAnn,"Naranjo, Nimalendran, Ryngaert",1998,Last year's dividends over price,NA,Placebo,HXZ variant,continuous,Accounting,valuation,1963,1994,DivYieldAnn
+Frontier,Nguyen and Swanson,2009,Efficient frontier index,JFQA,Predictor,t=5 in port sort,continuous,Accounting,valuation,1980,2003,EffFrontier
+GP,Novy-Marx,2013,gross profits / total assets,JFE,Predictor,t=2.5 in VW LS quint,continuous,Accounting,profitability,1963,2010,ProfGross
+GPlag,Novy-Marx,2013,gross profits / total assets,JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1963,2010,GPlag
+GPlag_q,Novy-Marx,2013,gross profits / total assets,JFE,Placebo,HXZ variant,continuous,Accounting,profitability,1963,2010,GPlag_q
+IntMom,Novy-Marx,2012,Intermediate Momentum,JFE,Predictor,Tab2 t-stat 5.79,continuous,Price,momentum,1927,2010,Mom12to7
+OPLeverage,Novy-Marx,2010,Operating leverage,ROF,Predictor,t=3.38 in port sort,continuous,Accounting,other,1963,2008,OperLeverage
+OPLeverage_q,Novy-Marx,2010,Operating leverage (qtrly),ROF,Placebo,HXZ variant,continuous,Accounting,other,1963,2008,OPLeverage_q
+AssetLiquidityBook,Ortiz-Molina and Phillips,2014,Asset liquidity over book assets,JFQA,Placebo,no predictability. Correlated with ICC,continuous,Accounting,asset composition,1984,2006,AssetLiquidityBook
+AssetLiquidityBookQuart,Ortiz-Molina and Phillips,2014,Asset liquidity over book (qtrly),JFQA,Placebo,HXZ variant,continuous,Accounting,asset composition,1984,2006,AssetLiquidityBookQuart
+AssetLiquidityMarket,Ortiz-Molina and Phillips,2014,Asset liquidity over market ,JFQA,Placebo,no predictability. Correlated with ICC,continuous,Accounting,asset composition,1984,2006,AssetLiquidityMarket
+AssetLiquidityMarketQuart,Ortiz-Molina and Phillips,2014,Asset liquidity over market (qtrly),JFQA,Placebo,HXZ variant,continuous,Accounting,asset composition,1984,2006,AssetLiquidityMarketQuart
+cashdebt,Ou and Penman,1989,CF to debt,JAR,Placebo,ingredient in complicated model,continuous,Accounting,profitability alt,1973,1983,cashdebt
+currat,Ou and Penman,1989,Current Ratio,JAR,Placebo,ingredient in complicated model,continuous,Accounting,asset composition,1973,1983,currat
+pchcurrat,Ou and Penman,1989,Change in Current Ratio,JAR,Placebo,ingredient in complicated model,continuous,Accounting,investment alt,1973,1983,pchcurrat
+pchquick,Ou and Penman,1989,Change in quick ratio,JAR,Placebo,ingredient in complicated model,continuous,Accounting,investment alt,1973,1983,pchquick
+pchsaleinv,Ou and Penman,1989,Change in sales to inventory,JAR,Placebo,ingredient in complicated model,continuous,Accounting,profitability alt,1973,1983,pchsaleinv
+quick,Ou and Penman,1989,Quick ratio,JAR,Placebo,ingredient in complicated model,continuous,Accounting,asset composition,1973,1983,quick
+salecash,Ou and Penman,1989,Sales to cash ratio,JAR,Placebo,ingredient in complicated model,continuous,Accounting,profitability alt,1973,1983,salecash
+saleinv,Ou and Penman,1989,Sales to inventory,JAR,Placebo,ingredient in complicated model,continuous,Accounting,profitability alt,1973,1983,saleinv
+salerec,Ou and Penman,1989,Sales to receivables,JAR,Placebo,ingredient in complicated model,continuous,Accounting,profitability alt,1973,1983,salerec
+Cash,Palazzo,2012,Cash to assets,JFE,Predictor,t=2.14 in port sort but strong with adjustments,continuous,Accounting,asset composition,1972,2009,Cash
+BetaLiquidityPS,Pastor and Stambaugh,2003,Pastor-Stambaugh liquidity beta,JPE,Predictor,t=2.54 in VW port sort CAPM alpha,continuous,Price,liquidity,1968,1999,BetaLiquidityPS
+BPEBM,"Penman, Richardson and Tuna",2007,Leverage component of BM,JAR,Predictor,t=4.1 in univariate reg,continuous,Accounting,leverage,1963,2001,BMlev
+EBM,"Penman, Richardson and Tuna",2007,Enterprise component of BM,JAR,Predictor,t=3.0 in double sort,continuous,Accounting,valuation,1963,2001,BMent
+EBM_q,"Penman, Richardson and Tuna",2007,Enterprise component of BM,JAR,Placebo,HXZ variant,continuous,Accounting,valuation,1963,2001,EBM_q
+NetDebtPrice,"Penman, Richardson and Tuna",2007,Net debt to price,JAR,Predictor,t=2.3 in double sort,continuous,Accounting,leverage,1963,2001,NDebtPrice
+NetDebtPrice_q,"Penman, Richardson and Tuna",2007,Net debt to price,JAR,Placebo,HXZ variant,continuous,Accounting,leverage,1963,2001,NetDebtPrice_q
+PS,Piotroski,2000,Piotroski F-score,AR,Predictor,t=5.59 in port sort nonstandard data lag,continuous,Accounting,composite accounting,1976,1996,Pscore
+PS_q,Piotroski,2000,Piotroski F-score,AR,Placebo,HXZ variant,continuous,Accounting,composite accounting,1976,1996,PS_q
+ShareIss1Y,Pontiff and Woodgate,2008,Share issuance (1 year),JF,Predictor,t=7.08 in univariate reg,continuous,Accounting,external financing,1970,2003,ShareIs5
+DelDRC,Prakash and Sinha,2012,Deferred Revenue,CAR,Predictor,t=3.6 in nonstandard reg  5 year sample,continuous,Accounting,investment alt,2002,2007,DeferRev
+OrderBacklog,"Rajgopal, Shevlin, Venkatachalam",2003,Order backlog,RAS,Predictor,t=2.38 in univariate size-adjusted FMB,continuous,Accounting,sales growth,1981,1999,OrderBacklog
+DelCOA,Richardson et al.,2005,Change in current operating assets,JAE,Predictor,t=9 in mv reg,continuous,Accounting,investment alt,1962,2001,AssetCGr
+DelCOL,Richardson et al.,2005,Change in current operating liabilities,JAE,Predictor,t=4.5 in mv reg,continuous,Accounting,external financing,1962,2001,LiabCGr
+DelEqu,Richardson et al.,2005,Change in equity to assets,JAE,Predictor,t=6.3 in mv reg,continuous,Accounting,investment,1963,2001,Eq2AGr
+DelFINL,Richardson et al.,2005,Change in financial liabilities,JAE,Predictor,t=8 in univariate reg,continuous,Accounting,external financing,1962,2001,FinLiabGr
+DelLTI,Richardson et al.,2005,Change in long-term investment,JAE,Predictor,t=3.4 in mv reg,continuous,Accounting,investment,1962,2001,ChLTI
+DelNetFin,Richardson et al.,2005,Change in net financial assets,JAE,Predictor,t=6 in unvivariate reg,continuous,Accounting,investment alt,1962,2001,DelNetFin
+DelSTI,Richardson et al.,2005,Change in short-term investment,JAE,Placebo,t=0.4 in mv reg,continuous,Accounting,investment alt,1962,2001,DelSTI
+TotalAccruals,Richardson et al.,2005,Total accruals,JAE,Predictor,t=6 in mv reg,continuous,Accounting,investment alt,1962,2001,TotalAccruals
+AgeIPO,Ritter,1991,IPO and age,JF,Predictor,"Event study, no t-stat",continuous,Event,other,1981,1984,AgeIPO
+IndIPO,Ritter,1991,Initial Public Offerings,JF,Predictor,t=4 in event study,discrete,Event,external financing,1975,1987,IndIPO
+BM,"Rosenberg, Reid, and Lanstein",1985,Book to market using most recent ME,JF,Predictor,t=6 in nonstandard long-short,continuous,Accounting,valuation,1973,1984,BM
+BMq,"Rosenberg, Reid, and Lanstein",1985,Book to market (quarterly),JF,Placebo,HXZ variant,continuous,Accounting,valuation,1973,1984,BMq
+ChNAnalyst,Scherbina,2008,Decline in Analyst Coverage,ROF,Predictor,t > 3 in port sort FF3 alpha for small stocks,discrete,Analyst,earnings event,1982,2005,ChNAnalyst
+Accruals,Sloan,1996,Accruals,AR,Predictor,t > 4 in port sort CAPM alpha 12 month holding,continuous,Accounting,accruals,1962,1991,Accruals
+AssetTurnover,Soliman,2008,Asset Turnover,AR,Placebo,t=0.3 in mv reg,continuous,Accounting,composite accounting,1984,2002,ATurn 
+AssetTurnover_q,Soliman,2008,Asset Turnover,AR,Placebo,HXZ variant,continuous,Accounting,composite accounting,1984,2002,AssetTurnover_q
+ChAssetTurnover,Soliman,2008,Change in Asset Turnover,AR,Predictor,t=5 in mv reg,continuous,Accounting,sales growth,1984,2002,ATurnGr
+ChNCOA,Soliman,2008,Change in Noncurrent Operating Assets,AR,Placebo,No predictability.  Ingredient for predictor.,continuous,Accounting,investment,1984,2002,LTAssetGr
+ChNCOL,Soliman,2008,Change in Noncurrent Operating Liab,AR,Placebo,No predictability.  Ingredient for predictor.,continuous,Accounting,investment alt,1984,2002,ChNCOL
+ChNNCOA,Soliman,2008,Change in Net Noncurrent Op Assets,AR,Predictor,t=4.3 in mv reg,continuous,Accounting,investment alt,1984,2002,ChNNCOA
+ChNWC,Soliman,2008,Change in Net Working Capital,AR,Predictor,t=4.6 in mv reg,continuous,Accounting,investment alt,1984,2002,NWCgr
+ChPM,Soliman,2008,Change in Profit Margin,AR,Placebo,t=0.3 in mv reg,continuous,Accounting,sales growth,1984,2002,PMGrowth
+PM,Soliman,2008,Profit Margin,AR,Placebo,t=1 in mv reg,continuous,Accounting,profitability,1984,2002,ProfitMargin
+PM_q,Soliman,2008,Profit Margin,AR,Placebo,HXZ variant,continuous,Accounting,profitability,1984,2002,PM_q
+RetNOA,Soliman,2008,Return on Net Operating Assets,AR,Placebo,t=1.4 in mv reg,continuous,Accounting,composite accounting,1984,2002,RetNOA
+RetNOA_q,Soliman,2008,Return on Net Operating Assets,AR,Placebo,HXZ variant,continuous,Accounting,composite accounting,1984,2002,RetNOA_q
+DebtIssuance,Spiess and Affleck-Graves,1999,Debt Issuance,JFE,Predictor,t = 2.19 FF3 alpha on long port,discrete,Event,external financing,1975,1989,DebtIssuance
+ChInv,Thomas and Zhang,2002,Inventory Growth,RAS,Predictor,t>2.6 in port sort,continuous,Accounting,investment alt,1970,1997,Invntory
+ChTax,Thomas and Zhang,2011,Change in Taxes,JAR,Predictor,t = 11.26 in decile sort,continuous,Accounting,other,1977,2006,TaxGr
+Investment,"Titman, Wei and Xie",2004,Investment to revenue,JFQA,Predictor,t=2.86 in VW port sort,continuous,Accounting,investment,1973,1996,InvToRev
+realestate,Tuzel,2010,Real estate holdings,RFS,Predictor,t=1.8 (VW) and t= 1.28 (EW) in port sort,continuous,Accounting,asset composition,1971,2005,RealEstate 
+ConvDebt,Valta,2016,Convertible debt indicator,JFQA,Predictor,t > 2.6 in mv reg,discrete,Event,external financing,1985,2012,ConvDebt
+secured,Valta,2016,Secured debt,JFQA,Placebo,t > 1.96 in mv reg,continuous,Accounting,external financing,1985,2012,secured
+securedind,Valta,2016,Secured debt indicator,JFQA,Placebo,GHZ variant,discrete,Accounting,external financing,1985,2012,securedind
+ConsNegRet,Watkins,2003,Consistently negative return,Journal of Behavioral Finance,Drop,9_drop,NA,Price,momentum,1927,1999,ConsNegRet
+ConsPosRet,Watkins,2003,Consistently positive return,Journal of Behavioral Finance,Drop,9_drop,NA,Price,momentum,1927,1999,ConsPosRet
+PosNegCons,Watkins,2003,Pos vs negative consistent return,Journal of Behavioral Finance,Drop,9_drop,NA,Price,momentum,1950,1999,PosNegCons
+WW,Whited and Wu,2006,Whited-Wu index,RFS,Placebo,t=1.3 in port sort,continuous,Accounting,external financing,1975,2001,WW
+WW_Q,Whited and Wu,2006,Whited-Wu index,RFS,Placebo,HXZ variant,continuous,Accounting,external financing,1975,2001,WW_Q
+AbnormalAccruals,Xie,2001,Abnormal Accruals,AR,Predictor,t=8 port sort w/ nonstandard data lag,continuous,Accounting,accruals,1971,1992,AccrAbn
+skew1,"Xing, Zhang and Zhao",2010,Volatility smirk near the money,JFQA,Predictor, t = 2.19 in port sort,continuous,Options,optionrisk,1996,2005,OSmirkNTM
+SmileSlope,Yan,2011,Put volatility minus call volatility,JFE,Predictor,t=8 in port sort,continuous,Options,optionrisk,1996,2005,OSmirkCP
+FirmAgeMom,Zhang,2004,Firm Age - Momentum,JF,Predictor,t = 7.21 in long portfolio,continuous,Price,momentum,1983,2001,MomYoung

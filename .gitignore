@@ -3,6 +3,7 @@
 /data_raw/DataMinedLongShortReturnsVW.csv
 /data_raw/PastReturnSignalsLongShort.csv
 /data_raw/TickerSignalsLongShort.csv
+/archives/*.zip
 /*.zip
 
 # Local notebook/runtime artifacts.
@@ -12,3 +13,6 @@ __pycache__/
 
 # Independent full clone of the authors' public repository (keeps its own .git history).
 /Research/code_goc_paper/high-throughput-ap/
+
+# Independent reference checkout; preserve its own Git history.
+/Research/tools/autoresearch/

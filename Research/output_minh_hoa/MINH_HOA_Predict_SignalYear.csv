@@ -1,0 +1,3 @@
+signal_family,oos_begin_year,signalid,mean_ret,tstat,nobs,s_flag,is_begin_year,thetahat,pred_ret
+DataMinedLongShortReturnsEW,2020,66,-0.5492019566051781,-3.7610095099266614,240,IS,2000,-2.5,-0.36506286088591106
+DataMinedLongShortReturnsEW,2020,67,-0.4316501916712929,-2.915257286640844,240,IS,2000,-1.5,-0.22209884886455566
