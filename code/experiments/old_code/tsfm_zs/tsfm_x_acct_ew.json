@@ -1,0 +1,27 @@
+{
+ "cols": [
+  "chronos2_xl_dev",
+  "chronos2_xl_lvl",
+  "chronos2_xl_unc",
+  "chronos2_dev",
+  "chronos2_lvl",
+  "chronos2_unc",
+  "tirex_dev",
+  "tirex_lvl",
+  "tirex_unc",
+  "timesfm25_dev",
+  "timesfm25_lvl",
+  "timesfm25_unc",
+  "toto2-313m_dev",
+  "toto2-313m_lvl",
+  "toto2-313m_unc"
+ ],
+ "src": [
+  "/home/phongndh/Documents/Paper/code/tsfm_zs/chronos2_acct_ew_c240_xl.npz",
+  "/home/phongndh/Documents/Paper/code/tsfm_zs/chronos2_acct_ew_c240.npz",
+  "/home/phongndh/Documents/Paper/code/tsfm_zs/tirex_acct_ew_c240.npz",
+  "/home/phongndh/Documents/Paper/code/tsfm_zs/timesfm25_acct_ew_c240.npz",
+  "/home/phongndh/Documents/Paper/code/tsfm_zs/toto2-313m_acct_ew_c240.npz"
+ ],
+ "fam": "acct_ew"
+}

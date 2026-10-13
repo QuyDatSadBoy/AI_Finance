@@ -12,7 +12,31 @@ __pycache__/
 .DS_Store
 
 # Independent full clone of the authors' public repository (keeps its own .git history).
-/Research/code_goc_paper/high-throughput-ap/
+/Research/original_paper_code/high-throughput-ap/
 
 # Independent reference checkout; preserve its own Git history.
 /Research/tools/autoresearch/
+
+# Cached matrices/features for code/
+/code/_cache/
+
+# Trained model weights (code/checkpoints/)
+/code/checkpoints/
+/code/__pycache__/
+/Research/tools/FinCast-fts/
+
+# Jupyter runtime
+.jupyter/
+.jupyter_ystore.db
+
+# Thí nghiệm cũ: chỉ đẩy mã và bảng kết quả nhỏ, bỏ ma trận/dự báo lớn
+/code/experiments/**/*.npy
+/code/experiments/**/*.npz
+/code/experiments/**/*.pt
+/code/experiments/**/*.parquet
+/code/experiments/**/_cache/
+/code/experiments/**/checkpoints/
+*.log
+
+# Gói nén: chỉ giữ các phần đã chia nhỏ
+/docs/package/checkpoints_final_s1.zip

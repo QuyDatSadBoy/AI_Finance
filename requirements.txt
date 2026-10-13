@@ -1,0 +1,18 @@
+# Môi trường chạy mô hình chốt (code/) — Python 3.13, GPU CUDA 12.8
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.11.0+cu128
+numpy==2.5.3
+pandas==2.3.3
+scipy==1.18.1
+statsmodels==0.15.0
+matplotlib==3.11.2
+pyarrow==25.0.1
+huggingface_hub==1.33.0
+ipykernel==7.4.0
+# FinCast (Research/tools/FinCast-fts) cần thêm:
+einops==0.8.2
+einx==0.4.3
+beartype==0.22.9
+CoLT5-attention==0.11.2
+local-attention==1.11.2
+hyper-connections==0.4.11
