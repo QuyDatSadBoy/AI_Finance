@@ -40,3 +40,7 @@ __pycache__/
 
 # Gói nén: chỉ giữ các phần đã chia nhỏ
 /docs/zip/checkpoints_final_s1.zip
+
+# Cấu hình trợ lý cục bộ
+CLAUDE.md
+.claude/
