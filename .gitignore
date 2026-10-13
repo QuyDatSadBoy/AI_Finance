@@ -21,7 +21,7 @@ __pycache__/
 /code/_cache/
 
 # Trained model weights (code/checkpoints/)
-/code/checkpoints/
+/code/checkpoints/*/*.log
 /code/__pycache__/
 /Research/tools/FinCast-fts/
 
@@ -39,4 +39,4 @@ __pycache__/
 *.log
 
 # Gói nén: chỉ giữ các phần đã chia nhỏ
-/docs/package/checkpoints_final_s1.zip
+/docs/zip/checkpoints_final_s1.zip

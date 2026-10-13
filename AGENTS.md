@@ -45,7 +45,7 @@
 - Chạy tay / notebook: conda env `paper` (`requirements.txt`, kernel "Python (paper)"). Jupyter MCP dùng kernel "Paper Research (torch GPU)" = `~/.local/share/research-kernel/venv` (cùng phiên bản thư viện).
 - GPU RTX 5060 Ti 16 GB: **mỗi lần một job GPU**. Job dài: `nohup` + Monitor; **không** dùng `pkill -f` với mẫu có trong chính lệnh (tự giết shell).
 - Đã gỡ (2026-10-07) để dọn máy: `venv_tsfm` (TiRex/TimesFM/Toto), CUDA toolkit và GCC14 tự cài, cache Hugging Face của các mô hình ngoài FinCast. Thử lại các encoder đó phải cài và tải lại.
-- Notebook: tạo/sửa qua MCP `jupyter`; thư mục `code/notebook/`. `docs/` chỉ gồm 7 file đánh số (+ `figures/`, `papers/`, `package/` = zip mã nguồn và checkpoint), không thêm file md rời.
+- Notebook: tạo/sửa qua MCP `jupyter`; thư mục `code/notebook/`. `docs/` chỉ gồm 7 file đánh số (+ `figures/`, `papers/`, `zip/` = file nén mã nguồn và checkpoint), không thêm file md rời.
 
 ## 6. Trạng thái (2026-10-09)
 

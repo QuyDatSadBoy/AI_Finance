@@ -36,7 +36,7 @@ Notebook: mở `code/notebook/final_model.ipynb`, chọn kernel **Python (paper)
 | `code/evaluate.py` | Danh mục top 1/5/10%, kiểm định, IC, hình đúng mức |
 | `code/run.py` | `python run.py 0 1 2 3 4 5`: học 6 seed; mô hình chốt = seed 1 (`checkpoints/final_s1/`) |
 | `code/_cache/` | Cache dữ liệu và dự báo (`forecasts/`), không đưa lên Git |
-| `code/checkpoints/` | Trọng số mỗi năm, không đưa lên Git |
+| `code/checkpoints/` | Trọng số mỗi năm của 6 seed (bản nén seed 1: `docs/zip/`) |
 | `code/experiments/` | Mọi thứ chỉ dùng để tìm mô hình chốt (mã, notebook, dự báo các cấu hình, docs cũ) |
 | `docs/papers/` | PDF paper dùng trực tiếp (Chen & Dim, HyperAttention, Holen et al.) |
 | `docs-add/` | Thư viện paper, bản nháp của nhóm |
