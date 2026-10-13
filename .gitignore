@@ -45,3 +45,8 @@ __pycache__/
 # Cấu hình trợ lý cục bộ
 CLAUDE.md
 .claude/
+/docs/zip/data_raw_csv.zip
+/docs/zip/archives.zip
+/docs/zip/experiments_data.zip
+/docs/zip/code_cache.zip
+/docs/zip/other_files.zip
