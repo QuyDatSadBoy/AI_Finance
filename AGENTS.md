@@ -19,6 +19,7 @@
 - `docs/4_GOALS_AND_IDEAS.md`: mục tiêu, ý tưởng, nguyên tắc.
 - `docs/5_FINAL_MODEL_VS_BASELINE.md`: mô hình chốt so với baseline, kết quả, nhật ký mọi cấu hình đã thử.
 - `docs/7_COMPARE_WITH_EB.md`: so với EB theo đúng 4 cách chấm của paper (Table 2, Figure 1, Figure 4–5, Table 3), có hình (`docs/figures/`, tạo bằng `code/experiments/eb_compare/make.py`).
+- **Viết paper (`docs/writing_paper/`): đọc `docs/writing_paper/WRITING_GUIDE.md` trước khi viết bất kỳ mục nào** (giọng văn, đại từ, thuật ngữ finance, cách hiểu tài chính học từ Chen & Dim; bắt buộc đọc paper gốc `docs/writing_paper/ChenDim2023_...pdf`). Không sửa `sn-article.tex`, mỗi mục ghi ra file `<mục>_PASTE.md` (LaTeX tiếng Anh + bản tiếng Việt) để người dùng chép vào Overleaf.
 - Paper chủ dự án gửi: `docs/papers/` (HyperAttention ICLR 2024, Holen et al. arXiv 2304.12778, Chen & Dim). Tài liệu tham khảo thêm: `docs-add/`.
 - Tìm khối / pretrained / paper mới qua MCP `huggingface`, `arxiv`, `paper-search`; ghi rõ nguồn.
 
@@ -45,7 +46,7 @@
 - Chạy tay / notebook: conda env `paper` (`requirements.txt`, kernel "Python (paper)"). Jupyter MCP dùng kernel "Paper Research (torch GPU)" = `~/.local/share/research-kernel/venv` (cùng phiên bản thư viện).
 - GPU RTX 5060 Ti 16 GB: **mỗi lần một job GPU**. Job dài: `nohup` + Monitor; **không** dùng `pkill -f` với mẫu có trong chính lệnh (tự giết shell).
 - Đã gỡ (2026-10-07) để dọn máy: `venv_tsfm` (TiRex/TimesFM/Toto), CUDA toolkit và GCC14 tự cài, cache Hugging Face của các mô hình ngoài FinCast. Thử lại các encoder đó phải cài và tải lại.
-- Notebook: tạo/sửa qua MCP `jupyter`; thư mục `code/notebook/`. `docs/` chỉ gồm 7 file đánh số (+ `figures/`, `papers/`, `zip/` = file nén mã nguồn và checkpoint), không thêm file md rời.
+- Notebook: tạo/sửa qua MCP `jupyter`; thư mục `code/notebook/`. `docs/` chỉ gồm 7 file đánh số (+ `figures/`, `papers/`, `zip/` = file nén mã nguồn và checkpoint, `writing_paper/` = bài đang viết và hướng dẫn viết), không thêm file md rời ngoài các thư mục đó.
 
 ## 6. Trạng thái (2026-10-09)
 
