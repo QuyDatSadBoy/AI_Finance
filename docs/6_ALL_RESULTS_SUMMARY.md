@@ -134,9 +134,24 @@ Ticker = chiến lược xếp theo chữ cái tên mã, cố tình vô nghĩa (
 - IC trên riêng Ticker ≈ 0 (mô hình −0,035, EB −0,044): không đoán được Ticker, đúng như nhiễu. 33 Ticker lọt top 1% có lãi thật TB −0,07 %/tháng.
 - Kết luận: mô hình **gần như** loại Ticker ở top 1% như paper, nhưng co Ticker yếu hơn EB (dự báo Ticker ≈ 64% kế toán, EB ≈ 28%) → ở top 5–10% lẫn Ticker nhiều hơn.
 
+## 3c. Họ kế toán value-weighted (2026-10-28, `code/experiments/vw_family/`)
+
+Học lại mô hình chốt từ đầu trên họ kế toán theo vốn hoá (cùng 29.314 tín hiệu, FinCast + PCA fit lại, 6 seed, không chỉnh siêu tham số). Chọn seed bằng Sharpe TB top 1/5/10% giai đoạn 1995–2004 (seed 5, rất lệch so với 5 seed còn lại).
+
+| Sharpe top 1 / 5 / 10% | Dev | Holdout |
+|---|---|---|
+| Mô hình (seed 5) | 0,61 / 0,58 / 0,52 | −0,02 / 0,05 / 0,04 |
+| EB | 0,55 / 0,59 / 0,54 | 0,13 / −0,10 / −0,17 |
+| \|t\| | 0,61 / 0,51 / 0,49 | 0,10 / −0,07 / −0,11 |
+| TB 6 seed | 0,30 / 0,21 / 0,16 | 0,06 / 0,03 / 0,02 |
+
+Họ này gần như không dự báo được (EB cũng chỉ 0,55 ở dev, ~0 ở holdout). Mô hình **không phân biệt được với EB** (mọi p ≥ 0,49; IC dev 0,036 so với 0,039). **Không vượt EB trên họ này**; không được viết là vượt. Bảng đầy đủ: `code/experiments/vw_family/result.md`.
+
+Thử thêm (cùng kiến trúc, không chỉnh siêu tham số): (1) trung bình dự báo 6 seed VW: dev top 1/5/10% 0,33 / 0,23 / 0,16 so với EB 0,55 / 0,59 / 0,54, kém hơn; (2) huấn luyện chung EW + VW (`joint.py`, 3 seed, PCA chung, chọn seed bằng dev muộn VW = seed 2): họ VW dev 0,41 / 0,31 / 0,24, holdout 0,06 / 0,05 / 0,06 so với EB 0,55 / 0,59 / 0,54 và 0,13 / −0,10 / −0,17 (không khác biệt có ý nghĩa; IC dev 0,040 so với 0,039); họ EW dev 1,82 / 1,76 / 1,64, holdout 0,77 / 0,71 / 0,72, thấp hơn mô hình EW riêng (1,95 / 1,95 / 1,82 và 1,11 / 0,88 / 0,88) và không hơn EB. Kết luận: huấn luyện chung **không giúp** họ VW và làm họ EW kém đi; không vượt EB trên VW. Bảng: `code/experiments/vw_family/result_joint.md`.
+
 ## 4. Bài học
 
-1. **Nền \|t\| + kiến trúc đơn giản (ISAB, FC) tổng quát tốt nhất sau 2005.** Cả 6 seed bản cũ đều hơn EB ở holdout top 1% và 5%.
+1. **Nền \|t\| + kiến trúc đơn giản (ISAB, FC) tổng quát tốt nhất sau 2005.** Theo dự báo đã lưu (`final_s0..5`), ở holdout 5/6 seed hơn EB ở top 1% (seed 2: 0,807 so với EB 0,818) và cả 6 seed hơn EB ở top 5% và 10% (đã kiểm lại 2026-10-28).
 2. HyperAttention, SwiGLU, thêm feature làm **dev cao hơn nhưng holdout thấp hơn** (khớp quá khứ).
 3. Mỗi bước học = cả một năm tốt hơn lô 4.096 cho bản cũ (dựng lại với lô 4.096 kém rõ).
 4. Nhiễu giữa các seed (±0,1–0,25) lớn hơn hầu hết khác biệt giữa cấu hình → chỉ tin kết quả đủ 38 năm, nhiều seed. Trung bình 2 seed có thể đánh lừa (feat).
