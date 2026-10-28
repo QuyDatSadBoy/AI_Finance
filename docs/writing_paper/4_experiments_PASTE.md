@@ -1,6 +1,6 @@
 # Mục 4 Experiments — nội dung để paste vào Overleaf
 
-Bố cục: **4.1 Data → 4.2 Analysis and results → 4.3 Ablation study**. Mục 4 nói **cách làm thí nghiệm** (dữ liệu, cài đặt, đối chứng, chỉ số) và có hai kết quả không trùng mục 5: **chạy lại EB để đối chứng với paper gốc** (4.2.4) và **ablation** (4.3). **Kết quả so sánh mô hình với EB nằm ở mục 5 Results** (`5_results_PASTE.md`). Ý đã có ở 3.1/3.2 thì chỉ trỏ lại.
+Bố cục: **4.1 Data → 4.2 Experimental design → 4.3 Ablation study**. Mục 4 nói **cách làm thí nghiệm** (dữ liệu, cài đặt, đối chứng, chỉ số) và **ablation** (4.3). **Mọi kết quả so sánh với EB nằm ở mục 5 Results** (`5_results_PASTE.md`). Ý đã có ở 3.1/3.2 thì chỉ trỏ lại.
 
 ## Cách dùng
 
@@ -16,12 +16,11 @@ Bố cục: **4.1 Data → 4.2 Analysis and results → 4.3 Ablation study**. M�
 | 4.1 | Data | | |
 | 4.1.1 | Dataset | nguồn, quy mô, họ chiến lược, tập gộp ticker | |
 | 4.1.2 | Sample construction and data splitting | lọc mẫu, số quan sát, dev / holdout | |
-| 4.2 | Analysis and results | | |
+| 4.2 | Experimental design | | |
 | 4.2.1 | Implementation details | trọng số pretrained, số tham số, chọn seed, phần cứng | |
 | 4.2.2 | Baseline methods | EB, naive mining, baseline | |
 | 4.2.3 | Evaluation metrics | Sharpe, lãi, t-stat, HAC, IC, đúng mức | |
-| 4.2.4 | Replication of the EB benchmark | chạy lại EB trên 6 họ, so với Table 2 của paper gốc | Bảng 1 |
-| 4.3 | Ablation study | chỉ các thành phần vượt nhiễu | Bảng 2 |
+| 4.3 | Ablation study | chỉ các thành phần vượt nhiễu | Bảng 1 |
 | 4.3.1–4.3.4 | FinCast, PCA, Label construction, Other components | | |
 
 ---
@@ -39,7 +38,7 @@ We use the long-short strategies of \cite{chen2025highthroughputassetpricing}: 1
 \subsubsection{Sample construction and data splitting}
 For each forecasting year $Y$, we keep strategies with at least 36 months of returns in the 20 years before $Y$, which leaves about 25,600 strategies per year. The resulting table has 1,189,707 strategy-year observations from 1966 to 2020, and the first forecasting year is 1983. Training, validation and testing follow Section \ref{subsec2}, with at most the 500,000 most recent observations used for training. We divide the 38 forecasting years into a development period (1983--2004) and a holdout period (2005--2020), following the 2004 break documented by \cite{chen2025highthroughputassetpricing}. The architecture, hyperparameters and the selected model are chosen on the development period only, and the holdout period, which is out of sample for all choices, is used only for reporting.
 
-\subsection{Analysis and results}\label{subsec4_2}
+\subsection{Experimental design}\label{subsec4_2}
 
 \subsubsection{Implementation details}
 We use the pretrained FinCast weights of \cite{zhu2025fincast} (50 layers, 16 heads, hidden dimension 1280, sparse Mixture-of-Experts), without fine-tuning. Together with the components of Section \ref{subsec3}, the proposed model has 1,565,857 trainable parameters. We train six seeds and select the one with the highest mean Sharpe ratio over 1995--2004. Because GPU computation is not deterministic, we store the weights of the selected model for every year, and all main results in Section \ref{sec5} are computed from these stored weights. Experiments run on one NVIDIA RTX 5060 Ti GPU with PyTorch 2.11.
@@ -49,25 +48,6 @@ All methods select from the same family and years, and differ only in the foreca
 
 \subsubsection{Evaluation metrics}
 We apply the portfolio rule of Section \ref{subsec2}, following \cite{chen2025highthroughputassetpricing}: each year we sign strategies by their forecasts, rank them by predicted Sharpe ratio (forecast divided by in-sample standard deviation), and hold the equal-weighted top $X\%$ for the 12 months of the year. We report the mean return (percent per year), the t-stat and the annualized Sharpe ratio, computed over all months of a period and before transaction costs. Sharpe ratio differences are tested with the HAC test of \cite{ledoit2008robust} (12 lags) and, as a check, with a block bootstrap by year. We also report the information coefficient (IC), the average yearly Spearman correlation between forecasts and realized returns, and a calibration slope across 20 groups ranked by forecast (one indicates unbiased forecasts).
-
-\subsubsection{Replication of the EB benchmark}
-Before comparing, we check that our implementation of EB mining reproduces \cite{chen2025highthroughputassetpricing}. Applied to all six families (1983--2020), it gives for the top 1\% portfolio a mean return of 5.79\% per year, a t-stat of 9.17 and a Sharpe ratio of 1.49, against 5.70\%, 9.00 and 1.46 in their Table 2 (Table \ref{tab:replication}). The top 5\% and 10\% portfolios are equally close. We therefore use this implementation as the EB benchmark, restricted to the equal-weighted accounting family in Section \ref{sec5}.
-
-\begin{table}[h]
-\caption{Replication of EB mining on all six families, 1983--2020. Mean return is in percent per year. The reference values are Table 2 of \cite{chen2025highthroughputassetpricing}.}\label{tab:replication}%
-\small
-\begin{tabular}{@{}lcccccc@{}}
-\toprule
- & \multicolumn{2}{c}{Mean return} & \multicolumn{2}{c}{t-stat} & \multicolumn{2}{c}{Sharpe ratio} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-Portfolio & Ours & Reference & Ours & Reference & Ours & Reference \\
-\midrule
-Top 1\%  & 5.79 & 5.70 & 9.17 & 9.00 & 1.49 & 1.46 \\
-Top 5\%  & 3.99 & 4.03 & 8.15 & 8.27 & 1.32 & 1.34 \\
-Top 10\% & 2.82 & 2.77 & 7.18 & 7.16 & 1.17 & 1.16 \\
-\botrule
-\end{tabular}
-\end{table}
 
 \subsection{Ablation study}\label{subsec4_3}
 We replace one component of the final configuration at a time and train each configuration three times, because retraining is not deterministic. Table \ref{tab:ablation} reports the mean Sharpe ratio over the top 1\%, 5\% and 10\% portfolios and the difference from the reference (the final configuration retrained in the same way). The run-to-run standard deviation of the reference is 0.03 in the development period and 0.13 in the holdout period, so we regard a difference as meaningful only when it clearly exceeds this variation. We report the components that show such a difference, and state the outcome for the others at the end.
@@ -131,7 +111,7 @@ Chỉ một mục (đã đối chiếu CrossRef). Các key khác đã có sẵn.
 
 **4.1.2 Sample construction and data splitting (Lập mẫu và chia dữ liệu).** Với mỗi năm dự báo $Y$, giữ chiến lược có ít nhất 36 tháng lợi suất trong 20 năm trước $Y$, còn khoảng 25.600 chiến lược mỗi năm. Bảng cuối có 1.189.707 quan sát chiến lược–năm từ 1966 đến 2020, năm dự báo đầu tiên là 1983. Học, kiểm, thử theo mục 3.1, tối đa 500.000 quan sát gần nhất để học. Chia 38 năm dự báo thành giai đoạn phát triển (1983–2004) và holdout (2005–2020), theo điểm gãy 2004 mà Chen & Dim ghi nhận. Kiến trúc, siêu tham số và mô hình được chọn chỉ trên giai đoạn phát triển; holdout, ngoài mẫu với mọi lựa chọn, chỉ để báo cáo.
 
-#### 4.2 Analysis and results (Phân tích và kết quả)
+#### 4.2 Experimental design (Thiết kế thí nghiệm)
 
 **4.2.1 Implementation details (Chi tiết triển khai).** Dùng trọng số FinCast pretrained của Zhu et al. (50 lớp, 16 đầu, chiều ẩn 1280, Mixture-of-Experts thưa), không tinh chỉnh. Cùng các thành phần ở mục 3.2, mô hình có 1.565.857 tham số học được. Học 6 seed và chọn seed có Sharpe trung bình cao nhất trong 1995–2004. Vì GPU không tất định, ta lưu trọng số của mô hình đã chọn cho từng năm, và mọi kết quả chính ở mục 5 tính từ trọng số đã lưu. Chạy trên một GPU NVIDIA RTX 5060 Ti, PyTorch 2.11.
 
@@ -139,11 +119,9 @@ Chỉ một mục (đã đối chiếu CrossRef). Các key khác đã có sẵn.
 
 **4.2.3 Evaluation metrics (Chỉ số đánh giá).** Dùng luật danh mục ở mục 3.1 theo Chen & Dim: mỗi năm đảo dấu chiến lược theo dự báo, xếp theo Sharpe dự báo (dự báo chia độ lệch chuẩn trong mẫu), giữ danh mục chia đều top $X\%$ trong 12 tháng của năm. Báo lãi trung bình (%/năm), t-stat và Sharpe quy năm, tính trên mọi tháng của giai đoạn và trước chi phí giao dịch. Chênh lệch Sharpe kiểm định bằng HAC của Ledoit & Wolf (12 độ trễ), và kiểm tra lại bằng bootstrap khối theo năm. Báo thêm IC (tương quan hạng Spearman theo năm giữa dự báo và lợi suất thật) và độ dốc đúng mức trên 20 nhóm xếp theo dự báo (1 là không chệch).
 
-**4.2.4 Replication of the EB benchmark (Chạy lại EB để đối chiếu).** Trước khi so sánh, ta kiểm tra cách cài đặt EB có tái hiện đúng Chen & Dim không. Áp dụng cho cả 6 họ (1983–2020), danh mục top 1% cho lãi trung bình 5,79%/năm, t-stat 9,17 và Sharpe 1,49, so với 5,70%, 9,00 và 1,46 trong Table 2 của họ (Bảng 1). Danh mục top 5% và 10% cũng sát tương tự. Vì vậy ta dùng cách cài đặt này làm đối chứng EB, giới hạn trong họ kế toán chia đều ở mục 5.
-
 #### 4.3 Ablation study (Nghiên cứu loại bỏ từng thành phần)
 
-Mỗi lần thay một thành phần của cấu hình cuối và học 3 lần mỗi cấu hình vì huấn luyện lại không tất định. Bảng 2 báo Sharpe trung bình top 1/5/10% và chênh lệch so với mốc tham chiếu (cấu hình cuối học lại cùng cách). Độ lệch chuẩn giữa các lần chạy của mốc là 0,03 ở dev và 0,13 ở holdout, nên ta chỉ coi chênh lệch là có ý nghĩa khi vượt rõ mức này. Ta báo các thành phần có chênh lệch như vậy và nêu kết quả các thành phần khác ở cuối.
+Mỗi lần thay một thành phần của cấu hình cuối và học 3 lần mỗi cấu hình vì huấn luyện lại không tất định. Bảng 1 báo Sharpe trung bình top 1/5/10% và chênh lệch so với mốc tham chiếu (cấu hình cuối học lại cùng cách). Độ lệch chuẩn giữa các lần chạy của mốc là 0,03 ở dev và 0,13 ở holdout, nên ta chỉ coi chênh lệch là có ý nghĩa khi vượt rõ mức này. Ta báo các thành phần có chênh lệch như vậy và nêu kết quả các thành phần khác ở cuối.
 
 **4.3.1 FinCast contribution (Đóng góp của FinCast).** Thay bộ mã hoá pretrained bằng cùng kiến trúc khởi tạo ngẫu nhiên cho Sharpe holdout thấp nhất trong mọi biến thể (0,66 so với 0,84), lớn hơn dao động giữa các lần chạy. Điều này gợi ý biểu diễn thời gian pretrained đóng góp vào hiệu quả sau 2004. Các bộ mã hoá pretrained khác đã thử khi phát triển (Chronos-2, EXAONE, Sundial) không vượt FinCast.
 
@@ -157,9 +135,8 @@ Mỗi lần thay một thành phần của cấu hình cuối và học 3 lần 
 
 ## Cần bạn biết trước khi paste
 
-1. **Mục 4.2.4 là kết quả mới:** chạy lại EB trên đủ 6 họ cho top 1% Sharpe 1,49 (paper 1,46), nên EB trong bài đáng tin. Số lấy từ `docs/2_ORIGINAL_PAPER.md` (top 5%, 10% cũng ghi ở đó).
-2. **Mục 4 không có so sánh mô hình với EB;** việc đó ở mục 5.1 (Bảng 3, 4).
-3. **Đã bỏ chỗ lặp với 3.1/3.2:** chỉ trỏ về mục 3, không mô tả lại đảo dấu, công thức nhãn, rò rỉ, kiến trúc, AdamW/Huber.
-4. **Bảng ablation** (Bảng 2) lấy từ `code/experiments/ablation/ablation_results.csv`.
-5. **Số của cách xây nhãn (1,37 → 1,84)** lấy từ giai đoạn phát triển từng bước, không phải quy trình ba lần chạy; văn bản nói rõ.
-6. Chưa biên dịch LaTeX.
+1. **Mục 4 không có so sánh mô hình với EB;** việc đó ở mục 5.1 (Bảng 2, 3).
+2. **Đã bỏ chỗ lặp với 3.1/3.2:** chỉ trỏ về mục 3, không mô tả lại đảo dấu, công thức nhãn, rò rỉ, kiến trúc, AdamW/Huber.
+3. **Bảng ablation** (Bảng 1) lấy từ `code/experiments/ablation/ablation_results.csv`.
+4. **Số của cách xây nhãn (1,37 → 1,84)** lấy từ giai đoạn phát triển từng bước, không phải quy trình ba lần chạy; văn bản nói rõ.
+5. Chưa biên dịch LaTeX.
