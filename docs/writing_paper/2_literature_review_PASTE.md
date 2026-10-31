@@ -1,84 +1,288 @@
-# Mục 2 Literature Review — nội dung để paste vào Overleaf
+# Mục 2 Literature Review — sửa từng ý trên bản gốc của bạn
 
-Viết lại trên nền bản của bạn: **giữ nguyên các đoạn đã tốt** (CAPM và factor zoo, ML trong asset pricing, FinCast, AIPM, suy giảm anomaly), **sửa** các chỗ không còn đúng với mô hình hiện tại, **thêm** hướng khai thác dữ liệu / EB và Set Transformer. Bố cục đi từ rộng đến hẹp, mỗi mục con dẫn sang mục sau, và kết ở khoảng trống nghiên cứu khớp với ba đóng góp ở mục 6.2.
+Bạn đã paste lại bản gốc của mục 2. Dưới đây là **13 sửa đổi nhỏ**, mỗi sửa đổi nói rõ: **tìm** đoạn nào (copy y nguyên từ file của bạn), **làm gì** (thay, chèn, xoá) và nội dung tiếng Anh để paste, kèm bản tiếng Việt để đọc. Mọi chỗ không nhắc đến thì **giữ nguyên**. Không đổi thứ tự các mục con. Mình đã kiểm tra mọi chuỗi "Tìm" xuất hiện đúng một lần trong file hiện tại trên Overleaf.
 
-## Cách dùng
+## Vì sao sửa (tóm tắt)
 
-1. Trong `overleaf_project/sn-article.tex`, xoá từ `\section{Literature Review}\label{sec2}` đến ngay trước `\section{Methodology}\label{sec3}`, rồi paste khối LaTeX bên dưới.
-2. Thêm 6 mục BibTeX (phần dưới) vào cuối `overleaf_project/sn-bibliography.bib`.
-3. Sửa dòng `\cite{Chen}` cũ: khối mới đã bỏ nó (khoá đúng là `chen2025highthroughputassetpricing`).
-4. Sau khi paste, recompile và gửi mình lỗi nếu có.
+| Vấn đề trong bản gốc | Sửa ở |
+|---|---|
+| Không có lời dẫn nêu cấu trúc mục | 1 |
+| Câu khẳng định "linear form là hạn chế chính" chưa có bằng chứng | 2 |
+| Thiếu hướng khai thác dữ liệu / empirical Bayes, đối thủ trực tiếp của bài | 3 |
+| Chưa nói rõ nhóm ML nhắm đến lợi suất tài sản, không phải chọn chiến lược | 4 |
+| Thiếu mô hình nền đa dụng (Chronos, TimesFM) để đặt FinCast vào bối cảnh | 5 |
+| Câu bị lặp ("disconnected from one another" hai lần) | 6 |
+| Tiêu đề 2.4 và hai câu khẳng định "bài khác AIPM vì chỉ attention theo thời gian" **không còn đúng** (mô hình có ISAB, attention giữa các chiến lược) | 7, 8 |
+| Câu hứa "interpretability goals" (bài không làm) | 8 |
+| Thiếu Set Transformer (ISAB ở mục 3.2) | 9 |
+| `\cite{Chen}` không có trong `.bib` | 10 |
+| Câu "attention-weighted representations" (quá hẹp so với mô hình hiện tại) | 11 |
+| Thiếu giải thích suy giảm sau 2004 (lý do chia dev / holdout) | 12 |
+| 2.6 hứa kiểm tra "interpretability", ba mô hình đối chứng sai, "No prior study" | 13 |
 
-## Giữ, sửa, thêm so với bản cũ
-
-| Mục mới | Nguồn từ bản cũ | Thay đổi |
-|---|---|---|
-| 2.1 Return predictability, the factor zoo and data mining | 2.1 cũ | **Giữ** hai đoạn đầu, rút câu về "linear form" (chuyển sang 2.3). **Thêm** đoạn khai thác dữ liệu có hệ thống và EB (đối thủ trực tiếp) |
-| 2.2 Decay and persistence of signals | 2.5 cũ | **Chuyển lên** trước, **giữ** McLean–Pontiff, Bowles, Chen–Velikov. **Thêm** giải thích suy giảm sau 2004 (Chordia, Peng) để dẫn tới cách chia dev / holdout. Bỏ `\cite{Chen}` lỗi |
-| 2.3 Machine learning in asset pricing | 2.2 cũ | **Giữ** hai đoạn, rút gọn câu cuối, thêm câu nối với bài toán chọn chiến lược |
-| 2.4 Sequence and foundation models for financial time series | 2.3 cũ | **Giữ** LSTM và FinCast, **rút** GNN còn một câu, **thêm** Chronos và TimesFM, **sửa** câu lặp "disconnected from one another" |
-| 2.5 Cross-sectional attention and set-based learning | 2.4 cũ | **Viết lại**: bỏ hai công thức AIPM, **bỏ** khẳng định "khác AIPM vì chỉ attention theo thời gian" (không còn đúng vì mô hình có ISAB). **Thêm** Set Transformer |
-| 2.6 Research gap and contribution | 2.6 cũ | **Viết lại**: ba khoảng trống khớp ba đóng góp; bỏ "No prior study…", bỏ hứa "interpretability" và ba mô hình đối chứng (i, ii, iii) không còn đúng; không nêu kết quả |
-
-Độ dài: khoảng 1.500 từ (bản cũ khoảng 1.900).
+**BibTeX:** sáu mục mới (`efron1973stein`, `chen2022open`, `chordia2014have`, `peng2005learning`, `ansari2024chronos`, `das2024decoder`) đã có trong `sn-bibliography.bib` trên Overleaf (mình đã kiểm tra). Nếu bạn paste lại `.bib` gốc thì thêm lại từ phần BibTeX cuối file này.
 
 ---
 
-## Bản tiếng Anh (paste vào LaTeX)
+## Sửa 1 — Thêm lời dẫn ngay sau tiêu đề mục 2
+
+**Tìm:**
+
+```latex
+\section{Literature Review}\label{sec2}
+```
+
+**Thay bằng** (giữ dòng cũ, thêm đoạn dẫn bên dưới):
 
 ```latex
 \section{Literature Review}\label{sec2}
 
-We review the literature from the broad question to the specific method. Section \ref{subsec2_1} covers return predictability and data mining, Section \ref{subsec2_2} the decay of predictability, Sections \ref{subsec2_3} to \ref{subsec2_5} the modeling tools that we build on, and Section \ref{subsec2_6} the gap that this study addresses.
+We review the literature from the broad question of return predictability to the specific modeling tools that we build on, and we end with the gap that this study addresses.
+```
 
-\subsection{Return predictability, the factor zoo and data mining}\label{subsec2_1}
+*Tiếng Việt:* Ta điểm lại tài liệu từ câu hỏi rộng về khả năng dự báo lợi suất đến các công cụ mô hình cụ thể mà ta dựa vào, và kết thúc ở khoảng trống mà nghiên cứu này giải quyết.
 
-Modern asset pricing theory originates from the Capital Asset Pricing Model \cite{sharpe1964capital} and the Arbitrage Pricing Theory \cite{ross1978current}, later extended to a dynamic, multi-period setting by \cite{merton1973intertemporal}. These models represent expected returns as a linear function of exposure to a small number of systematic risk factors. Over subsequent decades, empirical research documented an ever-expanding array of return predictors, spanning global firm-level characteristics \cite{jensen2023there}, time-varying macroeconomic and market-wide state variables \cite{farmer2023pockets}, and hundreds of candidate risk factors collectively formalized as the factor zoo \cite{feng2020taming}.
+---
 
-This proliferation of predictors has raised serious methodological concerns. Standard hypothesis-testing procedures do not account for the multiple-testing problem inherent in searching over hundreds of candidate factors, which inflates the likelihood of spurious findings \cite{harvey2016and, chen2025t}. Related work questions whether published anomalies replicate reliably out of sample across international markets \cite{jensen2023there}, and whether peer-reviewed economic theory helps identify factors with genuine predictive power, as opposed to factors that simply survived a data-mining search \cite{chen2023does}.
+## Sửa 2 — Mục 2.1: bỏ câu khẳng định chưa có bằng chứng, nối thẳng sang câu hỏi
 
-A recent response is to mine data rigorously rather than less. \citet{chen2025highthroughputassetpricing} apply empirical Bayes \cite{efron1973stein} to about 136,000 long-short strategies built by systematically searching accounting ratios, past returns and tickers, following the construction of \citet{yan2017fundamental}. They show that a portfolio of the top 1\% of strategies, selected with information available in real time, earns out-of-sample returns comparable to those of published strategies \cite{chen2022open}, and that naively ranking strategies by their in-sample Sharpe ratio performs similarly. Empirical Bayes forecasts the performance of each strategy from summary statistics of its return history, namely the t-stat, and therefore does not explicitly model how the returns are distributed over time. This makes the forecasting of a strategy's own future performance a question that is logically prior to modeling how any individual factor prices the cross-section.
+**Tìm** (trong đoạn "This proliferation of predictors…", đoạn thứ hai của mục 2.1), từ chữ `Taken together, this literature suggests` đến hết `These concerns also raise a question`:
 
-\subsection{Decay and persistence of signals}\label{subsec2_2}
+```latex
+Taken together, this literature suggests that the explanatory power of linear factor models is constrained less by the number of candidate predictors available than by the rigidity of the linear functional form used to combine them — a limitation that becomes more acute as the number of candidate factors continues to expand and as return-generating processes become more complex. These concerns also raise a question
+```
 
-A closely related literature asks whether a documented signal will continue to earn abnormal returns. \citet{mclean2016does} show that the average return of a documented anomaly declines substantially after its discovery and further after its publication, consistent with a combination of statistical overfitting during the discovery process and gradual arbitrage by investors who learn about the anomaly. \citet{bowles2024anomaly} show that anomaly returns are concentrated in the period immediately following the public release of the underlying information and decay rapidly thereafter, so that even the timing of a signal's profitability is unstable out of sample. \citet{chen2023zeroing} further show that, once publication bias and realistic trading costs are accounted for, the expected returns that remain for most anomalies are considerably smaller than their original in-sample estimates. Taken together, this evidence implies that a signal's in-sample statistics, however large the associated t-stat, are on their own an unreliable guide to its future performance \cite{harvey2016and}.
+**Thay bằng:**
 
-The decline is not uniform over time. \citet{chen2025highthroughputassetpricing} find that the returns of data-mined strategies are concentrated in accounting strategies and in the period before 2004. They interpret this pattern as consistent with limited attention and the slow incorporation of information into prices \cite{peng2005learning, hirshleifer2003limited, barber2008all}, and they associate the later decline with the rise of information technology \cite{chordia2014have}. This structural break motivates evaluating a forecasting method separately before and after 2004, as we do in Section \ref{sec4}.
+```latex
+Taken together, these concerns raise a question
+```
 
-\subsection{Machine learning in asset pricing}\label{subsec2_3}
+*Tiếng Việt:* Bỏ nhận định "sức giải thích của mô hình nhân tố tuyến tính bị giới hạn bởi dạng hàm hơn là số biến" vì chưa có nguồn; câu nối trực tiếp sang "câu hỏi đi trước mô hình hoá từng nhân tố".
 
-To address the limitations of linear specifications, subsequent research applies machine learning (ML) and deep learning (DL) methods to the cross-section of expected returns. \citet{gu2020empirical} show that non-linear ML models, including regularized regressions, tree ensembles and neural networks, substantially outperform traditional linear benchmarks in out-of-sample return prediction. Related approaches compress large characteristic sets into lower-dimensional latent factors using autoencoders \cite{gu2021autoencoder, chen2024deep} and kernel-based regularization \cite{kozak2020shrinking}, while nonparametric techniques allow characteristic-return relationships to take flexible forms without imposing rigid functional structures \cite{freyberger2020dissecting, avramov2023machine}.
+---
 
-A more recent line of work examines why increasing model complexity does not necessarily lead to overfitting in return prediction, a phenomenon termed the ``virtue of complexity'': highly parameterized models can generalize well out of sample even when the number of parameters greatly exceeds the number of observations \cite{kelly2024virtue}. This insight has motivated specialized architectures, including panel regression trees \cite{cong2025growing}, multilayer perceptrons applied to large-cap equities \cite{lai2025multilayer} and deep statistical arbitrage models \cite{guijarro2025deep}. Most of these architectures process each input independently through static, feedforward transformations, and they typically summarize an input history with a single fixed-form operation, such as a terminal hidden state or an unweighted average. They are also designed to forecast returns of assets or portfolios, rather than to choose among thousands of strategies whose performance is only observed through noisy return histories.
+## Sửa 3 — Mục 2.1: thêm một đoạn về khai thác dữ liệu chặt chẽ và empirical Bayes
 
-\subsection{Sequence and foundation models for financial time series}\label{subsec2_4}
+**Tìm** (cuối mục 2.1, kết thúc đoạn):
 
-Because asset prices are sequential, recurrent networks and Long Short-Term Memory (LSTM) networks were for some time the standard approach to financial sequence modeling \cite{yu2020stock}, although they are known to struggle with long-range dependencies. Graph-based models extend this view across assets, representing markets as graphs to capture comovement and spillovers \cite{wu2020connecting, chen2018incorporating}.
+```latex
+how reliably can its own future performance be forecast at all?\\
+```
 
-A more recent line of research develops large-scale, pretrained time-series foundation models. General-purpose models such as Chronos \cite{ansari2024chronos} and TimesFM \cite{das2024decoder} are pretrained on large collections of public time series and forecast new series in a zero-shot manner. \citet{zhu2025fincast} introduce FinCast, a one-billion-parameter decoder-only Transformer with a sparse Mixture-of-Experts architecture, pretrained on more than 20 billion time points and designed for financial time series, using learnable frequency embeddings and a joint Point-Quantile loss. FinCast achieves strong zero-shot forecasting performance across financial domains and sampling frequencies without domain-specific fine-tuning.
+**Thay bằng** (giữ nguyên dòng trên, thêm một đoạn mới ngay sau nó, cách một dòng trống):
 
-These models are pretrained to minimize a generic forecasting error, so the representation that they produce is task-agnostic and is not optimized to identify which parts of a series are diagnostic of its future performance. They also offer no mechanism for combining the learned representation with the static diagnostics that empirical researchers conventionally use to judge a signal, such as the in-sample t-stat and mean return \cite{harvey2016and, chen2025t}, so the two sources of information remain disconnected.
+```latex
+how reliably can its own future performance be forecast at all?\\
 
-\subsection{Cross-sectional attention and set-based learning}\label{subsec2_5}
+A recent response is to mine data rigorously rather than less. \citet{chen2025highthroughputassetpricing} apply empirical Bayes \cite{efron1973stein} to about 136,000 long-short strategies built by systematically searching accounting ratios, past returns and tickers, following the construction of \citet{yan2017fundamental}. They show that a portfolio of the top 1\% of strategies, selected with information available in real time, earns out-of-sample returns comparable to those of published strategies \cite{chen2022open}, and that naively ranking strategies by their in-sample Sharpe ratio performs similarly. Empirical Bayes forecasts the performance of each strategy from summary statistics of its return history, namely the t-stat, and therefore does not explicitly model how the returns are distributed over time.\\
+```
 
-Attention mechanisms offer a way to weight information adaptively. Rather than summarizing a sequence with its last hidden state or an unweighted average, attention-based pooling assigns data-dependent weights to different time steps \cite{vaswani2017attention}. In finance, \citet{wood2021trading} combine attention with an LSTM backbone to weight past time steps of a trading signal, and \citet{ma2023attention} show that transformer attention in an asset-pricing context can yield economically interpretable weightings.
+*Tiếng Việt:* Một cách đáp lại gần đây là khai thác dữ liệu chặt chẽ chứ không phải ít đi. Chen & Dim áp dụng empirical Bayes (Efron & Morris) cho khoảng 136.000 chiến lược long–short tạo bằng tìm kiếm có hệ thống trên tỷ số kế toán, lợi suất quá khứ và mã cổ phiếu, theo cách xây dựng của Yan & Zheng. Họ cho thấy danh mục top 1%, chọn bằng thông tin có sẵn theo thời gian thực, cho lợi suất ngoài mẫu tương đương các chiến lược đã công bố (Chen & Zimmermann), và việc xếp hạng đơn giản theo Sharpe trong mẫu cũng cho kết quả tương tự. Empirical Bayes dự báo hiệu quả từng chiến lược từ các thống kê tóm tắt của lịch sử lợi suất, cụ thể là t-stat, nên không mô hình hoá tường minh việc lợi suất phân bố theo thời gian.
 
-Attention has also been applied across assets. \citet{kelly2025artificial} propose the Artificial Intelligence Pricing Model (AIPM), which places a Transformer within the stochastic discount factor so that portfolio weights depend on the characteristics of the entire asset universe rather than on each asset's own characteristics alone, consistent with limited-attention theories of information processing \cite{hirshleifer2003limited, barber2008all}. AIPM is estimated end to end within a cross-sectional pricing objective on firm characteristics, and it does not use a pretrained temporal backbone.
+---
 
-Selecting strategies is likewise a cross-sectional problem, because a strategy is chosen only if it looks attractive relative to the other strategies of the same year. Full self-attention over tens of thousands of strategies is costly, and the Set Transformer \cite{lee2019set} addresses this with induced set attention blocks, which route the interaction between set elements through a small number of learned inducing points. To our knowledge, such set-based attention has not been applied to the cross-section of long-short strategies.
+## Sửa 4 — Mục 2.2: thêm một câu cuối đoạn "A more recent line of work…"
 
-\subsection{Research gap and contribution}\label{subsec2_6}
+**Tìm** (cuối đoạn thứ hai của mục 2.2):
 
-The literature reviewed above leaves three gaps. First, rigorous data mining and naive mining rank strategies with summary statistics of their return histories \cite{chen2025highthroughputassetpricing}, whereas pretrained time-series foundation models can represent the full return sequence, but have not, to our knowledge, been used to forecast the out-of-sample performance of long-short strategies. Second, choosing the best strategies depends on how a strategy compares with its peers in the same year, yet the existing temporal and cross-sectional attention models have not been combined for this purpose. Third, evidence on predictability must be obtained without look-ahead bias and compared with empirical Bayes and naive mining through out-of-sample portfolio tests, which requires a training procedure that forecasts every year using only earlier data.
+```latex
+rather than learning which periods of that history are most informative for the prediction task at hand.\\
+```
+
+**Thay bằng:**
+
+```latex
+rather than learning which periods of that history are most informative for the prediction task at hand. They are also designed to forecast the returns of assets or portfolios, rather than to choose among thousands of strategies whose performance is only observed through noisy return histories.\\
+```
+
+*Tiếng Việt:* Chúng cũng được thiết kế để dự báo lợi suất của tài sản hoặc danh mục, chứ không phải để chọn giữa hàng nghìn chiến lược mà hiệu quả chỉ quan sát được qua các lịch sử lợi suất nhiễu.
+
+---
+
+## Sửa 5 — Mục 2.3: thêm mô hình nền đa dụng trước câu giới thiệu FinCast
+
+**Tìm:**
+
+```latex
+\citep{zhu2025fincast} introduce FinCast
+```
+
+**Thay bằng** (thêm một câu, và đổi `\citep` thành `\citet` vì đây là chủ ngữ của câu):
+
+```latex
+General-purpose models such as Chronos \cite{ansari2024chronos} and TimesFM \cite{das2024decoder} are pretrained on large collections of public time series and forecast new series in a zero-shot manner. \citet{zhu2025fincast} introduce FinCast
+```
+
+*Tiếng Việt:* Các mô hình đa dụng như Chronos và TimesFM được tiền huấn luyện trên tập lớn chuỗi thời gian công khai và dự báo chuỗi mới theo kiểu zero-shot. Zhu và cộng sự giới thiệu FinCast…
+
+---
+
+## Sửa 6 — Mục 2.3: bỏ câu bị lặp ở cuối mục
+
+**Tìm:**
+
+```latex
+remain disconnected from one another; the two sources of information remain disconnected from one another.
+```
+
+**Thay bằng:**
+
+```latex
+remain disconnected from one another.
+```
+
+*Tiếng Việt:* Bỏ phần lặp "hai nguồn thông tin vẫn tách rời nhau".
+
+---
+
+## Sửa 7 — Mục 2.4: đổi tiêu đề mục con
+
+**Tìm:**
+
+```latex
+\subsection{Attention Mechanisms in the Stochastic Discount Factor}
+```
+
+**Thay bằng:**
+
+```latex
+\subsection{Attention Mechanisms in Asset Pricing and Set-Based Learning}
+```
+
+*Tiếng Việt:* "Cơ chế attention trong định giá tài sản và học trên tập" (vì mục giờ có thêm Set Transformer ở sửa 9).
+
+---
+
+## Sửa 8 — Mục 2.4: sửa hai chỗ không còn đúng (khác biệt với AIPM và "interpretability")
+
+**8a. Tìm** (trong đoạn "AIPM's attention layers, however…"), từ `These architectural differences manifest along two distinct axes` đến hết `\cite{vaswani2017attention}.` (câu ngay trước "A smaller strand of finance applications…"):
+
+```latex
+These architectural differences manifest along two distinct axes: the origin of the underlying representations, and the dimension along which attention operates. On the latter axis, the attention mechanism explored in the present study fundamentally differs from AIPM. Rather than reweighting across assets within a given time period—as captured by AIPM's dynamic, time-varying attention matrix over the cross-section of assets—our framework reweights across temporal periods within a single signal's own historical return trajectory, aligning more closely with the sequence-pooling paradigms of the foundational Transformer architecture \cite{vaswani2017attention}.
+```
+
+**Thay bằng:**
+
+```latex
+These architectural differences concern the origin of the underlying representations and the dimension along which attention operates. AIPM reweights across assets within a given period, whereas attention pooling reweights across the temporal periods of a single series, in line with the sequence-pooling paradigm of the Transformer \cite{vaswani2017attention}. The model of this study uses both dimensions: attention pooling over time within each strategy, and a set-based attention block across the strategies of the same year.
+```
+
+*Tiếng Việt:* Những khác biệt kiến trúc này liên quan đến nguồn gốc của biểu diễn và chiều mà attention hoạt động. AIPM đặt lại trọng số giữa các tài sản trong một kỳ, còn attention pooling đặt lại trọng số giữa các giai đoạn thời gian của một chuỗi, theo mô hình gộp chuỗi của Transformer. Mô hình của bài dùng cả hai chiều: attention pooling theo thời gian trong từng chiến lược, và khối attention trên tập giữa các chiến lược cùng năm.
+
+**8b. Tìm**, từ `Our specific contribution` đến hết `directly motivates the interpretability goals pursued in this study.\\`:
+
+```latex
+Our specific contribution—temporal attention pooling over a single signal's history atop a pretrained foundation model backbone remains, to our knowledge, unexplored in this precise form. Nonetheless, AIPM remains highly relevant: it demonstrates that attention weights, when optimized within an asset-pricing framework, yield transparent and economically meaningful interpretations—a finding that directly motivates the interpretability goals pursued in this study.\\
+```
+
+**Thay bằng:**
+
+```latex
+To our knowledge, combining temporal attention pooling over a single strategy's history with a pretrained foundation model backbone has not been explored in this form. AIPM nonetheless remains relevant: it shows that attention optimized within an asset-pricing framework can be economically meaningful, which supports the use of attention across the cross-section of strategies.\\
+```
+
+*Tiếng Việt:* Theo hiểu biết của chúng tôi, việc kết hợp attention pooling theo thời gian trên lịch sử của một chiến lược với nền mô hình tiền huấn luyện chưa được khảo sát dưới dạng này. Dù vậy AIPM vẫn liên quan: nó cho thấy attention được tối ưu trong khung định giá tài sản có thể có ý nghĩa kinh tế, điều này ủng hộ việc dùng attention trên mặt cắt ngang các chiến lược.
+
+---
+
+## Sửa 9 — Mục 2.4: thêm đoạn về Set Transformer (cơ sở của ISAB ở mục 3.2)
+
+**Tìm** (đúng chuỗi vừa thay ở sửa 8b, nghĩa là cuối mục 2.4):
+
+```latex
+which supports the use of attention across the cross-section of strategies.\\
+```
+
+**Thay bằng** (giữ dòng trên, thêm đoạn mới ngay sau, cách một dòng trống, trước dòng `\subsection{Factor and Anomaly Decay…}`):
+
+```latex
+which supports the use of attention across the cross-section of strategies.\\
+
+Selecting strategies is likewise a cross-sectional problem, because a strategy is chosen only if it looks attractive relative to the other strategies of the same year. Full self-attention over tens of thousands of strategies is costly, and the Set Transformer \cite{lee2019set} addresses this with induced set attention blocks, which route the interaction between set elements through a small number of learned inducing points. To our knowledge, such set-based attention has not been applied to the cross-section of long-short strategies.\\
+```
+
+*Tiếng Việt:* Chọn chiến lược cũng là bài toán mặt cắt ngang, vì một chiến lược chỉ được chọn nếu trông hấp dẫn so với các chiến lược khác cùng năm. Self-attention đầy đủ trên hàng chục nghìn chiến lược rất tốn kém, và Set Transformer giải quyết bằng các khối induced set attention, đưa tương tác giữa các phần tử của tập qua một số ít điểm cảm ứng học được. Theo hiểu biết của chúng tôi, attention trên tập như vậy chưa được áp dụng cho mặt cắt ngang các chiến lược long–short.
+
+---
+
+## Sửa 10 — Mục 2.5: sửa khoá trích dẫn sai
+
+**Tìm:**
+
+```latex
+\cite{Chen}
+```
+
+**Thay bằng:**
+
+```latex
+\cite{chen2025highthroughputassetpricing}
+```
+
+*Tiếng Việt:* Khoá `Chen` không có trong `.bib` nên sẽ báo undefined; khoá đúng là `chen2025highthroughputassetpricing`.
+
+---
+
+## Sửa 11 — Mục 2.5: sửa câu cuối đoạn thứ hai cho khớp mô hình hiện tại
+
+**Tìm:**
+
+```latex
+and has not incorporated learned, attention-weighted representations of a signal's full historical return path of the kind made possible by pretrained time-series foundation models.
+```
+
+**Thay bằng:**
+
+```latex
+and, to our knowledge, has not used learned representations of a signal's full historical return path, such as those made possible by pretrained time-series foundation models.
+```
+
+*Tiếng Việt:* Và theo hiểu biết của chúng tôi chưa dùng các biểu diễn học được của toàn bộ đường lợi suất lịch sử của một tín hiệu, như các biểu diễn mà mô hình nền chuỗi thời gian tiền huấn luyện cho phép.
+
+---
+
+## Sửa 12 — Mục 2.5: thêm đoạn giải thích suy giảm sau 2004
+
+**Tìm** (cuối đoạn đầu của mục 2.5):
+
+```latex
+reinforcing the multiple-testing concerns.\\
+```
+
+**Thay bằng** (giữ dòng trên, thêm đoạn mới ngay sau nó, trước đoạn "Because the number of candidate signals…"):
+
+```latex
+reinforcing the multiple-testing concerns.\\
+
+The decline is not uniform over time. \citet{chen2025highthroughputassetpricing} find that the returns of data-mined strategies are concentrated in accounting strategies and in the period before 2004. They interpret this pattern as consistent with limited attention and the slow incorporation of information into prices \cite{peng2005learning}, and they associate the later decline with the rise of information technology \cite{chordia2014have}. This structural break motivates evaluating a forecasting method separately before and after 2004, as we do in Section \ref{sec4}.\\
+```
+
+*Tiếng Việt:* Sự suy giảm không đồng đều theo thời gian. Chen & Dim thấy lợi suất của các chiến lược khai thác dữ liệu tập trung ở chiến lược kế toán và ở giai đoạn trước 2004. Họ diễn giải mẫu hình này phù hợp với sự chú ý hạn chế và việc thông tin được phản ánh chậm vào giá (Peng), và gắn sự suy giảm sau đó với sự phát triển của công nghệ thông tin (Chordia và cộng sự). Điểm gãy cấu trúc này là lý do ta đánh giá phương pháp dự báo riêng cho trước và sau 2004, như ở mục 4.
+
+---
+
+## Sửa 13 — Mục 2.6: thay cả mục con "Research Gap"
+
+Mục con cuối đã lệch nhiều nhất, nên thay cả mục (một lần). **Xoá** từ dòng `\subsection{Research Gap: Toward an Attention-Augmented FinCast Framework for Signal Persistence Forecasting}` đến hết mục 2 (dòng cuối kết thúc bằng "…to forecasting accuracy and interpretability."), rồi **paste:**
+
+```latex
+\subsection{Research Gap and Contribution}
+
+The literature reviewed above leaves three gaps. First, rigorous data mining and naive mining rank strategies with summary statistics of their return histories \cite{chen2025highthroughputassetpricing}, whereas pretrained time-series foundation models can represent the full return sequence, but have not, to our knowledge, been used to forecast the out-of-sample performance of long-short strategies. Second, choosing the best strategies depends on how a strategy compares with its peers in the same year, yet the existing temporal and cross-sectional attention models have not been combined for this purpose. Third, evidence on predictability must be obtained without look-ahead bias and compared with empirical Bayes and naive mining through out-of-sample portfolio tests, which requires a training procedure that forecasts every year using only earlier data.\\
 
 To address these gaps, this study forecasts the out-of-sample mean return of equal-weighted accounting strategies for each year from 1983 to 2020. The proposed model represents each strategy's return history with a frozen pretrained FinCast encoder compressed by principal component analysis, summarizes it with a Bi-LSTM and attention pooling, lets the strategies of the same year interact through an induced set attention block, and combines the result with the t-stat and mean return. It is trained with a label that expresses future performance relative to the year and to the t-stat, and it is re-estimated every year. We compare it with empirical Bayes mining and naive mining using the portfolio tests of \cite{chen2025highthroughputassetpricing}, and we report which components contribute to its performance.
 ```
 
+*Tiếng Việt:* **2.6 Khoảng trống nghiên cứu và đóng góp.** Tài liệu ở trên để lại ba khoảng trống. Thứ nhất, khai thác dữ liệu chặt chẽ và khai thác đơn giản xếp hạng chiến lược bằng các thống kê tóm tắt của lịch sử lợi suất (Chen & Dim), trong khi các mô hình nền chuỗi thời gian tiền huấn luyện có thể biểu diễn toàn bộ chuỗi lợi suất, nhưng theo hiểu biết của chúng tôi chưa được dùng để dự báo hiệu quả ngoài mẫu của các chiến lược long–short. Thứ hai, chọn chiến lược tốt nhất phụ thuộc vào việc chiến lược so với các chiến lược cùng năm ra sao, nhưng các mô hình attention theo thời gian và theo mặt cắt ngang hiện có chưa được kết hợp cho mục đích này. Thứ ba, bằng chứng về khả năng dự báo phải đạt được mà không có look-ahead bias và được so với empirical Bayes và khai thác đơn giản qua các phép thử danh mục ngoài mẫu, đòi hỏi một quy trình huấn luyện dự báo mỗi năm chỉ bằng dữ liệu trước đó.
+
+Để giải quyết các khoảng trống này, nghiên cứu dự báo lợi suất trung bình ngoài mẫu của các chiến lược kế toán chia đều cho từng năm từ 1983 đến 2020. Mô hình đề xuất biểu diễn lịch sử lợi suất của mỗi chiến lược bằng bộ mã hoá FinCast tiền huấn luyện đóng băng được nén bằng PCA, tóm tắt bằng Bi-LSTM và attention pooling, cho các chiến lược cùng năm tương tác qua khối induced set attention, và kết hợp kết quả với t-stat và lãi trung bình. Mô hình được huấn luyện với nhãn biểu diễn hiệu quả tương lai so với năm và so với t-stat, và được học lại mỗi năm. Ta so sánh với empirical Bayes và khai thác đơn giản bằng các phép thử danh mục của Chen & Dim, và báo thành phần nào đóng góp vào hiệu quả của mô hình.
+
 ---
 
-## BibTeX cần thêm vào `overleaf_project/sn-bibliography.bib`
+## BibTeX (chỉ thêm nếu `.bib` của bạn chưa có)
 
-Đã đối chiếu qua CrossRef (4 mục đầu) và arXiv (2 mục cuối, đăng dạng preprint).
+Đã đối chiếu CrossRef (bốn mục đầu) và arXiv (hai mục cuối, đăng dạng preprint).
 
 ```bibtex
 @article{efron1973stein,
@@ -138,62 +342,13 @@ To address these gaps, this study forecasts the out-of-sample mean return of equ
 
 ---
 
-## Bản tiếng Việt (dịch sát bản tiếng Anh, để bạn đọc, không paste)
+## Thứ tự làm và kiểm tra
 
-### 2 Tổng quan tài liệu
+1. Làm **sửa 1 đến 6** (các sửa ngắn, an toàn), recompile.
+2. Làm **sửa 7 đến 9** (mục 2.4), recompile.
+3. Làm **sửa 10 đến 12** (mục 2.5), recompile.
+4. Làm **sửa 13** (mục 2.6), recompile.
+5. Trước khi làm, **đừng comment cả vùng**: chỉ chọn đúng đoạn cần thay, để không làm mất dòng `\section{Methodology}` và khối hình kiến trúc ngay sau mục 2.
+6. Sửa xong, tìm trong mục 2 các chữ `interpretab`, `Chen}`, `No prior study`: không được còn.
 
-Ta điểm lại tài liệu từ câu hỏi rộng đến phương pháp cụ thể. Mục 2.1 nói về khả năng dự báo lợi suất và khai thác dữ liệu, mục 2.2 về sự suy giảm của khả năng dự báo, các mục 2.3 đến 2.5 về các công cụ mô hình mà ta dựa vào, và mục 2.6 về khoảng trống mà nghiên cứu này giải quyết.
-
-#### 2.1 Return predictability, the factor zoo and data mining (Khả năng dự báo lợi suất, "vườn thú nhân tố" và khai thác dữ liệu)
-
-Lý thuyết định giá tài sản hiện đại bắt nguồn từ Capital Asset Pricing Model (Sharpe) và Arbitrage Pricing Theory (Ross), sau đó được Merton mở rộng sang bối cảnh động nhiều kỳ. Các mô hình này biểu diễn lợi suất kỳ vọng là hàm tuyến tính của mức phơi nhiễm với một số ít nhân tố rủi ro hệ thống. Qua nhiều thập kỷ, nghiên cứu thực nghiệm ghi nhận ngày càng nhiều biến dự báo lợi suất: các đặc trưng cấp doanh nghiệp toàn cầu (Jensen và cộng sự), các biến trạng thái vĩ mô và thị trường thay đổi theo thời gian (Farmer và cộng sự), và hàng trăm nhân tố rủi ro ứng viên được gọi chung là factor zoo (Feng và cộng sự).
-
-Sự bùng nổ các biến dự báo gây ra những lo ngại phương pháp nghiêm trọng. Các quy trình kiểm định giả thuyết chuẩn không tính đến vấn đề kiểm định nhiều lần (multiple testing) vốn có khi tìm trong hàng trăm nhân tố ứng viên, làm tăng khả năng có phát hiện giả (Harvey và cộng sự; Chen). Các nghiên cứu liên quan đặt câu hỏi liệu các anomaly đã công bố có tái lập đáng tin ngoài mẫu ở các thị trường quốc tế không, và liệu lý thuyết kinh tế đã qua bình duyệt có giúp nhận ra các nhân tố có khả năng dự báo thật, thay vì chỉ là các nhân tố vừa sống sót qua một cuộc tìm kiếm dữ liệu (Chen, Lopez-Lira, Zimmermann).
-
-Một cách đáp lại gần đây là khai thác dữ liệu một cách chặt chẽ chứ không phải ít đi. Chen & Dim áp dụng empirical Bayes (Efron & Morris) cho khoảng 136.000 chiến lược long–short được tạo bằng cách tìm kiếm có hệ thống trên các tỷ số kế toán, lợi suất quá khứ và mã cổ phiếu, theo cách xây dựng của Yan & Zheng. Họ cho thấy danh mục top 1% chiến lược, chọn bằng thông tin có sẵn theo thời gian thực, cho lợi suất ngoài mẫu tương đương các chiến lược đã công bố (Chen & Zimmermann), và việc xếp hạng đơn giản theo Sharpe trong mẫu cũng cho kết quả tương tự. Empirical Bayes dự báo hiệu quả của từng chiến lược từ các thống kê tóm tắt của lịch sử lợi suất, cụ thể là t-stat, nên không mô hình hoá tường minh việc lợi suất phân bố theo thời gian như thế nào. Điều này làm cho việc dự báo hiệu quả tương lai của chính một chiến lược là câu hỏi đi trước, về mặt logic, việc mô hình hoá từng nhân tố định giá mặt cắt ngang ra sao.
-
-#### 2.2 Decay and persistence of signals (Sự suy giảm và độ bền của tín hiệu)
-
-Một dòng tài liệu liên quan chặt chẽ hỏi liệu một tín hiệu đã được ghi nhận có tiếp tục sinh lợi bất thường hay không. McLean & Pontiff cho thấy lợi suất trung bình của một anomaly đã ghi nhận giảm mạnh sau khi được phát hiện và giảm thêm sau khi công bố, phù hợp với sự kết hợp của overfitting thống kê trong quá trình phát hiện và việc nhà đầu tư dần kinh doanh chênh lệch giá khi biết đến anomaly. Bowles và cộng sự cho thấy lợi suất anomaly tập trung ngay sau khi thông tin được công bố và suy giảm nhanh sau đó, nên ngay cả thời điểm sinh lợi của tín hiệu cũng không ổn định ngoài mẫu. Chen & Velikov chỉ ra thêm rằng khi tính đến thiên lệch công bố và chi phí giao dịch thực tế, lợi suất kỳ vọng còn lại của đa số anomaly nhỏ hơn đáng kể so với ước lượng trong mẫu ban đầu. Gộp lại, bằng chứng này hàm ý các thống kê trong mẫu của một tín hiệu, dù t-stat lớn đến đâu, tự chúng là chỉ dẫn không đáng tin cho hiệu quả tương lai (Harvey và cộng sự).
-
-Sự suy giảm không đồng đều theo thời gian. Chen & Dim thấy lợi suất của các chiến lược khai thác dữ liệu tập trung ở chiến lược kế toán và ở giai đoạn trước 2004. Họ diễn giải mẫu hình này phù hợp với sự chú ý hạn chế và việc thông tin được phản ánh chậm vào giá (Peng; Hirshleifer & Teoh; Barber & Odean), và gắn sự suy giảm sau đó với sự phát triển của công nghệ thông tin (Chordia và cộng sự). Điểm gãy cấu trúc này là lý do ta đánh giá phương pháp dự báo riêng cho trước và sau 2004, như ở mục 4.
-
-#### 2.3 Machine learning in asset pricing (Học máy trong định giá tài sản)
-
-Để giải quyết hạn chế của các mô hình tuyến tính, các nghiên cứu sau đó áp dụng học máy (ML) và học sâu (DL) cho mặt cắt ngang của lợi suất kỳ vọng. Gu và cộng sự cho thấy các mô hình ML phi tuyến, gồm hồi quy có chính quy hoá, rừng cây và mạng nơ-ron, vượt đáng kể các chuẩn tuyến tính trong dự báo lợi suất ngoài mẫu. Các cách tiếp cận liên quan nén tập đặc trưng lớn thành các nhân tố tiềm ẩn chiều thấp bằng autoencoder (Gu và cộng sự; Chen và cộng sự) và chính quy hoá dựa trên kernel (Kozak và cộng sự), trong khi các kỹ thuật phi tham số cho phép quan hệ giữa đặc trưng và lợi suất có dạng linh hoạt mà không áp cấu trúc hàm cứng nhắc (Freyberger và cộng sự; Avramov và cộng sự).
-
-Một dòng gần đây xem xét vì sao tăng độ phức tạp mô hình không nhất thiết dẫn đến overfitting khi dự báo lợi suất, hiện tượng gọi là "virtue of complexity": các mô hình nhiều tham số có thể tổng quát hoá tốt ngoài mẫu dù số tham số vượt xa số quan sát (Kelly và cộng sự). Điều này thúc đẩy các kiến trúc chuyên biệt như cây hồi quy dạng panel (Cong và cộng sự), perceptron nhiều lớp áp dụng cho cổ phiếu vốn hoá lớn (Lai và cộng sự) và các mô hình kinh doanh chênh lệch giá thống kê sâu (Guijarro và cộng sự). Phần lớn các kiến trúc này xử lý từng đầu vào độc lập qua các phép biến đổi tĩnh, và thường tóm tắt lịch sử đầu vào bằng một phép toán dạng cố định, như trạng thái ẩn cuối hoặc trung bình không trọng số. Chúng cũng được thiết kế để dự báo lợi suất của tài sản hoặc danh mục, chứ không phải để chọn giữa hàng nghìn chiến lược mà hiệu quả chỉ quan sát được qua các lịch sử lợi suất nhiễu.
-
-#### 2.4 Sequence and foundation models for financial time series (Mô hình chuỗi và mô hình nền cho chuỗi thời gian tài chính)
-
-Vì giá tài sản là chuỗi tuần tự, mạng hồi quy và mạng Long Short-Term Memory (LSTM) từng là cách tiếp cận chuẩn cho mô hình hoá chuỗi tài chính (Yu & Yan), dù được biết là khó với phụ thuộc xa. Các mô hình dựa trên đồ thị mở rộng góc nhìn này sang nhiều tài sản, biểu diễn thị trường bằng đồ thị để nắm bắt đồng biến động và lan truyền (Wu và cộng sự; Chen và cộng sự).
-
-Một dòng nghiên cứu gần đây phát triển các mô hình nền chuỗi thời gian tiền huấn luyện quy mô lớn. Các mô hình đa dụng như Chronos (Ansari và cộng sự) và TimesFM (Das và cộng sự) được tiền huấn luyện trên tập lớn chuỗi thời gian công khai và dự báo chuỗi mới theo kiểu zero-shot. Zhu và cộng sự giới thiệu FinCast, một Transformer decoder-only một tỷ tham số với kiến trúc Mixture-of-Experts thưa, được tiền huấn luyện trên hơn 20 tỷ điểm thời gian và thiết kế cho chuỗi thời gian tài chính, dùng embedding tần suất học được và hàm mất mát Point-Quantile kết hợp. FinCast đạt hiệu quả dự báo zero-shot mạnh trên nhiều lĩnh vực tài chính và tần suất lấy mẫu mà không cần tinh chỉnh riêng.
-
-Các mô hình này được tiền huấn luyện để cực tiểu sai số dự báo chung, nên biểu diễn chúng tạo ra là biểu diễn không gắn với nhiệm vụ và không được tối ưu để nhận ra phần nào của chuỗi có giá trị chẩn đoán cho hiệu quả tương lai. Chúng cũng không có cơ chế kết hợp biểu diễn đã học với các thống kê tĩnh mà nhà nghiên cứu thực nghiệm thường dùng để đánh giá một tín hiệu, như t-stat và lãi trung bình trong mẫu (Harvey và cộng sự; Chen), nên hai nguồn thông tin vẫn tách rời nhau.
-
-#### 2.5 Cross-sectional attention and set-based learning (Attention mặt cắt ngang và học trên tập)
-
-Cơ chế attention là một cách trọng số hoá thông tin thích nghi. Thay vì tóm tắt một chuỗi bằng trạng thái ẩn cuối hoặc trung bình không trọng số, attention pooling gán trọng số phụ thuộc dữ liệu cho các bước thời gian khác nhau (Vaswani và cộng sự). Trong tài chính, Wood và cộng sự kết hợp attention với nền LSTM để đặt trọng số cho các bước thời gian quá khứ của một tín hiệu giao dịch, và Ma và cộng sự cho thấy attention kiểu transformer trong bối cảnh định giá tài sản có thể cho trọng số diễn giải được về mặt kinh tế.
-
-Attention cũng đã được áp dụng giữa các tài sản. Kelly và cộng sự đề xuất Artificial Intelligence Pricing Model (AIPM), đặt một Transformer trong stochastic discount factor để trọng số danh mục phụ thuộc vào đặc trưng của toàn bộ vũ trụ tài sản chứ không chỉ đặc trưng của từng tài sản, phù hợp với các lý thuyết chú ý hạn chế trong xử lý thông tin (Hirshleifer & Teoh; Barber & Odean). AIPM được ước lượng đầu-cuối trong một mục tiêu định giá mặt cắt ngang trên đặc trưng doanh nghiệp, và không dùng nền thời gian tiền huấn luyện.
-
-Chọn chiến lược cũng là bài toán mặt cắt ngang, vì một chiến lược chỉ được chọn nếu trông hấp dẫn so với các chiến lược khác cùng năm. Self-attention đầy đủ trên hàng chục nghìn chiến lược rất tốn kém, và Set Transformer (Lee và cộng sự) giải quyết bằng các khối induced set attention, đưa tương tác giữa các phần tử của tập qua một số ít điểm cảm ứng học được. Theo hiểu biết của chúng tôi, attention trên tập như vậy chưa được áp dụng cho mặt cắt ngang các chiến lược long–short.
-
-#### 2.6 Research gap and contribution (Khoảng trống nghiên cứu và đóng góp)
-
-Tài liệu ở trên để lại ba khoảng trống. Thứ nhất, khai thác dữ liệu chặt chẽ và khai thác đơn giản xếp hạng chiến lược bằng các thống kê tóm tắt của lịch sử lợi suất (Chen & Dim), trong khi các mô hình nền chuỗi thời gian tiền huấn luyện có thể biểu diễn toàn bộ chuỗi lợi suất, nhưng theo hiểu biết của chúng tôi chưa được dùng để dự báo hiệu quả ngoài mẫu của các chiến lược long–short. Thứ hai, chọn chiến lược tốt nhất phụ thuộc vào việc chiến lược so với các chiến lược cùng năm ra sao, nhưng các mô hình attention theo thời gian và theo mặt cắt ngang hiện có chưa được kết hợp cho mục đích này. Thứ ba, bằng chứng về khả năng dự báo phải đạt được mà không có look-ahead bias và được so với empirical Bayes và khai thác đơn giản qua các phép thử danh mục ngoài mẫu, đòi hỏi một quy trình huấn luyện dự báo mỗi năm chỉ bằng dữ liệu trước đó.
-
-Để giải quyết các khoảng trống này, nghiên cứu dự báo lợi suất trung bình ngoài mẫu của các chiến lược kế toán chia đều cho từng năm từ 1983 đến 2020. Mô hình đề xuất biểu diễn lịch sử lợi suất của mỗi chiến lược bằng bộ mã hoá FinCast tiền huấn luyện đóng băng được nén bằng PCA, tóm tắt bằng Bi-LSTM và attention pooling, cho các chiến lược cùng năm tương tác qua khối induced set attention, và kết hợp kết quả với t-stat và lãi trung bình. Mô hình được huấn luyện với nhãn biểu diễn hiệu quả tương lai so với năm và so với t-stat, và được học lại mỗi năm. Ta so sánh với empirical Bayes và khai thác đơn giản bằng các phép thử danh mục của Chen & Dim, và báo thành phần nào đóng góp vào hiệu quả của mô hình.
-
----
-
-## Cần bạn biết trước khi paste
-
-1. **Mục 2 không nêu kết quả** (đúng guide): kết quả chỉ ở 4, 5, 6. Mục 2.6 chỉ nêu khoảng trống và hướng giải quyết, khớp ba đóng góp ở 6.2.
-2. **Đã bỏ hai thứ không còn đúng với bài:** (a) khẳng định "attention của bài chỉ theo thời gian nên khác AIPM" (mô hình có ISAB, attention giữa các chiến lược), (b) lời hứa phân tích "interpretability" và ba mô hình đối chứng (i, ii, iii) (bài so với EB, naive mining, baseline).
-3. **Cách nói giữ thận trọng:** "to our knowledge" chỉ dùng cho hai nhận định về chưa thấy công trình; không dùng "No prior study". Nhận xét về EB trung lập (chỉ nêu EB dựa vào t-stat).
-4. **Tham chiếu chéo mới** dùng `\ref{subsec2_1}` đến `\ref{subsec2_6}`, `\ref{sec4}`: cần paste đủ mục 4 để không báo undefined (đã có trên Overleaf).
-5. **Sáu mục BibTeX mới** đã đối chiếu (CrossRef: Efron–Morris, Chen–Zimmermann, Chordia và cộng sự, Peng; arXiv: Chronos, TimesFM đăng dạng preprint). Các khoá còn lại đã có sẵn trong `.bib`.
-6. **Các khoá trong `.bib` nhưng không dùng ở mục 2 mới:** `bailey2014deflated`, `fukasawa2026predicting`, `zong2025stock`, `zhu2025mci` (dự báo giá cổ phiếu bằng cross-attention). Nếu muốn nhắc dòng cross-attention thì có thể thêm một câu ở 2.5; hiện tôi không đưa vào để mục ngắn gọn và đúng trọng tâm.
-7. Chưa biên dịch LaTeX.
+Sau khi bạn làm xong, mình tải lại file từ Overleaf để đối chiếu từng sửa đổi.
