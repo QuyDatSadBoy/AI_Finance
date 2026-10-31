@@ -1,12 +1,12 @@
 # Hướng dẫn viết paper (đọc trước khi viết bất kỳ mục nào)
 
-Áp dụng cho mọi agent và người viết bài trong `docs/writing_paper/`. Bài đang viết: `sn-article.tex` (mẫu Springer Nature). Người dùng chép nội dung vào Overleaf, nên **không sửa `sn-article.tex`** trừ khi được yêu cầu. Mỗi mục viết ra một file `<số mục>_<tên>_PASTE.md`.
+Áp dụng cho mọi agent và người viết bài trong `docs/writing_paper/`. Bài đang viết: `overleaf_project/sn-article.tex` (mẫu Springer Nature). Người dùng chép nội dung vào Overleaf, nên **không sửa `overleaf_project/sn-article.tex`** trừ khi được yêu cầu. Mỗi mục viết ra một file `<số mục>_<tên>_PASTE.md`.
 
 ## 0. Quy tắc bắt buộc
 
 1. **Đọc paper gốc trước khi viết:** `ChenDim2023_HighThroughputAssetPricing_2311.10685.pdf` (cùng thư mục; bản đầy đủ ở `docs/papers/`). Paper này đã được chấp nhận, nên cách họ dùng từ, lập luận và hiểu về tài chính là chuẩn để học. Đọc kỹ phần mình sắp viết (Introduction, mục 2 Data and Methods, mục 3 Performance) rồi mới viết. Không viết từ trí nhớ.
 2. **Học cách viết, không chép.** Học thuật ngữ, cấu trúc lập luận, giọng văn. Không sao chép câu.
-3. **Bám bản nháp của người dùng** trong `sn-article.tex`: giữ câu đã tốt, chỉ sửa chỗ sai, thiếu chiều sâu hoặc không đúng mô hình chốt. Không viết lại hoàn toàn khi chưa được yêu cầu.
+3. **Bám bản nháp của người dùng** trong `overleaf_project/sn-article.tex`: giữ câu đã tốt, chỉ sửa chỗ sai, thiếu chiều sâu hoặc không đúng mô hình chốt. Không viết lại hoàn toàn khi chưa được yêu cầu.
 4. **Khớp mô hình chốt:** số liệu, ký hiệu, kiến trúc lấy từ mã nguồn (`code/model.py`, `train.py`, `data.py`) và `docs/5_FINAL_MODEL_VS_BASELINE.md`. Không bịa số. Không đưa kết quả chưa có.
 5. **Mỗi file PASTE.md gồm:** (a) hướng dẫn chép vào đâu, (b) khối LaTeX tiếng Anh để paste, (c) bản tiếng Việt dịch sát để người dùng đọc hiểu, (d) BibTeX cần thêm, (e) danh sách cần kiểm tra. Trả lời người dùng bằng tiếng Việt.
 6. **Trích dẫn phải xác minh** (MCP `arxiv`, `paper-search`, hoặc PDF trong `docs/papers/`). Chỉ dùng key có trong `.bib` của bài. Nếu thêm nguồn mới, đưa BibTeX vào file PASTE.md và nói rõ chỗ nào chưa xác minh.

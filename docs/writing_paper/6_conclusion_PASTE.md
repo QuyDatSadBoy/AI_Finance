@@ -4,7 +4,7 @@ Mục 6 **tóm lại, không lặp mục 5**: chỉ 3 con số chính, không b�
 
 ## Cách dùng
 
-1. Trong `sn-article.tex`, xoá `\section{Conclusion}\label{sec6}` cùng đoạn mẫu bên dưới nó (đến ngay trước `\section{Algorithms, Program codes and Listings}`), rồi paste khối LaTeX bên dưới.
+1. Trong `overleaf_project/sn-article.tex`, xoá `\section{Conclusion}\label{sec6}` cùng đoạn mẫu bên dưới nó (đến ngay trước `\section{Algorithms, Program codes and Listings}`), rồi paste khối LaTeX bên dưới.
 2. Không có BibTeX mới.
 3. **Introduction hiện cũ:** đoạn đóng góp và đoạn "The remainder of this paper" trong `\section{Introduction}` còn mô tả cấu trúc và kết quả cũ (có `[PLACEHOLDER]`, "state-of-the-art", "diễn giải attention weights", "Section 5 discusses…"). Mục 6 này **không** tuyên bố những điều đó. Khi viết lại Introduction, hãy sửa cho khớp (mình làm được nếu bạn yêu cầu).
 

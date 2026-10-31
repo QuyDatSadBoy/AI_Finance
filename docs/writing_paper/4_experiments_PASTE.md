@@ -4,9 +4,9 @@ Bố cục giữ đúng yêu cầu: **4.1 Data → 4.2 Analysis and results → 
 
 ## Cách dùng
 
-1. Trong `sn-article.tex`, xoá từ `\section{Data}\label{sec4}` đến ngay trước `\section{Conclusion}\label{sec6}`, rồi paste khối LaTeX dưới đây, **sau đó paste tiếp khối LaTeX của mục 5** ngay bên dưới.
-2. Thêm BibTeX `ledoit2008robust` vào `sn-bibliography.bib`.
-3. Upload `cumret_top1.png` vào `images/` (hình nằm ở mục 5).
+1. Trong `overleaf_project/sn-article.tex`, xoá từ `\section{Data}\label{sec4}` đến ngay trước `\section{Conclusion}\label{sec6}`, rồi paste khối LaTeX dưới đây, **sau đó paste tiếp khối LaTeX của mục 5** ngay bên dưới.
+2. Thêm BibTeX `ledoit2008robust` vào `overleaf_project/sn-bibliography.bib`.
+3. Hình `cumret_top1.png` (mục 5) đã có trong `overleaf_project/images/`.
 4. Paste 3.1 và 3.2 trước (mục 4 tham chiếu `subsec2`, `subsec3`, `eq:label`). Mục 4 tham chiếu `sec5`, `subsec5_2`, nên phải paste cả mục 5.
 
 ## Cấu trúc của mục 4
@@ -107,7 +107,7 @@ We also removed or replaced ISAB, the Huber loss, the year weights and the $|t|$
 
 ---
 
-## BibTeX cần thêm vào `sn-bibliography.bib`
+## BibTeX cần thêm vào `overleaf_project/sn-bibliography.bib`
 
 Chỉ một mục (đã đối chiếu CrossRef). Các key khác đã có sẵn.
 

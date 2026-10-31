@@ -5,7 +5,7 @@ Mục 5 là **kết quả danh mục**: so sánh tổng thể với EB (5.1), đ
 ## Cách dùng
 
 1. Paste khối LaTeX này **ngay sau khối của mục 4**, trước `\section{Conclusion}\label{sec6}`.
-2. Upload `cumret_top1.png` vào `images/` trên Overleaf.
+2. Hình `cumret_top1.png` đã có trong `overleaf_project/images/`.
 3. Không có BibTeX mới.
 
 ## Cấu trúc của mục 5

@@ -13,7 +13,7 @@ Dự báo lợi suất năm sau của các chiến lược long–short (Chen & 
    5. [Mô hình chốt so với baseline, kết quả](docs/5_FINAL_MODEL_VS_BASELINE.md)
    6. [Tổng hợp mọi kết quả và thử nghiệm (đọc đầu tiên)](docs/6_ALL_RESULTS_SUMMARY.md)
    7. [So sánh với EB theo cách chấm của paper](docs/7_COMPARE_WITH_EB.md)
-   - Viết paper: [hướng dẫn viết (đọc trước khi viết)](docs/writing_paper/WRITING_GUIDE.md), bài nháp `docs/writing_paper/sn-article.tex`, nội dung mục 3.1 và 3.2 để chép vào Overleaf ở cùng thư mục
+   - Viết paper: [hướng dẫn viết (đọc trước khi viết)](docs/writing_paper/WRITING_GUIDE.md), bài nháp `docs/writing_paper/overleaf_project/sn-article.tex`, nội dung mục 3.1 và 3.2 để chép vào Overleaf ở cùng thư mục
 
 ## Cài môi trường và chạy tay
 
@@ -39,7 +39,7 @@ Notebook: mở `code/notebook/final_model.ipynb`, chọn kernel **Python (paper)
 | `code/_cache/` | Cache dữ liệu và dự báo (`forecasts/`), không đưa lên Git |
 | `code/checkpoints/` | Trọng số mỗi năm của 6 seed (bản nén seed 1: `docs/zip/`) |
 | `code/experiments/` | Mọi thứ chỉ dùng để tìm mô hình chốt (mã, notebook, dự báo các cấu hình, docs cũ) |
-| `docs/writing_paper/` | Bài đang viết (`sn-article.tex`), hướng dẫn viết paper, nội dung từng mục để chép vào Overleaf |
+| `docs/writing_paper/` | Bài đang viết (`overleaf_project/sn-article.tex`), hướng dẫn viết paper, nội dung từng mục để chép vào Overleaf |
 | `docs/papers/` | PDF paper dùng trực tiếp (Chen & Dim, HyperAttention, Holen et al.) |
 | `docs-add/` | Thư viện paper, bản nháp của nhóm |
 | `data_raw/`, `data_sample/`, `data_extra/` | Dữ liệu gốc, mẫu nhỏ, dữ liệu đối chiếu |
