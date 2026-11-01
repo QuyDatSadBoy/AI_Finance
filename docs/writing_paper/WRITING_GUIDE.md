@@ -128,7 +128,7 @@ Phong cách học thuật, khách quan, chính xác, khiêm tốn, dựa trên b
 | 4 Experiments (4.1 Data, 4.2 Analysis and results, 4.3 Ablation) | `4_experiments_PASTE.md` | đã viết; cách làm, chạy lại EB đối chứng, ablation; không có so sánh mô hình với EB |
 | 5 Results (5.1 so sánh tổng thể, 5.2 theo họ, 5.3 theo thời gian, 5.4 thảo luận) | `5_results_PASTE.md` | đã viết; mô hình đề xuất luôn đứng cuối bảng/đoạn |
 | 6 Conclusion | `6_conclusion_PASTE.md` | đã viết; chỉ tóm tắt, không lặp mục 5 |
-| Còn lại (Introduction cần viết lại cho khớp mục 3–6, Related Work) | chưa viết | |
+| 1 Introduction và 2 Literature Review | `1_2_minimal_edits_PASTE.md` | sửa tối thiểu từng cụm trên bản của người dùng (không thay cả đoạn) |
 
 Lưu ý: nhãn huấn luyện "Sharpe năm sau − mức năm − nền |t|" và PCA/ISAB/Huber/trọng số năm là các thành phần cần ghi nguồn đúng (xem `docs/5_FINAL_MODEL_VS_BASELINE.md`). Việc FinCast được tiền huấn luyện trên dữ liệu bên ngoài phải luôn được nêu rõ, và chưa có khẳng định "không rò rỉ".
 
