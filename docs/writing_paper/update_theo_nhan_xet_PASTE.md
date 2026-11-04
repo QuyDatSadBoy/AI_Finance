@@ -21,7 +21,8 @@
 | Mục 2 trích vài bài trong tạp chí | II-1 đến II-4 (7 bài *Financial Innovation*) |
 | Mục 3: giải thích kiến trúc theo sự hợp lý, các bước liên kết, vì sao kết hợp hiệu quả | III-1 (đoạn và bảng mới), III-2 đến III-6 |
 | Thử nghiệm: nhấn mạnh các khối khớp nhau, vì đóng góp là kiến trúc | IV-1, IV-2, V-1, V-2 |
-| Soát hết reference, thêm bài trong tạp chí | Phần A và B |
+| Soát hết reference, thêm bài trong tạp chí | Phần A, B, C |
+| (Thêm) tiêu đề sai ngữ pháp và dùng "novel" | Phần 0 |
 
 > **Lưu ý trung thực (quan trọng):** ablation cho thấy pretrained, PCA và nhãn có đóng góp; ISAB, Huber, trọng số năm **không phân biệt được** với dao động giữa các lần chạy. Vì vậy các đoạn mới nhấn mạnh kiến trúc bằng **lý do thiết kế** ("is designed to", "so that") và **bằng chứng có thật**: ablation, chênh lệch với baseline cùng FinCast (1,95 so với 1,34), và phân tích "nơi hai phương pháp bất đồng". Không có câu nào nói ISAB làm tăng hiệu quả. Nếu viết vậy, phản biện so với Bảng ablation sẽ thấy mâu thuẫn ngay.
 
@@ -54,7 +55,7 @@ Mục `bowles2024anomaly` không có dấu `}` đóng. BibTeX sẽ đọc lẫn 
 
 ## A-2 — Khoá bị trùng
 
-`gu2020empirical`, `vaswani2017attention`, `wu2020connecting` mỗi khoá có **hai** mục trong `.bib`. BibTeX báo lỗi "repeated entry" và chỉ dùng mục đầu. Xoá **mục thứ hai** của mỗi khoá. Ba mục này nằm gần nhau, sau `green2017characteristics`, `chen2024deep` và trong nhóm `yu2020stock`.
+`gu2020empirical`, `vaswani2017attention`, `wu2020connecting` mỗi khoá có **hai** mục trong `.bib`. BibTeX báo lỗi "repeated entry" và chỉ dùng mục đầu. Xoá **mục thứ hai** của mỗi khoá (số dòng theo bản `.bib` hiện tại): `gu2020empirical` ở **dòng 380**, `vaswani2017attention` ở **dòng 450**, `wu2020connecting` ở **dòng 617**. Giữ các mục ở dòng 237, 303, 512.
 
 ## A-3 — Sai hoặc cũ thông tin (đã đối chiếu CrossRef, arXiv, trang nhà xuất bản)
 
@@ -210,6 +211,22 @@ Các bài *Financial Innovation* đều được đối chiếu với CrossRef, 
 ```
 
 Sửa `holen2024loss` tại chỗ: chỉ thay dòng `author` như bảng A-3.
+
+# 0. Tiêu đề bài
+
+**Giải thích:** "assets pricing" sai ngữ pháp (đúng là "asset pricing"), và "novel" là từ guide khuyên tránh. Tên mới nêu đúng ba ý của bài: attention, biểu diễn tiền huấn luyện, chọn chiến lược long–short.
+
+**❌ CŨ:**
+
+```latex
+\title[Article Title]{A novel attention network for assets pricing}
+```
+
+**✅ MỚI:**
+
+```latex
+\title[Article Title]{An attention network with pretrained representations for selecting long-short strategies in asset pricing}
+```
 
 ---
 
@@ -607,6 +624,40 @@ estimates its expected out-of-sample mean return.We compare
 estimates its expected out-of-sample mean return. We compare
 ```
 
+## II-7 — Mục 2.3: từ mạnh "no principled mechanism"
+
+**❌ CŨ:**
+
+```latex
+Second, they offer no principled mechanism for combining
+```
+
+**✅ MỚI:**
+
+```latex
+Second, they do not by themselves provide a mechanism for combining
+```
+
+*Tiếng Việt:* Hai, tự chúng không cung cấp cơ chế kết hợp…
+
+## II-8 — Mục 2.6: cùng lỗi khẳng định quá mức về Guo và cộng sự
+
+**Giải thích:** câu này lặp lại khẳng định "giảm chiều cải thiện tổng quát hoá" (xem II-4); bản tóm tắt chỉ nói giảm chi phí tính toán mà không mất độ chính xác.
+
+**❌ CŨ:**
+
+```latex
+dimensionality reduction before attention has been shown to improve generalization in noisy financial data \citep{guo2026hybrid}
+```
+
+**✅ MỚI:**
+
+```latex
+dimensionality reduction before attention has been shown to lower computational cost without sacrificing generalization accuracy in noisy financial data \citep{guo2026hybrid}
+```
+
+*Tiếng Việt:* …giảm chiều trước attention đã được chứng minh giúp giảm chi phí tính toán mà không làm mất độ chính xác tổng quát hoá trên dữ liệu tài chính nhiễu.
+
 ---
 
 # III. Mục 3 — Kiến trúc: vì sao các khối hợp lý và khớp nhau
@@ -629,15 +680,15 @@ or on other labels of the underlying assets.
 The blocks are arranged so that each one resolves a difficulty left by the previous one and passes on a representation that the next block can use (Table \ref{tab:design}). The pretrained encoder supplies a rich description of the return sequence without fitting a large model to noisy returns, but its output is high-dimensional and task-agnostic. PCA reduces this output to a size that the roughly 26,000 strategies of a year can support, and whitening places the components on a common scale for the trainable blocks. The compressed patches remain ordered in time, so a bidirectional LSTM can read them as a short sequence, and attention pooling turns them into one vector by learning which segments matter for the forecasting task, which is the task-specific step that the frozen encoder does not provide. Only after each strategy is summarized in this compact vector does ISAB compare strategies within the year, which keeps the cross-sectional step inexpensive. The head then combines the learned vector with the t-stat and mean return, and the label of Equation \eqref{eq:label} asks the network to forecast only what the t-stat does not already explain, so the learned representation and the classical diagnostics play complementary rather than competing roles. Finally, the Huber loss and the year weights adapt the training objective to the heavy tails and the uneven informativeness of the yearly cross-sections.
 
 \begin{table}[h]
-\caption{Design rationale of the proposed architecture. Each block addresses a difficulty of the forecasting problem and passes its output to the next block. The last column refers to the evidence reported in Sections \ref{subsec4_3} and \ref{subsec5_1}.}\label{tab:design}%
+\caption{Design rationale of the proposed architecture. Each block addresses a difficulty of the forecasting problem and passes its output to the next block. The last column refers to the ablation of Section \ref{subsec4_3}; the comparison with the baseline model in Section \ref{subsec5_1} measures the joint effect of PCA, ISAB, sign orientation and the label.}\label{tab:design}%
 \small
 \begin{tabular}{@{}p{2.6cm}p{3.9cm}p{2.3cm}p{3.6cm}@{}}
 \toprule
 Block & Difficulty addressed & Output passed on & Evidence \\
 \midrule
 FinCast (pretrained, frozen) & The t-stat discards the shape of the return path; a sequence model trained from scratch on noisy returns may overfit & $4 \times 1280$ patch representations & Random initialization lowers the holdout Sharpe ratio (0.66 against 0.84) \\
-Whitened PCA (fixed) & 5,120 inputs per strategy are many relative to about 26,000 strategies per year & $4 \times 16$ components on a common scale & 8 or 64 components lower the holdout Sharpe ratio \\
-Bi-LSTM and attention pooling & The frozen representation is task-agnostic; segments differ in relevance & 256-dimensional context vector & Joint effect with the other blocks: 1.95 against 1.34 for the baseline model (development, top 1\%) \\
+Whitened PCA (fixed) & 5,120 inputs per strategy are many relative to about 26,000 strategies per year & $4 \times 16$ components on a common scale & 8 components lower the holdout Sharpe ratio ($-0.17$); 64 components lower the development Sharpe ratio ($-0.20$) \\
+Bi-LSTM and attention pooling & The frozen representation is task-agnostic; segments differ in relevance & 256-dimensional context vector & Not removed separately; also used by the baseline model \\
 ISAB (64 inducing points) & Selection is relative to the other strategies of the year; full attention costs $O(N_Y^2)$ & Context vector placed in the cross-section & Not distinguishable from run-to-run variation \\
 Head with t-stat, mean return and the label & The t-stat already carries much of the information & Forecast of the part not explained by the t-stat & Label: 1.37 to 1.84 (development) and 0.69 to 0.81 (holdout) \\
 Huber loss and year weights & Heavy-tailed returns and uneven years & Training objective & Not distinguishable from run-to-run variation \\
@@ -677,10 +728,10 @@ intended to reduce the complexity of the model and the risk of overfitting.
 **✅ MỚI:**
 
 ```latex
-intended to reduce the complexity of the model and the risk of overfitting. Because the compression is applied to each patch separately, the temporal order of the four patches is preserved, so the next block can still read them as a sequence. The ablation in Section \ref{subsec4_3} supports this choice: fewer components lower the holdout performance, and more components lower the performance in both periods.
+intended to reduce the complexity of the model and the risk of overfitting. Because the compression is applied to each patch separately, the temporal order of the four patches is preserved, so the next block can still read them as a sequence. The ablation in Section \ref{subsec4_3} supports this choice: 8 components lower the holdout Sharpe ratio, and 64 components lower the development Sharpe ratio.
 ```
 
-*Tiếng Việt:* …Vì nén riêng từng patch nên thứ tự thời gian của bốn patch được giữ, và khối sau vẫn đọc chúng như một chuỗi. Ablation ở mục 4.3 ủng hộ lựa chọn này: ít thành phần hơn làm giảm hiệu quả holdout, nhiều thành phần hơn làm giảm ở cả hai giai đoạn.
+*Tiếng Việt:* …Vì nén riêng từng patch nên thứ tự thời gian của bốn patch được giữ, và khối sau vẫn đọc chúng như một chuỗi. Ablation ở mục 4.3 ủng hộ lựa chọn này: 8 thành phần làm giảm Sharpe holdout, 64 thành phần làm giảm Sharpe giai đoạn phát triển.
 
 ## III-4 — Sau công thức attention pooling (3.2.4): vì sao Bi-LSTM và attention
 
@@ -801,10 +852,10 @@ This suggests that the return history carries information about future performan
 **✅ MỚI:**
 
 ```latex
-This suggests that the return history carries information about future performance that the summary statistics used by EB mining do not. These are the strategies on which the architecture departs from a ranking by summary statistics: the return history, read by the pretrained encoder and weighted by attention pooling, moves them into or out of the top 1\%, and their realized returns support these changes.
+This suggests that the return history carries information about future performance that the summary statistics used by EB mining do not. These are the strategies on which the ranking of the proposed architecture, which uses the return history in addition to the summary statistics, departs from a ranking by summary statistics alone, and their realized returns support these departures.
 ```
 
-*Tiếng Việt:* …Đây là những chiến lược mà kiến trúc đi khác với cách xếp hạng bằng thống kê tóm tắt: lịch sử lợi suất, được bộ mã hoá tiền huấn luyện đọc và attention pooling đặt trọng số, đưa chúng vào hoặc ra khỏi top 1%, và lợi suất thực tế ủng hộ những thay đổi này.
+*Tiếng Việt:* …Đây là những chiến lược mà cách xếp hạng của kiến trúc đề xuất, vốn dùng thêm lịch sử lợi suất ngoài thống kê tóm tắt, khác với cách xếp hạng chỉ bằng thống kê tóm tắt, và lợi suất thực tế ủng hộ những khác biệt này.
 
 ---
 
@@ -817,6 +868,9 @@ This suggests that the return history carries information about future performan
 | VI-3 | `It outperforms benchmark methods for the top 1\% and top 5\% of strategies across both periods and the full sample, as well as for the top 10\% during the holdout period, demonstrating its potential for out-of-sample return prediction.` | `Its top 1\% portfolio has a higher Sharpe ratio than that of empirical Bayes mining in the development, holdout and full periods, with statistically significant differences, and it has the highest holdout Sharpe ratio of the compared methods at all three portfolio sizes.` | Ở top 5% dev, naive mining cao hơn (1,99 so với 1,95) và mọi chênh lệch ở top 5% không có ý nghĩa thống kê |
 | VI-4 | `by capturing nonlinear relationships among market factors and adapting to changing market dynamics.` | `by reading the return histories of strategies and being re-estimated every year as market conditions change.` | Bài không mô hình hoá "market factors" |
 | VI-5 (Abstract) | `Furthermore, the proposed model outperforms the benchmark methods, achieving Sharpe ratios of up to 1.95 among the top 1\% and top 5\% of strategies.` | `Furthermore, the top 1\% portfolio of the proposed model has a higher Sharpe ratio than that of empirical Bayes mining in both the development period (1.95 against 1.55) and the holdout period (1.11 against 0.82).` | Như VI-3 |
+
+
+**Cấu trúc mục 6 (nên xem lại):** hiện có ba `\section` liền nhau: `Conclusion`, `Practical implications`, `Limitations and directions for future research`. Mục `Practical implications` thực chất chứa kết quả chính và đóng góp, không phải ý nghĩa thực tiễn. Cách gọn nhất: đổi hai dòng `\section{Practical implications}` và `\section{Limitations and directions for future research}` thành `\subsection{Key findings and contributions}` và `\subsection{Limitations and future research}`, để cả phần nằm trong mục 6 Conclusion. Mục 5.4 *Discussion and limitations* đang bị comment, nên phần giới hạn chỉ còn ở mục 6; như vậy là đủ, không cần mở lại.
 
 ---
 
