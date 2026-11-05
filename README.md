@@ -89,7 +89,7 @@ pip install -r requirements.txt
 git clone https://github.com/vincent05r/FinCast-fts.git Research/tools/FinCast-fts
 #    trọng số pretrained (Vincent05R/FinCast, v1.pth) tự tải từ Hugging Face lần chạy đầu
 
-# 3. Dữ liệu: đặt 4 CSV của paper Chen & Dim vào data_raw/ (xem mục "Dữ liệu")
+# 3. Dữ liệu: tải 4 CSV của paper Chen & Dim về data_raw/ (link ở mục "Dữ liệu" ngay dưới)
 
 # 4. Dựng cache (ma trận lãi, bảng chiến lược × năm, FinCast + PCA16)
 cd code
@@ -103,7 +103,17 @@ Notebook duy nhất đi từ CSV gốc đến kết quả, từng bước, có g
 
 **Chỉ muốn kiểm tra kết quả, không học lại:** checkpoint mô hình chốt (seed 1) nằm sẵn ở `code/checkpoints/final_s1/Y1983.pt … Y2020.pt` (38 file); nạp `Y2000.pt` và dự báo lại cho kết quả chênh dự báo đã lưu 7,9e-8. GPU không tất định nên **học lại cùng seed cho số hơi khác**; checkpoint đã lưu thì dự báo cố định.
 
-**Dữ liệu.** Mã dùng 4 CSV của paper (`DataMinedLongShortReturnsEW.csv`, `…VW.csv`, `PastReturnSignalsLongShort.csv`, `TickerSignalsLongShort.csv`, mỗi file 0,6–0,9 GB, tổng khoảng 2,8 GB) cùng các bảng tên chiến lược. Các file này **không nằm trong Git** (vượt giới hạn của GitHub). `data_sample/` có trích mẫu nhỏ để xem cấu trúc; `data_extra/` có dữ liệu đối chiếu. Chỉ họ **Accounting EW** được dùng để huấn luyện và báo cáo.
+**Dữ liệu.** Mã dùng 4 CSV của paper (`DataMinedLongShortReturnsEW.csv`, `…VW.csv`, `PastReturnSignalsLongShort.csv`, `TickerSignalsLongShort.csv`, mỗi file 0,6–0,9 GB, tổng khoảng 2,8 GB) cùng các bảng tên chiến lược. Các file này **không nằm trong Git** (vượt giới hạn của GitHub); tải về rồi đặt vào `data_raw/`:
+
+| Dữ liệu | Nơi tải |
+|---|---|
+| Họ **kế toán** (`DataMinedLongShortReturnsEW.csv`, `…VW.csv`, danh sách chiến lược) | [Google Drive của tác giả](https://drive.google.com/drive/folders/16RqeHNyU5gcqjRUvqSeOfQCxu_B2mfcZ) |
+| Họ **lợi suất quá khứ** và **Ticker** (thư mục *Strategy Returns*) | [Dropbox của tác giả](https://www.dropbox.com/scl/fo/qd3aw9x8eje18tiy7gqm2/h/Strategy%20Returns?dl=0&subfolder_nav_tracking=1) |
+| Trang dữ liệu của nhóm tác giả | [sites.google.com/site/chenandrewy/Data](https://sites.google.com/site/chenandrewy/Data) |
+| Dữ liệu chiến lược khác (tham khảo) | [Open Source Asset Pricing](https://www.openassetpricing.com/data/) |
+| Paper | [arXiv 2311.10685](https://arxiv.org/abs/2311.10685) |
+
+`data_sample/` có trích mẫu nhỏ để xem cấu trúc; `data_extra/` có dữ liệu đối chiếu. Chỉ họ **Accounting EW** được dùng để huấn luyện và báo cáo.
 
 ---
 
