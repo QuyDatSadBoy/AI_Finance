@@ -1,0 +1,5 @@
+,dev top1%,dev top5%,dev top10%,holdout top1%,holdout top5%,holdout top10%,full top1%,full top5%,full top10%
+Baseline model,1.34,1.23,1.16,0.61,0.51,0.54,1.07,0.97,0.94
+Naive mining (|t|),1.95,1.99,1.85,0.84,0.75,0.83,1.52,1.51,1.47
+EB mining,1.55,1.91,1.86,0.82,0.78,0.86,1.27,1.48,1.48
+Proposed model,1.95,1.95,1.82,1.11,0.88,0.88,1.62,1.54,1.46

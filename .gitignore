@@ -1,52 +1,41 @@
-# Raw datasets and downloaded archives exceed GitHub's regular Git file limit.
+# Repo chỉ chứa mã chính, kiểm thử, kết quả cuối và README. Mọi thứ dưới đây chỉ để trên máy.
+
+# Dữ liệu gốc lớn và gói nén (tải theo README)
 /data_raw/DataMinedLongShortReturnsEW.csv
 /data_raw/DataMinedLongShortReturnsVW.csv
 /data_raw/PastReturnSignalsLongShort.csv
 /data_raw/TickerSignalsLongShort.csv
-/archives/*.zip
+/archives/
 /*.zip
 
-# Local notebook/runtime artifacts.
-.ipynb_checkpoints/
-__pycache__/
-.DS_Store
-
-# Independent full clone of the authors' public repository (keeps its own .git history).
-/Research/original_paper_code/high-throughput-ap/
-
-# Independent reference checkout; preserve its own Git history.
-/Research/tools/autoresearch/
-
-# Cached matrices/features for code/
+# Cache, dự báo trung gian, trọng số đã huấn luyện
 /code/_cache/
+/code/checkpoints/*
+!/code/checkpoints/final_s1/
 
-# Trained model weights (code/checkpoints/)
-/code/checkpoints/*/*.log
-/code/__pycache__/
-/Research/tools/FinCast-fts/
+# Thí nghiệm, tài liệu nghiên cứu, bản thảo paper, tài liệu tham khảo
+/code/experiments/
+/code/notebook/
+/code/run_feat.log
+/docs/*
+!/docs/figures/
+/docs/figures/eb_calibration.png
+/docs-add/
+/Research/
+/data_extra/
 
-# Jupyter runtime
-.jupyter/
-.jupyter_ystore.db
-
-# Thí nghiệm cũ: chỉ đẩy mã và bảng kết quả nhỏ, bỏ ma trận/dự báo lớn
-/code/experiments/**/*.npy
-/code/experiments/**/*.npz
-/code/experiments/**/*.pt
-/code/experiments/**/*.parquet
-/code/experiments/**/_cache/
-/code/experiments/**/checkpoints/
-*.log
-
-# Gói nén: chỉ giữ các phần đã chia nhỏ
-/docs/zip/checkpoints_final_s1.zip
-/docs/zip/checkpoints_all_seeds.zip
-
-# Cấu hình trợ lý cục bộ
+# Cấu hình trợ lý và công cụ cục bộ
+AGENTS.md
 CLAUDE.md
 .claude/
-/docs/zip/data_raw_csv.zip
-/docs/zip/archives.zip
-/docs/zip/experiments_data.zip
-/docs/zip/code_cache.zip
-/docs/zip/other_files.zip
+.agents/
+.mcp.json
+
+# Runtime
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+.jupyter/
+.jupyter_ystore.db
+.DS_Store
+*.log
